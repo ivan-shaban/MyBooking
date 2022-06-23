@@ -54,6 +54,7 @@ export function MasterProfile({ navigation, route }: RootStackScreenProps<'Maste
                 open={fabOpen}
                 icon={fabOpen ? 'arrow-left-circle' : 'plus'}
                 color="white"
+                visible
                 actions={[
                     {
                         icon: 'calendar-today',
@@ -96,13 +97,6 @@ export function MasterProfile({ navigation, route }: RootStackScreenProps<'Maste
 const styles = StyleSheet.create({
     base: {
         flex: 1,
-    },
-    header: {
-        alignItems: 'center',
-        paddingTop: 20,
-    },
-    avatar: {
-        marginBottom: 8,
     },
     feedbackBadge: {
         marginTop: 5,

@@ -1,4 +1,4 @@
-import { MaterialCommunityIcons } from '@expo/vector-icons'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import React, { FC, memo } from 'react'
 import { useIntl } from 'react-intl'
 import { Dimensions, StyleSheet } from 'react-native'

@@ -1,5 +1,5 @@
 import { useStore } from 'effector-react'
-import * as Linking from 'expo-linking'
+// import * as Linking from 'expo-linking'
 import React, { useCallback } from 'react'
 import { useIntl } from 'react-intl'
 import { Platform, StyleSheet } from 'react-native'
@@ -64,12 +64,12 @@ export const MasterProfileHeader = ({
                 disabled={isFavouriteMasterRequestPending}
                 onPress={handleFavouritePress}
             />
-            <ShareButton
-                style={styles.smallItem}
-                title={`Master profile: ${master.name}`}
-                message={Linking.createURL(`masters/${master.id}`)}
-                url={Linking.createURL(`masters/${master.id}`)}
-            />
+            {/*<ShareButton*/}
+            {/*    style={styles.smallItem}*/}
+            {/*    title={`Master profile: ${master.name}`}*/}
+            {/*    message={Linking.createURL(`masters/${master.id}`)}*/}
+            {/*    url={Linking.createURL(`masters/${master.id}`)}*/}
+            {/*/>*/}
             <Appbar.Action style={styles.smallItem} icon={MORE_ICON} onPress={() => {}} />
         </Appbar.Header>
     )

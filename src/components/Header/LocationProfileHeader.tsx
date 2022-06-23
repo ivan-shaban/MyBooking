@@ -1,5 +1,5 @@
 import { useStore } from 'effector-react'
-import * as Linking from 'expo-linking'
+// import * as Linking from 'expo-linking'
 import React, { useCallback } from 'react'
 import { Platform, StyleSheet } from 'react-native'
 import { Appbar } from 'react-native-paper'
@@ -53,15 +53,15 @@ export const LocationProfileHeader = ({
                 disabled={isFavouriteLocationRequestPending}
                 onPress={handleFavouritePress}
             />
-            <ShareButton
-                style={styles.smallItem}
-                title={`Location profile: ${location.name}`}
-                message={Linking.createURL(`locations/${location.id}`)}
-                // message={`intent:#Intent;scheme=${expo.scheme}://locations/${location.id};package=${expo.android.package};end`}
-                // message={`Please install this app and stay safe , AppLink: ${`https://www.amazinghorse.io/locations/${location.id}`}`}
-                // message={`Please install this app and stay safe , AppLink: ${getAppStoreURL()}`}
-                url={Linking.createURL(`locations/${location.id}`)}
-            />
+            {/*<ShareButton*/}
+            {/*    style={styles.smallItem}*/}
+            {/*    title={`Location profile: ${location.name}`}*/}
+            {/*    message={Linking.createURL(`locations/${location.id}`)}*/}
+            {/*    // message={`intent:#Intent;scheme=${expo.scheme}://locations/${location.id};package=${expo.android.package};end`}*/}
+            {/*    // message={`Please install this app and stay safe , AppLink: ${`https://www.amazinghorse.io/locations/${location.id}`}`}*/}
+            {/*    // message={`Please install this app and stay safe , AppLink: ${getAppStoreURL()}`}*/}
+            {/*    url={Linking.createURL(`locations/${location.id}`)}*/}
+            {/*/>*/}
             <Appbar.Action
                 style={styles.smallItem}
                 icon={MORE_ICON}

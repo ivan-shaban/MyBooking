@@ -1,7 +1,7 @@
 import { useStore } from 'effector-react'
-import { registerRootComponent } from 'expo'
-import { locale } from 'expo-localization'
-import { StatusBar } from 'expo-status-bar'
+// import { registerRootComponent } from 'expo'
+// import { locale } from 'expo-localization'
+// import { StatusBar } from 'expo-status-bar'
 import { useCallback, useEffect } from 'react'
 import { IntlProvider } from 'react-intl'
 import { Provider as PaperProvider } from 'react-native-paper'
@@ -53,7 +53,7 @@ function App() {
                 <PaperProvider>
                     <SafeAreaProvider>
                         <Navigation />
-                        <StatusBar />
+                        {/*<StatusBar />*/}
                     </SafeAreaProvider>
                 </PaperProvider>
             </IntlProvider>
@@ -62,5 +62,3 @@ function App() {
         return null
     }
 }
-
-export default registerRootComponent(App)

@@ -1,4 +1,4 @@
-import { MaterialCommunityIcons } from '@expo/vector-icons'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import React, { FC, memo, useCallback } from 'react'
 import { StyleSheet, TouchableOpacity } from 'react-native'
 
@@ -37,7 +37,7 @@ export const SortingEntry: FC<Props> = memo(function SortingEntry({ title, order
                 }
                 color={color}
             />
-            {/*<MaterialCommunityIcons size={16} name="sort-reverse-variant" color={color} />*/}
+            <MaterialCommunityIcons size={16} name="sort-reverse-variant" color={color} />
         </TouchableOpacity>
     )
 })

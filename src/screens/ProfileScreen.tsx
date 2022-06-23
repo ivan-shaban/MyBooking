@@ -1,4 +1,4 @@
-import { MaterialCommunityIcons } from '@expo/vector-icons'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import { useStore } from 'effector-react'
 import React, { useCallback } from 'react'
 import { FormattedMessage } from 'react-intl'

@@ -70,6 +70,7 @@ export function LocationProfile({ navigation, route }: RootStackScreenProps<'Loc
                 open={fabOpen}
                 icon={fabOpen ? 'arrow-left-circle' : 'plus'}
                 color="white"
+                visible
                 style={styles.fab}
                 fabStyle={styles.fabStyle}
                 actions={[

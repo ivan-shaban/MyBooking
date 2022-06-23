@@ -1,4 +1,4 @@
-import { locale } from 'expo-localization'
+// import { locale } from 'expo-localization'
 
 import en from '../../assets/locales/en.json'
 import ge from '../../assets/locales/ge.json'
@@ -15,7 +15,8 @@ const translations = {
 }
 
 export const changeLanguage = createEvent<Language>('change language')
-export const $language = createStore(locale.split(/[-_]/)[0] as Language).on(
+export const $language = createStore('ru-RU'.split(/[-_]/)[0] as Language).on(
+// export const $language = createStore(locale.split(/[-_]/)[0] as Language).on(
     changeLanguage,
     (_, language) => language,
 )

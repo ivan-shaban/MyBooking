@@ -1,10 +1,22 @@
-import { useStore } from 'effector-react'
-import React, { FC, memo, useCallback } from 'react'
-import { StyleSheet, TouchableOpacity, View } from 'react-native'
+import {useStore} from 'effector-react'
+import React, {
+    FC,
+    memo,
+    useCallback,
+} from 'react'
+import {
+    StyleSheet,
+    TouchableOpacity,
+} from 'react-native'
+// @ts-ignore
 import Icon from 'react-native-ico-flags'
 
-import { MasterLanguage } from '../constants/masters'
-import { $language, Language, changeLanguage } from '../store/locale'
+import {MasterLanguage} from '../constants/masters'
+import {
+    $language,
+    changeLanguage,
+    Language,
+} from '../store/locale'
 
 export type Props =
     | {

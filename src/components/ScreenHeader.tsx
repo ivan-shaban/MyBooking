@@ -38,9 +38,11 @@ export const ScreenHeader: FC<NativeStackHeaderProps> = (props) => {
             }
         }
         case 'MasterProfile': {
+            // @ts-ignore
             return <MasterProfileHeader {...props} />
         }
         case 'LocationProfile': {
+            // @ts-ignore
             return <LocationProfileHeader {...props} />
         }
         case 'MasterPhotoModal': {

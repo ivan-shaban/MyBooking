@@ -1,0 +1,404 @@
+{
+  "CFBundleDisplayName": [
+    {
+      "type": 0,
+      "value": "CFBundleDisplayName"
+    }
+  ],
+  "NSContactsUsageDescription": [
+    {
+      "type": 0,
+      "value": "NSContactsUsageDescription"
+    }
+  ],
+  "actions.cancelRecord": [
+    {
+      "type": 0,
+      "value": "Cancel entry"
+    }
+  ],
+  "actions.leftFeedback": [
+    {
+      "type": 0,
+      "value": "Add feedback"
+    }
+  ],
+  "actions.sendMessage": [
+    {
+      "type": 0,
+      "value": "Send message"
+    }
+  ],
+  "actions.signUpAtDate": [
+    {
+      "type": 0,
+      "value": "Sign up for a specific date"
+    }
+  ],
+  "actions.signUpSoon": [
+    {
+      "type": 0,
+      "value": "Sign up soon"
+    }
+  ],
+  "button.back": [
+    {
+      "type": 0,
+      "value": "Back"
+    }
+  ],
+  "day.dayoff": [
+    {
+      "type": 0,
+      "value": "Day off"
+    }
+  ],
+  "day.tomorrow": [
+    {
+      "type": 0,
+      "value": "Tomorrow"
+    }
+  ],
+  "day.wholeDay": [
+    {
+      "type": 0,
+      "value": "24h"
+    }
+  ],
+  "day0": [
+    {
+      "type": 0,
+      "value": "Monday"
+    }
+  ],
+  "day1": [
+    {
+      "type": 0,
+      "value": "Tuesday"
+    }
+  ],
+  "day2": [
+    {
+      "type": 0,
+      "value": "Wednesday"
+    }
+  ],
+  "day3": [
+    {
+      "type": 0,
+      "value": "Thursday"
+    }
+  ],
+  "day4": [
+    {
+      "type": 0,
+      "value": "Friday"
+    }
+  ],
+  "day5": [
+    {
+      "type": 0,
+      "value": "Saturday"
+    }
+  ],
+  "day6": [
+    {
+      "type": 0,
+      "value": "Sunday"
+    }
+  ],
+  "language": [
+    {
+      "type": 0,
+      "value": "Language"
+    }
+  ],
+  "location.closed": [
+    {
+      "type": 0,
+      "value": "Closed"
+    }
+  ],
+  "location.closesIn": [
+    {
+      "type": 0,
+      "value": "• Will close at "
+    },
+    {
+      "type": 1,
+      "value": "time"
+    }
+  ],
+  "location.opened": [
+    {
+      "type": 0,
+      "value": "Open"
+    }
+  ],
+  "location.opensInDay": [
+    {
+      "type": 0,
+      "value": "• Will open on "
+    },
+    {
+      "type": 1,
+      "value": "day"
+    },
+    {
+      "type": 0,
+      "value": " at "
+    },
+    {
+      "type": 1,
+      "value": "time"
+    }
+  ],
+  "location.opensInTime": [
+    {
+      "type": 0,
+      "value": "• Will open at "
+    },
+    {
+      "type": 1,
+      "value": "time"
+    }
+  ],
+  "location.opensTomorrow": [
+    {
+      "type": 0,
+      "value": "• Will open tomorrow at "
+    },
+    {
+      "type": 1,
+      "value": "time"
+    }
+  ],
+  "master.beautician": [
+    {
+      "type": 0,
+      "value": "Beautician"
+    }
+  ],
+  "master.cosmetic": [
+    {
+      "type": 0,
+      "value": "Cosmetic"
+    }
+  ],
+  "master.hairdresser": [
+    {
+      "type": 0,
+      "value": "Hairdresser"
+    }
+  ],
+  "master.masseur": [
+    {
+      "type": 0,
+      "value": "Masseur"
+    }
+  ],
+  "master.nailsmaster": [
+    {
+      "type": 0,
+      "value": "Nailsmaster"
+    }
+  ],
+  "master.podiatrist": [
+    {
+      "type": 0,
+      "value": "Podiatrist"
+    }
+  ],
+  "master.stylist": [
+    {
+      "type": 0,
+      "value": "Stylist"
+    }
+  ],
+  "menu.favourite": [
+    {
+      "type": 0,
+      "value": "Favourite"
+    }
+  ],
+  "menu.locations": [
+    {
+      "type": 0,
+      "value": "Locations"
+    }
+  ],
+  "menu.masters": [
+    {
+      "type": 0,
+      "value": "Masters"
+    }
+  ],
+  "menu.profile": [
+    {
+      "type": 0,
+      "value": "Profile"
+    }
+  ],
+  "rating.no-rating": [
+    {
+      "type": 0,
+      "value": "No rating yet, became first user!"
+    }
+  ],
+  "service.coloring_airtouch": [
+    {
+      "type": 0,
+      "value": "Coloring: airtouch"
+    }
+  ],
+  "service.coloring_balayaj": [
+    {
+      "type": 0,
+      "value": "Coloring: balayage"
+    }
+  ],
+  "service.coloring_melirovanie": [
+    {
+      "type": 0,
+      "value": "Coloring: highlighting"
+    }
+  ],
+  "service.coloring_shatush": [
+    {
+      "type": 0,
+      "value": "Coloring: shatush"
+    }
+  ],
+  "service.cure_ekranirovanie": [
+    {
+      "type": 0,
+      "value": "Cure: shielding"
+    }
+  ],
+  "service.cure_glazirovanie": [
+    {
+      "type": 0,
+      "value": "Cure: glazing"
+    }
+  ],
+  "service.cure_laminirovanie": [
+    {
+      "type": 0,
+      "value": "Cure: lamination"
+    }
+  ],
+  "service.haircut_child": [
+    {
+      "type": 0,
+      "value": "Child's haircut"
+    }
+  ],
+  "service.haircut_man": [
+    {
+      "type": 0,
+      "value": "Man's haircut"
+    }
+  ],
+  "service.haircut_woman": [
+    {
+      "type": 0,
+      "value": "Woman's haircur"
+    }
+  ],
+  "service.hairstyle": [
+    {
+      "type": 0,
+      "value": "Hairstyle"
+    }
+  ],
+  "service.straightening": [
+    {
+      "type": 0,
+      "value": "Straightening"
+    }
+  ],
+  "service.styling_ceremonial": [
+    {
+      "type": 0,
+      "value": "Styling: ceremonial"
+    }
+  ],
+  "service.styling_daily": [
+    {
+      "type": 0,
+      "value": "Styling: daily"
+    }
+  ],
+  "subheader.aboutSelf": [
+    {
+      "type": 0,
+      "value": "About"
+    }
+  ],
+  "subheader.address": [
+    {
+      "type": 0,
+      "value": "Address"
+    }
+  ],
+  "subheader.boys": [
+    {
+      "type": 0,
+      "value": "Boys"
+    }
+  ],
+  "subheader.clients": [
+    {
+      "type": 0,
+      "value": "Clients"
+    }
+  ],
+  "subheader.contacts": [
+    {
+      "type": 0,
+      "value": "Contacts"
+    }
+  ],
+  "subheader.feedbacks": [
+    {
+      "type": 0,
+      "value": "Feedbacks"
+    }
+  ],
+  "subheader.girls": [
+    {
+      "type": 0,
+      "value": "Girls"
+    }
+  ],
+  "subheader.languages": [
+    {
+      "type": 0,
+      "value": "Known languages"
+    }
+  ],
+  "subheader.men": [
+    {
+      "type": 0,
+      "value": "Men"
+    }
+  ],
+  "subheader.schedule": [
+    {
+      "type": 0,
+      "value": "Schedule"
+    }
+  ],
+  "subheader.services": [
+    {
+      "type": 0,
+      "value": "Services"
+    }
+  ],
+  "subheader.women": [
+    {
+      "type": 0,
+      "value": "Women"
+    }
+  ]
+}

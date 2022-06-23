@@ -1,0 +1,25 @@
+{
+  "singleQuote": true,
+  "printWidth": 100,
+  "editor.formatOnSave": true,
+  "proseWrap": "always",
+  "tabWidth": 4,
+  "requireConfig": false,
+  "useTabs": false,
+  "trailingComma": "all",
+  "bracketSpacing": true,
+  "bracketSameLine": false,
+  "jsxBracketSameLine": false,
+  "arrowParens": "always",
+  "semi": false,
+  "importOrder": [
+    "(react|next|expo).*",
+    "classnames",
+    "<THIRD_PARTY_MODULES>",
+    "^[.]/.+[.]?!(css|scss|less|svg|png|jpg|jpeg)$",
+    "^(.|..)/.+[.](svg|png|jpg|jpeg)$",
+    "^.+[.](css|scss|less)$"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
+}

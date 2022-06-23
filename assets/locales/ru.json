@@ -1,0 +1,404 @@
+{
+  "CFBundleDisplayName": [
+    {
+      "type": 0,
+      "value": "CFBundleDisplayName"
+    }
+  ],
+  "NSContactsUsageDescription": [
+    {
+      "type": 0,
+      "value": "NSContactsUsageDescription"
+    }
+  ],
+  "actions.cancelRecord": [
+    {
+      "type": 0,
+      "value": "Отменить запись"
+    }
+  ],
+  "actions.leftFeedback": [
+    {
+      "type": 0,
+      "value": "Оставить отзыв"
+    }
+  ],
+  "actions.sendMessage": [
+    {
+      "type": 0,
+      "value": "Оставить сообщение"
+    }
+  ],
+  "actions.signUpAtDate": [
+    {
+      "type": 0,
+      "value": "Записаться на определенную дату"
+    }
+  ],
+  "actions.signUpSoon": [
+    {
+      "type": 0,
+      "value": "Записаться на ближайшее время"
+    }
+  ],
+  "button.back": [
+    {
+      "type": 0,
+      "value": "Назад"
+    }
+  ],
+  "day.dayoff": [
+    {
+      "type": 0,
+      "value": "Выходной"
+    }
+  ],
+  "day.tomorrow": [
+    {
+      "type": 0,
+      "value": "Завтра"
+    }
+  ],
+  "day.wholeDay": [
+    {
+      "type": 0,
+      "value": "Круглосуточно"
+    }
+  ],
+  "day0": [
+    {
+      "type": 0,
+      "value": "Понедельник"
+    }
+  ],
+  "day1": [
+    {
+      "type": 0,
+      "value": "Вторник"
+    }
+  ],
+  "day2": [
+    {
+      "type": 0,
+      "value": "Среды"
+    }
+  ],
+  "day3": [
+    {
+      "type": 0,
+      "value": "Четверг"
+    }
+  ],
+  "day4": [
+    {
+      "type": 0,
+      "value": "Пятница"
+    }
+  ],
+  "day5": [
+    {
+      "type": 0,
+      "value": "Суббота"
+    }
+  ],
+  "day6": [
+    {
+      "type": 0,
+      "value": "Воскресенье"
+    }
+  ],
+  "language": [
+    {
+      "type": 0,
+      "value": "Язык"
+    }
+  ],
+  "location.closed": [
+    {
+      "type": 0,
+      "value": "Закрыто"
+    }
+  ],
+  "location.closesIn": [
+    {
+      "type": 0,
+      "value": "• Закроется в "
+    },
+    {
+      "type": 1,
+      "value": "time"
+    }
+  ],
+  "location.opened": [
+    {
+      "type": 0,
+      "value": "Открыто"
+    }
+  ],
+  "location.opensInDay": [
+    {
+      "type": 0,
+      "value": "• Откроется в "
+    },
+    {
+      "type": 1,
+      "value": "day"
+    },
+    {
+      "type": 0,
+      "value": " в "
+    },
+    {
+      "type": 1,
+      "value": "time"
+    }
+  ],
+  "location.opensInTime": [
+    {
+      "type": 0,
+      "value": "• Откроется в "
+    },
+    {
+      "type": 1,
+      "value": "time"
+    }
+  ],
+  "location.opensTomorrow": [
+    {
+      "type": 0,
+      "value": "• Откроется завтра в "
+    },
+    {
+      "type": 1,
+      "value": "time"
+    }
+  ],
+  "master.beautician": [
+    {
+      "type": 0,
+      "value": "Косметолог"
+    }
+  ],
+  "master.cosmetic": [
+    {
+      "type": 0,
+      "value": "Косметик"
+    }
+  ],
+  "master.hairdresser": [
+    {
+      "type": 0,
+      "value": "Парикмахер"
+    }
+  ],
+  "master.masseur": [
+    {
+      "type": 0,
+      "value": "Масажист"
+    }
+  ],
+  "master.nailsmaster": [
+    {
+      "type": 0,
+      "value": "Маникюрист"
+    }
+  ],
+  "master.podiatrist": [
+    {
+      "type": 0,
+      "value": "Подолог"
+    }
+  ],
+  "master.stylist": [
+    {
+      "type": 0,
+      "value": "Косметолог"
+    }
+  ],
+  "menu.favourite": [
+    {
+      "type": 0,
+      "value": "Избранное"
+    }
+  ],
+  "menu.locations": [
+    {
+      "type": 0,
+      "value": "Места"
+    }
+  ],
+  "menu.masters": [
+    {
+      "type": 0,
+      "value": "Специалисты"
+    }
+  ],
+  "menu.profile": [
+    {
+      "type": 0,
+      "value": "Профиль"
+    }
+  ],
+  "rating.no-rating": [
+    {
+      "type": 0,
+      "value": "Оценок еще нет, будь первым!"
+    }
+  ],
+  "service.coloring_airtouch": [
+    {
+      "type": 0,
+      "value": "Окрашивание: аиртач"
+    }
+  ],
+  "service.coloring_balayaj": [
+    {
+      "type": 0,
+      "value": "Окрашивание: балаяж"
+    }
+  ],
+  "service.coloring_melirovanie": [
+    {
+      "type": 0,
+      "value": "Окрашивание: мелирование"
+    }
+  ],
+  "service.coloring_shatush": [
+    {
+      "type": 0,
+      "value": "Окрашивание: шатуш"
+    }
+  ],
+  "service.cure_ekranirovanie": [
+    {
+      "type": 0,
+      "value": "Лечение волос: экранирование"
+    }
+  ],
+  "service.cure_glazirovanie": [
+    {
+      "type": 0,
+      "value": "Лечение волос: глазирование"
+    }
+  ],
+  "service.cure_laminirovanie": [
+    {
+      "type": 0,
+      "value": "Лечение волос: ламинирование"
+    }
+  ],
+  "service.haircut_child": [
+    {
+      "type": 0,
+      "value": "Детская стрижка"
+    }
+  ],
+  "service.haircut_man": [
+    {
+      "type": 0,
+      "value": "Мужская стрижка"
+    }
+  ],
+  "service.haircut_woman": [
+    {
+      "type": 0,
+      "value": "Женская стрижка"
+    }
+  ],
+  "service.hairstyle": [
+    {
+      "type": 0,
+      "value": "Прическа"
+    }
+  ],
+  "service.straightening": [
+    {
+      "type": 0,
+      "value": "Выпрямление"
+    }
+  ],
+  "service.styling_ceremonial": [
+    {
+      "type": 0,
+      "value": "Укладка: торжественная"
+    }
+  ],
+  "service.styling_daily": [
+    {
+      "type": 0,
+      "value": "Укладка: ежедневная"
+    }
+  ],
+  "subheader.aboutSelf": [
+    {
+      "type": 0,
+      "value": "O себе"
+    }
+  ],
+  "subheader.address": [
+    {
+      "type": 0,
+      "value": "Адрес"
+    }
+  ],
+  "subheader.boys": [
+    {
+      "type": 0,
+      "value": "Мальчики"
+    }
+  ],
+  "subheader.clients": [
+    {
+      "type": 0,
+      "value": "Клиенты"
+    }
+  ],
+  "subheader.contacts": [
+    {
+      "type": 0,
+      "value": "Контактные данные"
+    }
+  ],
+  "subheader.feedbacks": [
+    {
+      "type": 0,
+      "value": "Отзывы"
+    }
+  ],
+  "subheader.girls": [
+    {
+      "type": 0,
+      "value": "Девочки"
+    }
+  ],
+  "subheader.languages": [
+    {
+      "type": 0,
+      "value": "Языки которыми владеет"
+    }
+  ],
+  "subheader.men": [
+    {
+      "type": 0,
+      "value": "Мужчины"
+    }
+  ],
+  "subheader.schedule": [
+    {
+      "type": 0,
+      "value": "График работы"
+    }
+  ],
+  "subheader.services": [
+    {
+      "type": 0,
+      "value": "Услуги"
+    }
+  ],
+  "subheader.women": [
+    {
+      "type": 0,
+      "value": "Женщины"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "plugins": [
+    "react",
+    "react-native",
+    "effector",
+    "formatjs"
+  ],
+  "extends": [
+    "react-app",
+    "react-app/jest",
+    "plugin:effector/recommended",
+    "plugin:effector/react",
+    "@react-native-community",
+    "plugin:effector/scope"
+  ],
+  "rules": {
+    "formatjs/no-offset": "error",
+    "formatjs/enforce-default-message": ["error", "literal"],
+    "import/no-anonymous-default-export": 0,
+    "jsx-a11y/anchor-is-valid": 0,
+    "react-native/no-unused-styles": 2,
+    "react-native/split-platform-components": 2,
+    "react-native/no-inline-styles": 2,
+    "react-native/no-color-literals": 2,
+    "react-native/no-raw-text": 2,
+    "react-native/no-single-element-style-arrays": 2
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "env": {
+    "react-native/react-native": true
+  }
+}

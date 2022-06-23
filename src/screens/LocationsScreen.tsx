@@ -1,4 +1,5 @@
 import { useStore } from 'effector-react'
+import React from 'react'
 import { StyleSheet } from 'react-native'
 
 import { LocationItem } from '../components/LocationItem'

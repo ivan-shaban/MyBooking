@@ -2,7 +2,7 @@ import { useStore } from 'effector-react'
 // import { registerRootComponent } from 'expo'
 // import { locale } from 'expo-localization'
 // import { StatusBar } from 'expo-status-bar'
-import { useCallback, useEffect } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { IntlProvider } from 'react-intl'
 import { Provider as PaperProvider } from 'react-native-paper'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
@@ -16,9 +16,8 @@ import { requestInitialData, requestPermissions } from './store/main'
 import { OnErrorFn } from '@formatjs/intl/src/types'
 import 'intl'
 import 'intl/locale-data/jsonp/en'
-import moment from 'moment'
 
-function App() {
+export function App() {
     const isLoadingComplete = useCachedResources()
     const isInitialDataLoaded = useStore($isInitialDataLoaded)
     const language = useStore($language)

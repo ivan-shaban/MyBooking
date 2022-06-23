@@ -1,6 +1,5 @@
 import { useStore } from 'effector-react'
 import React from 'react'
-import { useIntl } from 'react-intl'
 import { Dimensions, StyleSheet } from 'react-native'
 
 import { LocationItem } from '../components/LocationItem'

@@ -1,8 +1,8 @@
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import React, { FC, memo } from 'react'
 import { useIntl } from 'react-intl'
 import { Dimensions, StyleSheet } from 'react-native'
 import { IconButton, Title } from 'react-native-paper'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import { View, useThemeColor } from './Themed'
 import { MessageDescriptor } from '@formatjs/intl/src/types'

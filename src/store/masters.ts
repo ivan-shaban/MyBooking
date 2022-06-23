@@ -33,7 +33,7 @@ export interface Master {
     readonly feedbacks: Feedback[]
 }
 
-export const requestAllMastersData = createEffect({
+export const requestAllMastersDataFx = createEffect({
     name: 'request all masters',
     handler: async () => {
         await delay(500)
@@ -84,7 +84,7 @@ export const requestAllMastersData = createEffect({
 })
 
 export const $masters = createStore<Master[]>([]).on(
-    requestAllMastersData.doneData,
+    requestAllMastersDataFx.doneData,
     (_, data) => data,
 )
 
@@ -92,7 +92,6 @@ export const $sortedMasters = combine(
     $masters,
     $mastersSorting,
     (masters, { name, rating, feedbacks }) => {
-        // console.log(`>> 111`, { name, rating, feedbacks })
         if (feedbacks !== SortOrder.NONE) {
             masters = [...masters].sort((a, b) =>
                 feedbacks === SortOrder.ASC
@@ -112,12 +111,6 @@ export const $sortedMasters = combine(
                     : b.name.localeCompare(a.name),
             )
         }
-        console.log(
-            `>> masters`,
-            masters.map(
-                ({ name, rating, feedbacks }) => `${name} (${rating}) > ${feedbacks.length}`,
-            ),
-        )
         return masters
     },
 )

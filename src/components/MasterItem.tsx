@@ -1,10 +1,10 @@
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import { useNavigation } from '@react-navigation/native'
 import { useStore } from 'effector-react'
 import React, { FC, memo, useCallback } from 'react'
 import { useIntl } from 'react-intl'
 import { Dimensions, StyleSheet, TouchableOpacity, View } from 'react-native'
 import { Headline, Text } from 'react-native-paper'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import { mastersLocale } from '../locales/masters'
 import { Master } from '../store/masters'

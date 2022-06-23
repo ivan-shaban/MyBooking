@@ -1,5 +1,5 @@
 import React, { FC, memo } from 'react'
-import { FormattedMessage, useIntl } from 'react-intl'
+import { FormattedMessage } from 'react-intl'
 import { StyleSheet, View } from 'react-native'
 import { Subheading } from 'react-native-paper'
 

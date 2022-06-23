@@ -1,8 +1,8 @@
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import React, { FC, memo } from 'react'
 import { FormattedMessage } from 'react-intl'
 import { StyleSheet } from 'react-native'
 import { Text } from 'react-native-paper'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import { useThemeColor } from './Themed'
 import faker from '@faker-js/faker'

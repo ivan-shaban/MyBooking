@@ -1,7 +1,7 @@
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import React, { FC, memo } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { Caption } from 'react-native-paper'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import { RatingEntry } from './RatingEntry'
 import { useThemeColor } from './Themed'

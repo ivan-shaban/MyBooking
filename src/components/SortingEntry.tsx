@@ -1,12 +1,12 @@
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-import React, { FC, memo, useCallback } from 'react'
+import React, { FC, ReactNode, memo, useCallback } from 'react'
 import { StyleSheet, TouchableOpacity } from 'react-native'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import { SortOrder } from '../store/sorting'
 import { Text, useThemeColor } from './Themed'
 
 export interface Props {
-    readonly title: React.ReactNode
+    readonly title: ReactNode
     readonly order: SortOrder
     readonly onChange: (order: SortOrder) => void
 }

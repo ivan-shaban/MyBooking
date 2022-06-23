@@ -1,115 +1,66 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the TypeScript template
- * https://github.com/react-native-community/react-native-template-typescript
- *
- * @format
- */
+import { useStore } from 'effector-react'
+import { registerRootComponent } from 'expo'
+import { locale } from 'expo-localization'
+import { StatusBar } from 'expo-status-bar'
+import { useCallback, useEffect } from 'react'
+import { IntlProvider } from 'react-intl'
+import { Provider as PaperProvider } from 'react-native-paper'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
 
-import React from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import useCachedResources from './hooks/useCachedResources'
+import './locales/app'
+import Navigation from './navigation'
+import { $isInitialDataLoaded } from './store'
+import { $language, $messages, defaultLanguage } from './store/locale'
+import { requestInitialData, requestPermissions } from './store/main'
+import { OnErrorFn } from '@formatjs/intl/src/types'
+import 'intl'
+import 'intl/locale-data/jsonp/en'
+import moment from 'moment'
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+function App() {
+    const isLoadingComplete = useCachedResources()
+    const isInitialDataLoaded = useStore($isInitialDataLoaded)
+    const language = useStore($language)
+    const messages = useStore($messages)
 
-const Section: React.FC<{
-  title: string;
-}> = ({children, title}) => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
+    const handleIntlError = useCallback<OnErrorFn>((error) => {
+        if (process.env.NODE_ENV !== 'development') {
+            console.error(error)
+        }
+    }, [])
 
-const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
+    useEffect(() => {
+        requestInitialData()
+        requestPermissions()
+    }, [])
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+    // find solution, otherwise it crashes app on android
+    // useEffect(() => {
+    // if (isInitialDataLoaded) {
+    //     moment.locale(locale) // we get ru-BY
+    // }
+    // }, [isInitialDataLoaded])
 
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-};
+    if (isLoadingComplete && isInitialDataLoaded) {
+        return (
+            <IntlProvider
+                messages={messages}
+                locale={language}
+                defaultLocale={defaultLanguage}
+                onError={handleIntlError}
+            >
+                <PaperProvider>
+                    <SafeAreaProvider>
+                        <Navigation />
+                        <StatusBar />
+                    </SafeAreaProvider>
+                </PaperProvider>
+            </IntlProvider>
+        )
+    } else {
+        return null
+    }
+}
 
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
-
-export default App;
+export default registerRootComponent(App)

@@ -10,7 +10,6 @@
     "react-app/jest",
     "plugin:effector/recommended",
     "plugin:effector/react",
-    "@react-native-community",
     "plugin:effector/scope"
   ],
   "rules": {

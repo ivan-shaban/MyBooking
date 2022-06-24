@@ -1,9 +1,11 @@
 import { useStore } from 'effector-react'
 import React, { FC, memo, useCallback, useEffect, useState } from 'react'
+import { FormattedMessage, useIntl } from 'react-intl'
 import { StyleProp, StyleSheet, ViewStyle } from 'react-native'
 import { Button, Dialog, Portal } from 'react-native-paper'
 
 import { SortingEntry } from '../components/SortingEntry'
+import { sortingLocale } from '../locales/app'
 import {
     $mastersSorting,
     SortOrder,
@@ -15,50 +17,51 @@ export interface Props {
     /**
      * Determines whether clicking outside the dialog dismiss it.
      */
-    dismissable?: boolean
+    readonly dismissable?: boolean
     /**
      * Callback that is called when the user dismisses the dialog.
      */
-    onDismiss?: () => void
+    readonly onDismiss?: () => void
     /**
      * Determines Whether the dialog is visible.
      */
-    visible: boolean
-    style?: StyleProp<ViewStyle>
+    readonly visible: boolean
+    readonly style?: StyleProp<ViewStyle>
 }
 
 export const MastersSortingDialog: FC<Props> = memo(function MastersSortingDialog(props) {
-    const sorting = useStore($mastersSorting)
-    const [{ name, rating, feedbacks }, setState] = useState(sorting)
+    const intl = useIntl()
+    const sortingData = useStore($mastersSorting)
+    const [{ name, rating, feedbacks }, setState] = useState(sortingData)
 
     const handleSortingByNameChange = useCallback(
         (order: SortOrder) => {
             setState({
-                ...sorting,
+                ...sortingData,
                 name: order,
             })
         },
-        [sorting],
+        [sortingData],
     )
 
     const handleSortingByRatingChange = useCallback(
         (order: SortOrder) => {
             setState({
-                ...sorting,
+                ...sortingData,
                 rating: order,
             })
         },
-        [sorting],
+        [sortingData],
     )
 
     const handleSortingByFeedbacksChange = useCallback(
         (order: SortOrder) => {
             setState({
-                ...sorting,
+                ...sortingData,
                 feedbacks: order,
             })
         },
-        [sorting],
+        [sortingData],
     )
 
     const handleReset = useCallback(() => {
@@ -75,34 +78,40 @@ export const MastersSortingDialog: FC<Props> = memo(function MastersSortingDialo
 
     useEffect(() => {
         if (props.visible) {
-            setState(sorting)
+            setState(sortingData)
         }
-    }, [props.visible, sorting])
+    }, [props.visible, sortingData])
 
     return (
         <Portal>
             <Dialog {...props}>
-                <Dialog.Title>Сортировка</Dialog.Title>
+                <Dialog.Title>
+                    <FormattedMessage id="title.sorting" defaultMessage="Сортировка" />
+                </Dialog.Title>
                 <Dialog.Content>
                     <SortingEntry
-                        title="По имени"
+                        title={intl.formatMessage(sortingLocale.name)}
                         order={name}
                         onChange={handleSortingByNameChange}
                     />
                     <SortingEntry
-                        title="По рейтингу"
+                        title={intl.formatMessage(sortingLocale.rating)}
                         order={rating}
                         onChange={handleSortingByRatingChange}
                     />
                     <SortingEntry
-                        title="По количеству отзывов"
+                        title={intl.formatMessage(sortingLocale.feedbacksCount)}
                         order={feedbacks}
                         onChange={handleSortingByFeedbacksChange}
                     />
                 </Dialog.Content>
                 <Dialog.Actions>
-                    <Button onPress={handleReset}>Сбросить</Button>
-                    <Button onPress={handleApply}>Применить</Button>
+                    <Button onPress={handleReset}>
+                        <FormattedMessage id="button.reset" defaultMessage="Сбросить" />
+                    </Button>
+                    <Button onPress={handleApply}>
+                        <FormattedMessage id="button.apply" defaultMessage="Применить" />
+                    </Button>
                 </Dialog.Actions>
             </Dialog>
         </Portal>

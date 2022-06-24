@@ -10,3 +10,18 @@ export const system = defineMessages({
         defaultMessage: 'NSContactsUsageDescription',
     },
 })
+
+export const sortingLocale = defineMessages({
+    name: {
+        id: 'sortBy.name',
+        defaultMessage: 'По имени',
+    },
+    rating: {
+        id: 'sortBy.rating',
+        defaultMessage: 'По рейтингу',
+    },
+    feedbacksCount: {
+        id: 'sortBy.feedbacksCount',
+        defaultMessage: 'По количеству отзывов',
+    },
+})

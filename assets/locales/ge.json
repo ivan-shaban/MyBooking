@@ -41,10 +41,22 @@
       "value": "Записаться на ближайшее время"
     }
   ],
+  "button.apply": [
+    {
+      "type": 0,
+      "value": "Применить"
+    }
+  ],
   "button.back": [
     {
       "type": 0,
       "value": "Назад"
+    }
+  ],
+  "button.reset": [
+    {
+      "type": 0,
+      "value": "Сбросить"
     }
   ],
   "day.dayoff": [
@@ -239,12 +251,6 @@
       "value": "Профиль"
     }
   ],
-  "rating.no-rating": [
-    {
-      "type": 0,
-      "value": "Оценок еще нет, будь первым!"
-    }
-  ],
   "service.coloring_airtouch": [
     {
       "type": 0,
@@ -329,6 +335,24 @@
       "value": "Укладка: ежедневная"
     }
   ],
+  "sortBy.feedbacksCount": [
+    {
+      "type": 0,
+      "value": "По количеству отзывов"
+    }
+  ],
+  "sortBy.name": [
+    {
+      "type": 0,
+      "value": "По имени"
+    }
+  ],
+  "sortBy.rating": [
+    {
+      "type": 0,
+      "value": "По рейтингу"
+    }
+  ],
   "subheader.aboutSelf": [
     {
       "type": 0,
@@ -399,6 +423,12 @@
     {
       "type": 0,
       "value": "Женщины"
+    }
+  ],
+  "title.sorting": [
+    {
+      "type": 0,
+      "value": "Сортировка"
     }
   ]
 }

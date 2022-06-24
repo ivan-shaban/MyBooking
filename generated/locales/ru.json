@@ -6,7 +6,9 @@
   "actions.sendMessage": "Оставить сообщение",
   "actions.signUpAtDate": "Записаться на определенную дату",
   "actions.signUpSoon": "Записаться на ближайшее время",
+  "button.apply": "Применить",
   "button.back": "Назад",
+  "button.reset": "Сбросить",
   "day.dayoff": "Выходной",
   "day.tomorrow": "Завтра",
   "day.wholeDay": "Круглосуточно",
@@ -35,7 +37,6 @@
   "menu.locations": "Места",
   "menu.masters": "Специалисты",
   "menu.profile": "Профиль",
-  "rating.no-rating": "Оценок еще нет, будь первым!",
   "service.coloring_airtouch": "Окрашивание: аиртач",
   "service.coloring_balayaj": "Окрашивание: балаяж",
   "service.coloring_melirovanie": "Окрашивание: мелирование",
@@ -50,6 +51,9 @@
   "service.straightening": "Выпрямление",
   "service.styling_ceremonial": "Укладка: торжественная",
   "service.styling_daily": "Укладка: ежедневная",
+  "sortBy.feedbacksCount": "По количеству отзывов",
+  "sortBy.name": "По имени",
+  "sortBy.rating": "По рейтингу",
   "subheader.aboutSelf": "O себе",
   "subheader.address": "Адрес",
   "subheader.boys": "Мальчики",
@@ -61,5 +65,6 @@
   "subheader.men": "Мужчины",
   "subheader.schedule": "График работы",
   "subheader.services": "Услуги",
-  "subheader.women": "Женщины"
+  "subheader.women": "Женщины",
+  "title.sorting": "Сортировка"
 }

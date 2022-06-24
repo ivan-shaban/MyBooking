@@ -14,10 +14,6 @@ export interface Props extends NativeStackHeaderProps {}
 export const FavouriteHeader: FC<Props> = () => {
     const user = useStore($currentUser)
 
-    // добавить иконку сортировки и фильтрации
-    // добавить иконку сортировку, фильтрации, карту
-    // добавить иконку сортировку, фильтрации, карту
-
     return (
         <Appbar.Header style={styles.base}>
             <Avatar style={styles.avatar} uri={user?.avatar} />
@@ -33,7 +29,6 @@ export const FavouriteHeader: FC<Props> = () => {
                 style={styles.smallItem}
                 onPress={() => {}}
             />
-            <Appbar.Action icon="sort" color="white" style={styles.smallItem} onPress={() => {}} />
             <Appbar.Action
                 icon="filter-outline"
                 color="white"

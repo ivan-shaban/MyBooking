@@ -25,8 +25,8 @@ export const DescriptionTab: FC<Props> = function Description({ route }) {
     const location = useLocation(master.locationId)
 
     return (
-        <ScrollView>
-            <Paragpaph icon="image-text" title={subheadersLocale.aboutSelf}>
+        <ScrollView style={styles.base}>
+            <Paragpaph icon="image-text" title={subheadersLocale.aboutSelf} collapsable>
                 <Subheading>{master.description}</Subheading>
             </Paragpaph>
             <Paragpaph icon="account-multiple-check-outline" title={subheadersLocale.clients}>
@@ -65,7 +65,7 @@ export const DescriptionTab: FC<Props> = function Description({ route }) {
                     ))}
                 </View>
             </Paragpaph>
-            <Paragpaph icon="chair-rolling" title={subheadersLocale.services}>
+            <Paragpaph icon="chair-rolling" title={subheadersLocale.services} collapsable>
                 <View style={styles.servicesContainer}>
                     {master.services.map((service) => (
                         <ServiceChip type={service} key={service} />
@@ -79,20 +79,14 @@ export const DescriptionTab: FC<Props> = function Description({ route }) {
                     </View>
                 </Paragpaph>
             )}
-            <View style={{ height: 20 }} />
+            <View style={styles.bottomOffset} />
         </ScrollView>
     )
 }
 
 const styles = StyleSheet.create({
-    fab: {
-        position: 'absolute',
-        margin: 16,
-        right: 0,
-        bottom: 0,
-    },
-    subtitle: {
-        marginTop: 8,
+    base: {
+        paddingTop: 8,
     },
     clientsContainer: {
         flexDirection: 'row',
@@ -114,14 +108,13 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         // backgroundColor: 'red',
     },
-    serviceChip: {
-        marginTop: 8,
-        marginRight: 8,
-    },
     pContent: { marginLeft: -paragpaphOffset, width: Dimensions.get('screen').width },
     divider: {
         width: 1,
         height: 20,
         backgroundColor: '#ccc',
+    },
+    bottomOffset: {
+        height: 20,
     },
 })

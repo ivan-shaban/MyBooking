@@ -28,7 +28,7 @@ export function FavouriteScreen({ navigation }: RootTabScreenProps<Tab.Favourite
 
     return (
         <ScrollView style={styles.base}>
-            <Paragpaph icon="account-group-outline" title={menuLocale[Tab.Masters]}>
+            <Paragpaph icon="account-group-outline" title={menuLocale[Tab.Masters]} collapsable>
                 <View style={styles.pContent}>
                     {favouriteMasters?.map((master, index) => (
                         <MasterItem
@@ -39,7 +39,11 @@ export function FavouriteScreen({ navigation }: RootTabScreenProps<Tab.Favourite
                     ))}
                 </View>
             </Paragpaph>
-            <Paragpaph icon="map-marker-multiple-outline" title={menuLocale[Tab.Locations]}>
+            <Paragpaph
+                icon="map-marker-multiple-outline"
+                title={menuLocale[Tab.Locations]}
+                collapsable
+            >
                 <View style={styles.pContent}>
                     {favouriteLocations?.map((location, index) => (
                         <LocationItem

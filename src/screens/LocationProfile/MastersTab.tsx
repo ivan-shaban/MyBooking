@@ -23,7 +23,7 @@ export const MastersTab: FC<Props> = function Description({ route }) {
 
     return (
         <ScrollView showsVerticalScrollIndicator={true}>
-            <Paragpaph icon="chair-rolling" title={subheadersLocale.services}>
+            <Paragpaph icon="chair-rolling" title={subheadersLocale.services} collapsable>
                 <View style={styles.servicesContainer}>
                     {Array.from(
                         localMasters.reduce((result, master) => {
@@ -35,7 +35,7 @@ export const MastersTab: FC<Props> = function Description({ route }) {
                     ))}
                 </View>
             </Paragpaph>
-            <Paragpaph icon="account-group-outline" title={menuLocale[Tab.Masters]}>
+            <Paragpaph icon="account-group-outline" title={menuLocale[Tab.Masters]} collapsable>
                 <View style={styles.pContent}>
                     {localMasters.map((master, index) => (
                         <MasterItem

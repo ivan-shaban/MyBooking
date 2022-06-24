@@ -22,20 +22,20 @@ export const DescriptionTab: FC<Props> = function Description({ route }) {
     return (
         <ScrollView showsVerticalScrollIndicator={true}>
             <Gallery images={location.gallery} />
-            <Paragpaph icon="image-text" title={location.name}>
+            <Paragpaph icon="image-text" title={location.name} collapsable>
                 <RatingEntry rating={location.rating} feedbacksCount={location.feedbacks.length} />
                 <LocationWorkStatus location={location} />
                 <Subheading>{location.description}</Subheading>
             </Paragpaph>
-            <Paragpaph icon="map-outline" title={subheadersLocale.address}>
+            <Paragpaph icon="map-outline" title={subheadersLocale.address} collapsable>
                 <Subheading>{location.address}</Subheading>
             </Paragpaph>
-            <Paragpaph icon="phone-outline" title={subheadersLocale.contacts}>
+            <Paragpaph icon="phone-outline" title={subheadersLocale.contacts} collapsable>
                 {location.tel.map((tel) => (
                     <PhoneRecord key={tel} phone={tel} />
                 ))}
             </Paragpaph>
-            <Paragpaph icon="clock-outline" title={subheadersLocale.schedule}>
+            <Paragpaph icon="clock-outline" title={subheadersLocale.schedule} collapsable>
                 {location.schedules.map((schedule, index) => (
                     <Schedule key={index} value={schedule} index={index} />
                 ))}

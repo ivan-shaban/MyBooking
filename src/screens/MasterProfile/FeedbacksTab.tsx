@@ -16,9 +16,13 @@ export const FeedbacksTab: FC<Props> = function Feedbacks({ route }) {
             {master.feedbacks.map((feedback) => (
                 <FeedbackEntry key={feedback.id} feedback={feedback} />
             ))}
-            <View style={{ height: 20 }} />
+            <View style={styles.bottomOffset} />
         </ScrollView>
     )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    bottomOffset: {
+        height: 20,
+    },
+})

@@ -17,7 +17,11 @@ export interface Props {
 
 export const Avatar: FC<Props> = memo(function Avatar({ uri, size = 40, style, onPress }) {
     return (
-        <TouchableOpacity style={[styles.base, { borderRadius: size }, style]} onPress={onPress}>
+        <TouchableOpacity
+            style={[styles.base, { borderRadius: size }, style]}
+            onPress={onPress}
+            disabled={!onPress}
+        >
             <PaperAvatar.Image
                 size={size}
                 source={{

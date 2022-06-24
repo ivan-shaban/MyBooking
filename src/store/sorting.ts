@@ -28,8 +28,8 @@ export interface LocationsSorting {
     readonly feedbacks: SortOrder
 }
 
-export const resetLocationOrdering = createEvent('reset masters sorting')
-export const setLocationsOrdering = createEvent<LocationsSorting>('set masters sorting')
+export const resetLocationOrdering = createEvent('reset locations sorting')
+export const setLocationsOrdering = createEvent<LocationsSorting>('set locations sorting')
 export const $locationsSorting = createStore<LocationsSorting>({
     name: SortOrder.NONE,
     rating: SortOrder.NONE,

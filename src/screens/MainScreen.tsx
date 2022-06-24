@@ -79,6 +79,4 @@ export const MainScreen: FC<Props> = function MainScreen(props) {
     )
 }
 
-const styles = StyleSheet.create({
-    base: {},
-})
+const styles = StyleSheet.create({})

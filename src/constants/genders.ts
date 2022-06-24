@@ -1,8 +1,13 @@
+export enum Gender {
+    Male = 'male',
+    Female = 'female',
+}
+
 export enum ClientType {
-    Men = 'male',
-    Women = 'female',
-    Boys = 'malechild',
-    Girls = 'femalechild',
+    Men = 'men',
+    Women = 'women',
+    Boys = 'boy',
+    Girls = 'girls',
 }
 
 export const allGenders = [

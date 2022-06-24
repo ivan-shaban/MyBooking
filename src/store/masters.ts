@@ -1,6 +1,6 @@
-import { ClientType, allGenders } from '../constants/genders'
-import { MasterLanguage, MasterType } from '../constants/masters'
-import { HairServices, Service } from '../constants/services'
+import { ClientType, Gender, allGenders } from '../constants/genders'
+import { MasterLanguage, MasterType, masterLanguages } from '../constants/masters'
+import { Service, serviceValuesList } from '../constants/services'
 import { delay } from '../utils/time'
 import { $mastersSorting, SortOrder } from './sorting'
 import faker from '@faker-js/faker'
@@ -23,7 +23,7 @@ export interface Master {
     readonly type: MasterType[]
     readonly shortDescription: string
     readonly description: string
-    readonly gender: 'male' | 'female'
+    readonly gender: Gender
     readonly avatar?: string
     readonly locationId: number
     readonly services: Service[]
@@ -39,10 +39,10 @@ export const requestAllMastersDataFx = createEffect({
         await delay(500)
 
         return faker.datatype.array(17).map((_, index): Master => {
-            const gender = Math.random() > 0.6 ? 'male' : 'female'
+            const gender = Math.random() > 0.6 ? Gender.Male : Gender.Female
             const shuffledGenders = shuffle(allGenders)
-            const shuffledServices = shuffle(Object.values(HairServices))
-            const shuffledLanguages = shuffle(Object.values(MasterLanguage))
+            const shuffledServices = shuffle(serviceValuesList)
+            const shuffledLanguages = shuffle(masterLanguages)
 
             return {
                 id: index,

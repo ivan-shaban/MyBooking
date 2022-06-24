@@ -8,6 +8,8 @@ export enum MasterType {
     Cosmetic = 'cosmetic', // без возможности повреждения кожного покрова
 }
 
+export const masterTypes = Object.values(MasterType)
+
 export enum MasterLanguage {
     ru = 'ru',
     ge = 'ge',
@@ -19,3 +21,5 @@ export enum MasterLanguage {
     ua = 'ua', // украинский
     be = 'be', // беларуский
 }
+
+export const masterLanguages = Object.values(MasterLanguage)

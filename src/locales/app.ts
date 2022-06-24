@@ -16,6 +16,10 @@ export const titleLocale = defineMessages({
         id: 'title.sorting',
         defaultMessage: 'Сортировка',
     },
+    filters: {
+        id: 'title.filtersList',
+        defaultMessage: 'Список фильтров',
+    },
 })
 
 export const sortingLocale = defineMessages({

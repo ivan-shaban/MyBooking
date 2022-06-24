@@ -5,7 +5,7 @@ import { StyleProp, StyleSheet, ViewStyle } from 'react-native'
 import { Button, Dialog, Portal } from 'react-native-paper'
 
 import { SortingEntry } from '../components/SortingEntry'
-import { sortingLocale } from '../locales/app'
+import { sortingLocale, titleLocale } from '../locales/app'
 import {
     $locationsSorting,
     SortOrder,
@@ -87,7 +87,7 @@ export const LocationsSortingDialog: FC<Props> = memo(function LocationsSortingD
         <Portal>
             <Dialog {...props}>
                 <Dialog.Title>
-                    <FormattedMessage id="title.sorting" />
+                    <FormattedMessage id={titleLocale.sorting.id} />
                 </Dialog.Title>
                 <Dialog.Content>
                     <SortingEntry

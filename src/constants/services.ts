@@ -57,4 +57,7 @@ export enum HairServices {
     styling_daily = 'styling_daily',
 }
 
+export const hairServiceValuesList = Object.values(HairServices)
+export const serviceValuesList = [...hairServiceValuesList]
+
 export type Service = HairServices

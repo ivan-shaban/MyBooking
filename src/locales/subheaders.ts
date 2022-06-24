@@ -7,9 +7,21 @@ export const subheadersLocale = defineMessages({
         id: 'subheader.languages',
         defaultMessage: 'Языки которыми владеет',
     },
+    gender: {
+        id: 'subheader.gender',
+        defaultMessage: 'Пол',
+    },
     services: {
         id: 'subheader.services',
         defaultMessage: 'Услуги',
+    },
+    rating: {
+        id: 'subheader.rating',
+        defaultMessage: 'Рейтинг',
+    },
+    speciality: {
+        id: 'subheader.speciality',
+        defaultMessage: 'Специальность',
     },
     clients: {
         id: 'subheader.clients',

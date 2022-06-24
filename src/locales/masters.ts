@@ -1,5 +1,6 @@
 import { defineMessages } from 'react-intl'
 
+import { Gender } from '../constants/genders'
 import { MasterType } from '../constants/masters'
 
 export const mastersLocale = defineMessages({
@@ -30,5 +31,24 @@ export const mastersLocale = defineMessages({
     [MasterType.Cosmetic]: {
         id: 'master.cosmetic',
         defaultMessage: 'Косметик',
+    },
+})
+
+export const mastersGenderLocale = defineMessages({
+    master: {
+        id: 'gender.master',
+        defaultMessage: 'Пол специалиста',
+    },
+    client: {
+        id: 'gender.client',
+        defaultMessage: 'Пол клиента',
+    },
+    [Gender.Male]: {
+        id: 'gender.male',
+        defaultMessage: 'Мужчина',
+    },
+    [Gender.Female]: {
+        id: 'gender.female',
+        defaultMessage: 'Женщина',
     },
 })

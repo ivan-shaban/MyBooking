@@ -11,6 +11,13 @@ export const system = defineMessages({
     },
 })
 
+export const titleLocale = defineMessages({
+    sorting: {
+        id: 'title.sorting',
+        defaultMessage: 'Сортировка',
+    },
+})
+
 export const sortingLocale = defineMessages({
     name: {
         id: 'sortBy.name',

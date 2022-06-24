@@ -21,3 +21,19 @@ export const $mastersSorting = createStore<MastersSorting>({
 })
     .on(setMastersOrdering, (_, state) => state)
     .reset(resetMastersOrdering)
+
+export interface LocationsSorting {
+    readonly name: SortOrder
+    readonly rating: SortOrder
+    readonly feedbacks: SortOrder
+}
+
+export const resetLocationOrdering = createEvent('reset masters sorting')
+export const setLocationsOrdering = createEvent<LocationsSorting>('set masters sorting')
+export const $locationsSorting = createStore<LocationsSorting>({
+    name: SortOrder.NONE,
+    rating: SortOrder.NONE,
+    feedbacks: SortOrder.NONE,
+})
+    .on(setLocationsOrdering, (_, state) => state)
+    .reset(resetLocationOrdering)

@@ -1,7 +1,8 @@
 import { ClientType, allGenders } from '../constants/genders'
 import { delay } from '../utils/time'
+import { $locationsSorting, SortOrder } from './sorting'
 import faker from '@faker-js/faker'
-import { createEffect, createStore } from 'effector'
+import { combine, createEffect, createStore } from 'effector'
 import shuffle from 'lodash.shuffle'
 
 export interface Location {
@@ -22,7 +23,7 @@ export interface Location {
     readonly schedules: Array<Array<[string, string]> | false | '24h'>
 }
 
-export const requestAllLocationsData = createEffect({
+export const requestAllLocationsDataFx = createEffect({
     name: 'request all locations',
     handler: async () => {
         await delay(500)
@@ -75,6 +76,33 @@ export const requestAllLocationsData = createEffect({
 })
 
 export const $locations = createStore<Location[]>([]).on(
-    requestAllLocationsData.doneData,
+    requestAllLocationsDataFx.doneData,
     (_, data) => data,
+)
+
+export const $sortedLocations = combine(
+    $locations,
+    $locationsSorting,
+    (masters, { name, rating, feedbacks }) => {
+        if (feedbacks !== SortOrder.NONE) {
+            masters = [...masters].sort((a, b) =>
+                feedbacks === SortOrder.ASC
+                    ? b.feedbacks.length - a.feedbacks.length
+                    : a.feedbacks.length - b.feedbacks.length,
+            )
+        }
+        if (rating !== SortOrder.NONE) {
+            masters = [...masters].sort((a, b) =>
+                rating === SortOrder.ASC ? b.rating - a.rating : a.rating - b.rating,
+            )
+        }
+        if (name !== SortOrder.NONE) {
+            masters = [...masters].sort((a, b) =>
+                name === SortOrder.ASC
+                    ? a.name.localeCompare(b.name)
+                    : b.name.localeCompare(a.name),
+            )
+        }
+        return masters
+    },
 )

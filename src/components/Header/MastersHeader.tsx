@@ -17,7 +17,6 @@ export const MastersHeader: FC<Props> = () => {
     const [visible, setVisible] = useState(false)
 
     const showDialog = () => setVisible(true)
-
     const hideDialog = () => setVisible(false)
 
     return (

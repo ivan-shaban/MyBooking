@@ -7,10 +7,10 @@ import { Button, Dialog, Portal } from 'react-native-paper'
 import { SortingEntry } from '../components/SortingEntry'
 import { sortingLocale } from '../locales/app'
 import {
-    $mastersSorting,
+    $locationsSorting,
     SortOrder,
-    resetMastersOrdering,
-    setMastersOrdering,
+    resetLocationOrdering,
+    setLocationsOrdering,
 } from '../store/sorting'
 
 export interface Props {
@@ -29,9 +29,9 @@ export interface Props {
     readonly style?: StyleProp<ViewStyle>
 }
 
-export const MastersSortingDialog: FC<Props> = memo(function MastersSortingDialog(props) {
+export const LocationsSortingDialog: FC<Props> = memo(function LocationsSortingDialog(props) {
     const intl = useIntl()
-    const sortingData = useStore($mastersSorting)
+    const sortingData = useStore($locationsSorting)
     const [{ name, rating, feedbacks }, setState] = useState(sortingData)
 
     const handleSortingByNameChange = useCallback(
@@ -65,13 +65,14 @@ export const MastersSortingDialog: FC<Props> = memo(function MastersSortingDialo
     )
 
     const handleReset = useCallback(() => {
-        resetMastersOrdering()
+        resetLocationOrdering()
+        setState(sortingData)
 
         props.onDismiss?.()
-    }, [props])
+    }, [props, sortingData])
 
     const handleApply = useCallback(() => {
-        setMastersOrdering({ name, rating, feedbacks })
+        setLocationsOrdering({ name, rating, feedbacks })
 
         props.onDismiss?.()
     }, [props, name, rating, feedbacks])

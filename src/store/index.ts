@@ -1,4 +1,4 @@
-import { requestAllLocationsData } from './locations'
+import { requestAllLocationsDataFx } from './locations'
 import { requestInitialData } from './main'
 import { requestAllMastersDataFx } from './masters'
 import { requestUserDataFx } from './user'
@@ -8,7 +8,7 @@ let isInitialDataStarted = false
 export const $isInitialDataLoaded = combine(
     requestUserDataFx.pending,
     requestAllMastersDataFx.pending,
-    requestAllLocationsData.pending,
+    requestAllLocationsDataFx.pending,
     (...args) => {
         const isRequestsPending = args.some((flag) => flag)
         if (isRequestsPending) {
@@ -21,7 +21,7 @@ export const $isInitialDataLoaded = combine(
 // load initial data
 sample({
     source: requestInitialData,
-    target: [requestUserDataFx, requestAllMastersDataFx, requestAllLocationsData],
+    target: [requestUserDataFx, requestAllMastersDataFx, requestAllLocationsDataFx],
 })
 
 // sample({

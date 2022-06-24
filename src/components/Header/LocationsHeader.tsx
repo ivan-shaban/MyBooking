@@ -1,11 +1,12 @@
 import { NativeStackHeaderProps } from '@react-navigation/native-stack'
 import { useStore } from 'effector-react'
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { StyleSheet } from 'react-native'
 import { Appbar } from 'react-native-paper'
 
 import { colorByTab } from '../../constants/Colors'
 import { Tab } from '../../constants/Tab'
+import { LocationsSortingDialog } from '../../dialogs/LocationsSortingDialog'
 import { $currentUser } from '../../store/user'
 import { Avatar } from '../Avatar'
 
@@ -13,6 +14,10 @@ export interface Props extends NativeStackHeaderProps {}
 
 export const LocationsHeader: FC<Props> = () => {
     const user = useStore($currentUser)
+    const [visible, setVisible] = useState(false)
+
+    const showDialog = () => setVisible(true)
+    const hideDialog = () => setVisible(false)
 
     return (
         <Appbar.Header style={styles.base}>
@@ -29,7 +34,12 @@ export const LocationsHeader: FC<Props> = () => {
                 style={styles.smallItem}
                 onPress={() => {}}
             />
-            <Appbar.Action icon="sort" color="white" style={styles.smallItem} onPress={() => {}} />
+            <Appbar.Action
+                icon="sort"
+                color="white"
+                style={styles.smallItem}
+                onPress={showDialog}
+            />
             <Appbar.Action
                 icon="filter-outline"
                 color="white"
@@ -37,6 +47,7 @@ export const LocationsHeader: FC<Props> = () => {
                 onPress={() => {}}
             />
             <Appbar.Action icon="bell" color="white" style={styles.smallItem} onPress={() => {}} />
+            <LocationsSortingDialog visible={visible} onDismiss={hideDialog} />
         </Appbar.Header>
     )
 }

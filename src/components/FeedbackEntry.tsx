@@ -26,7 +26,7 @@ export const FeedbackEntry: FC<Props> = memo(function FeedbackEntry({ feedback }
                 <Caption style={[styles.title, { color }]}>{feedback.title}</Caption>
                 <Caption>
                     {moment(feedback.date).format('YYYY.MM.DD, hh:mm')} /{' '}
-                    <RatingEntry rating={feedback.rating} single={true} />
+                    <RatingEntry rating={feedback.rating} />
                 </Caption>
                 <Caption style={{ color }}>{feedback.message}</Caption>
             </View>

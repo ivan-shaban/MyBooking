@@ -27,7 +27,7 @@ export const SortingEntry: FC<Props> = memo(function SortingEntry({ title, order
         <TouchableOpacity style={styles.base} onPress={handlePress}>
             <Text>{title}</Text>
             <MaterialCommunityIcons
-                size={16}
+                size={24}
                 name={
                     order === SortOrder.ASC
                         ? 'sort-ascending'
@@ -37,7 +37,7 @@ export const SortingEntry: FC<Props> = memo(function SortingEntry({ title, order
                 }
                 color={color}
             />
-            <MaterialCommunityIcons size={16} name="sort-reverse-variant" color={color} />
+            {/*<MaterialCommunityIcons size={16} name="sort-reverse-variant" color={color} />*/}
         </TouchableOpacity>
     )
 })

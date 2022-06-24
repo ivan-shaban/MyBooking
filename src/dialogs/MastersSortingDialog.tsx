@@ -31,38 +31,47 @@ export const MastersSortingDialog: FC<Props> = memo(function MastersSortingDialo
     const sorting = useStore($mastersSorting)
     const [{ name, rating, feedbacks }, setState] = useState(sorting)
 
-    const handleSortingByNameChange = useCallback((order: SortOrder) => {
-        setState((prev) => ({
-            ...prev,
-            name: order,
-        }))
-    }, [])
+    const handleSortingByNameChange = useCallback(
+        (order: SortOrder) => {
+            setState({
+                ...sorting,
+                name: order,
+            })
+        },
+        [sorting],
+    )
 
-    const handleSortingByRatingChange = useCallback((order: SortOrder) => {
-        setState((prev) => ({
-            ...prev,
-            rating: order,
-        }))
-    }, [])
+    const handleSortingByRatingChange = useCallback(
+        (order: SortOrder) => {
+            setState({
+                ...sorting,
+                rating: order,
+            })
+        },
+        [sorting],
+    )
 
-    const handleSortingByFeedbacksChange = useCallback((order: SortOrder) => {
-        setState((prev) => ({
-            ...prev,
-            feedbacks: order,
-        }))
-    }, [])
+    const handleSortingByFeedbacksChange = useCallback(
+        (order: SortOrder) => {
+            setState({
+                ...sorting,
+                feedbacks: order,
+            })
+        },
+        [sorting],
+    )
 
     const handleReset = useCallback(() => {
         resetMastersOrdering()
 
         props.onDismiss?.()
-    }, [props.onDismiss])
+    }, [props])
 
     const handleApply = useCallback(() => {
         setMastersOrdering({ name, rating, feedbacks })
 
         props.onDismiss?.()
-    }, [props.onDismiss, name, rating, feedbacks])
+    }, [props, name, rating, feedbacks])
 
     useEffect(() => {
         if (props.visible) {

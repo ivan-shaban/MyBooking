@@ -18,7 +18,7 @@ export interface Props {
     readonly isLast: boolean
 }
 
-export const LocationItem: FC<Props> = memo(function MasterItem({ location, isLast }) {
+export const LocationItem: FC<Props> = memo(function LocationItem({ location, isLast }) {
     const currentUser = useStore($currentUser)
     const masters = useStore($masters).filter(({ locationId }) => locationId === location.id)
     const isFavourite = currentUser?.favourite.locations.includes(location.id)

@@ -1,5 +1,4 @@
 import React, { FC, memo } from 'react'
-import { FormattedMessage } from 'react-intl'
 import { StyleSheet } from 'react-native'
 import { Text } from 'react-native-paper'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
@@ -10,18 +9,13 @@ import faker from '@faker-js/faker'
 export interface Props {
     readonly rating: number
     readonly feedbacksCount?: number
-    readonly single?: boolean
 }
 
-export const RatingEntry: FC<Props> = memo(function RatingEntry({
-    rating,
-    feedbacksCount,
-    single,
-}) {
+export const RatingEntry: FC<Props> = memo(function RatingEntry({ rating, feedbacksCount }) {
     const roundedRating = Math.round(rating)
     const starColor = useThemeColor({ light: '#ccc', dark: 'white' }, 'tabIconDefault')
 
-    return feedbacksCount || single ? (
+    return rating ? (
         <Text>
             {faker.datatype.array(5).map((_m, index) => (
                 <MaterialCommunityIcons
@@ -32,13 +26,9 @@ export const RatingEntry: FC<Props> = memo(function RatingEntry({
                 />
             ))}
             {` ${rating}`}
-            {single ? null : ` (${feedbacksCount})`}
+            {feedbacksCount && ` (${feedbacksCount})`}
         </Text>
-    ) : (
-        <Text>
-            <FormattedMessage id="rating.no-rating" defaultMessage="Оценок еще нет, будь первым!" />
-        </Text>
-    )
+    ) : null
 })
 
 const styles = StyleSheet.create({

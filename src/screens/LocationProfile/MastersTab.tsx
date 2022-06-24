@@ -46,7 +46,7 @@ export const MastersTab: FC<Props> = function Description({ route }) {
                     ))}
                 </View>
             </Paragpaph>
-            <View style={{ height: 20 }} />
+            <View style={styles.bottomOffset} />
         </ScrollView>
     )
 }
@@ -58,4 +58,7 @@ const styles = StyleSheet.create({
         // backgroundColor: 'red',
     },
     pContent: { marginLeft: -paragpaphOffset, width: Dimensions.get('screen').width },
+    bottomOffset: {
+        height: 20,
+    },
 })

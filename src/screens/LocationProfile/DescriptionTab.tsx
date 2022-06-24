@@ -40,9 +40,11 @@ export const DescriptionTab: FC<Props> = function Description({ route }) {
                     <Schedule key={index} value={schedule} index={index} />
                 ))}
             </Paragpaph>
-            <View style={{ height: 20 }} />
+            <View style={styles.bottomOffset} />
         </ScrollView>
     )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    bottomOffset: { height: 20 },
+})

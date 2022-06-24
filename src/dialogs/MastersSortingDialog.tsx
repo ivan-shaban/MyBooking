@@ -34,35 +34,26 @@ export const MastersSortingDialog: FC<Props> = memo(function MastersSortingDialo
     const sortingData = useStore($mastersSorting)
     const [{ name, rating, feedbacks }, setState] = useState(sortingData)
 
-    const handleSortingByNameChange = useCallback(
-        (order: SortOrder) => {
-            setState({
-                ...sortingData,
-                name: order,
-            })
-        },
-        [sortingData],
-    )
+    const handleSortingByNameChange = useCallback((order: SortOrder) => {
+        setState({
+            ...$mastersSorting.defaultState,
+            name: order,
+        })
+    }, [])
 
-    const handleSortingByRatingChange = useCallback(
-        (order: SortOrder) => {
-            setState({
-                ...sortingData,
-                rating: order,
-            })
-        },
-        [sortingData],
-    )
+    const handleSortingByRatingChange = useCallback((order: SortOrder) => {
+        setState({
+            ...$mastersSorting.defaultState,
+            rating: order,
+        })
+    }, [])
 
-    const handleSortingByFeedbacksChange = useCallback(
-        (order: SortOrder) => {
-            setState({
-                ...sortingData,
-                feedbacks: order,
-            })
-        },
-        [sortingData],
-    )
+    const handleSortingByFeedbacksChange = useCallback((order: SortOrder) => {
+        setState({
+            ...$mastersSorting.defaultState,
+            feedbacks: order,
+        })
+    }, [])
 
     const handleReset = useCallback(() => {
         resetMastersOrdering()

@@ -1,7 +1,7 @@
 import { Gender } from '../constants/genders'
 import { MasterLanguage, MasterType } from '../constants/masters'
 import { Service } from '../constants/services'
-import { createEvent, createStore } from 'effector'
+import { combine, createEvent, createStore } from 'effector'
 
 export enum SortOrder {
     ASC,
@@ -31,6 +31,11 @@ export const $mastersFilters = createStore<MastersFilters>({
     .on(setMastersFilters, (_, state) => state)
     .reset(resetMastersFilters)
 
+export const $masterFiltersApplied = combine(
+    $mastersFilters,
+    (filters) => filters !== $mastersFilters.defaultState,
+)
+
 export interface LocationsFilters {
     readonly name: SortOrder
     readonly rating: SortOrder
@@ -46,3 +51,8 @@ export const $locationsFilters = createStore<LocationsFilters>({
 })
     .on(setLocationsFilters, (_, state) => state)
     .reset(resetLocationFilters)
+
+export const $locationsFiltersApplied = combine(
+    $locationsFilters,
+    (filters) => filters !== $locationsFilters.defaultState,
+)

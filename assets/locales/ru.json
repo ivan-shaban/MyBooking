@@ -119,6 +119,30 @@
       "value": "Воскресенье"
     }
   ],
+  "gender.client": [
+    {
+      "type": 0,
+      "value": "Пол клиента"
+    }
+  ],
+  "gender.female": [
+    {
+      "type": 0,
+      "value": "Женщина"
+    }
+  ],
+  "gender.male": [
+    {
+      "type": 0,
+      "value": "Мужчина"
+    }
+  ],
+  "gender.master": [
+    {
+      "type": 0,
+      "value": "Пол специалиста"
+    }
+  ],
   "language": [
     {
       "type": 0,
@@ -389,6 +413,12 @@
       "value": "Отзывы"
     }
   ],
+  "subheader.gender": [
+    {
+      "type": 0,
+      "value": "Пол"
+    }
+  ],
   "subheader.girls": [
     {
       "type": 0,
@@ -407,6 +437,12 @@
       "value": "Мужчины"
     }
   ],
+  "subheader.rating": [
+    {
+      "type": 0,
+      "value": "Рейтинг"
+    }
+  ],
   "subheader.schedule": [
     {
       "type": 0,
@@ -419,10 +455,22 @@
       "value": "Услуги"
     }
   ],
+  "subheader.speciality": [
+    {
+      "type": 0,
+      "value": "Специальность"
+    }
+  ],
   "subheader.women": [
     {
       "type": 0,
       "value": "Женщины"
+    }
+  ],
+  "title.filtersList": [
+    {
+      "type": 0,
+      "value": "Список фильтров"
     }
   ],
   "title.sorting": [

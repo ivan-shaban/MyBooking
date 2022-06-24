@@ -7,6 +7,8 @@ import { Appbar } from 'react-native-paper'
 import { colorByTab } from '../../constants/Colors'
 import { Tab } from '../../constants/Tab'
 import { LocationsSortingDialog } from '../../dialogs/LocationsSortingDialog'
+import { $locationsFiltersApplied } from '../../store/filtering'
+import { $locationsSorting, SortOrder } from '../../store/sorting'
 import { $currentUser } from '../../store/user'
 import { Avatar } from '../Avatar'
 
@@ -15,6 +17,15 @@ export interface Props extends NativeStackHeaderProps {}
 export const LocationsHeader: FC<Props> = () => {
     const user = useStore($currentUser)
     const [visible, setVisible] = useState(false)
+    const locationsFiltersApplied = useStore($locationsFiltersApplied)
+    const { rating, feedbacks, name } = useStore($locationsSorting)
+    const sortingIcon =
+        rating === SortOrder.ASC || feedbacks === SortOrder.ASC || name === SortOrder.ASC
+            ? 'sort-ascending'
+            : rating === SortOrder.DESC || feedbacks === SortOrder.DESC || name === SortOrder.DESC
+            ? 'sort-descending'
+            : 'sort'
+    const filtersIcon = locationsFiltersApplied ? 'filter-check-outline' : 'filter-remove'
 
     const showDialog = () => setVisible(true)
     const hideDialog = () => setVisible(false)
@@ -35,13 +46,13 @@ export const LocationsHeader: FC<Props> = () => {
                 onPress={() => {}}
             />
             <Appbar.Action
-                icon="sort"
+                icon={sortingIcon}
                 color="white"
                 style={styles.smallItem}
                 onPress={showDialog}
             />
             <Appbar.Action
-                icon="filter-outline"
+                icon={filtersIcon}
                 color="white"
                 style={styles.smallItem}
                 onPress={() => {}}

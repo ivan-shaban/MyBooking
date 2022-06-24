@@ -1,7 +1,7 @@
 import React, { FC, memo, useCallback, useState } from 'react'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { StyleSheet, TouchableOpacity, View } from 'react-native'
-import { IconButton, Title } from 'react-native-paper'
+import { IconButton, Subheading } from 'react-native-paper'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import { useThemeColor } from './Themed'
@@ -36,13 +36,13 @@ export const FilterParagraph: FC<Props> = memo(function FilterParagraph({
                     size={20}
                     color={iconColor}
                 />
-                <Title style={styles.title} numberOfLines={1} ellipsizeMode="tail">
+                <Subheading style={styles.title} numberOfLines={1} ellipsizeMode="tail">
                     {typeof title === 'string' ? (
                         <FormattedMessage id={title} />
                     ) : (
                         intl.formatMessage(title)
                     )}
-                </Title>
+                </Subheading>
                 {
                     <IconButton
                         icon={collapsed ? 'chevron-down' : 'chevron-up'}

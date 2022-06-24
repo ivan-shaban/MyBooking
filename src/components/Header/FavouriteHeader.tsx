@@ -23,18 +23,6 @@ export const FavouriteHeader: FC<Props> = () => {
                 style={styles.smallItem}
                 onPress={() => {}}
             />
-            <Appbar.Action
-                icon="map-search-outline"
-                color="white"
-                style={styles.smallItem}
-                onPress={() => {}}
-            />
-            <Appbar.Action
-                icon="filter-outline"
-                color="white"
-                style={styles.smallItem}
-                onPress={() => {}}
-            />
             <Appbar.Action icon="bell" color="white" style={styles.smallItem} onPress={() => {}} />
         </Appbar.Header>
     )

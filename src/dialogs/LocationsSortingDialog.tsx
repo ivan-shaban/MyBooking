@@ -34,42 +34,32 @@ export const LocationsSortingDialog: FC<Props> = memo(function LocationsSortingD
     const sortingData = useStore($locationsSorting)
     const [{ name, rating, feedbacks }, setState] = useState(sortingData)
 
-    const handleSortingByNameChange = useCallback(
-        (order: SortOrder) => {
-            setState({
-                ...sortingData,
-                name: order,
-            })
-        },
-        [sortingData],
-    )
+    const handleSortingByNameChange = useCallback((order: SortOrder) => {
+        setState({
+            ...$locationsSorting.defaultState,
+            name: order,
+        })
+    }, [])
 
-    const handleSortingByRatingChange = useCallback(
-        (order: SortOrder) => {
-            setState({
-                ...sortingData,
-                rating: order,
-            })
-        },
-        [sortingData],
-    )
+    const handleSortingByRatingChange = useCallback((order: SortOrder) => {
+        setState({
+            ...$locationsSorting.defaultState,
+            rating: order,
+        })
+    }, [])
 
-    const handleSortingByFeedbacksChange = useCallback(
-        (order: SortOrder) => {
-            setState({
-                ...sortingData,
-                feedbacks: order,
-            })
-        },
-        [sortingData],
-    )
+    const handleSortingByFeedbacksChange = useCallback((order: SortOrder) => {
+        setState({
+            ...$locationsSorting.defaultState,
+            feedbacks: order,
+        })
+    }, [])
 
     const handleReset = useCallback(() => {
         resetLocationOrdering()
-        setState(sortingData)
 
         props.onDismiss?.()
-    }, [props, sortingData])
+    }, [props])
 
     const handleApply = useCallback(() => {
         setLocationsOrdering({ name, rating, feedbacks })

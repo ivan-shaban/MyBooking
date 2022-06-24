@@ -8,6 +8,8 @@ import { colorByTab } from '../../constants/Colors'
 import { Tab } from '../../constants/Tab'
 import { MastersFilterDialog } from '../../dialogs/MastersFilterDialog'
 import { MastersSortingDialog } from '../../dialogs/MastersSortingDialog'
+import { $masterFiltersApplied } from '../../store/filtering'
+import { $mastersSorting, SortOrder } from '../../store/sorting'
 import { $currentUser } from '../../store/user'
 import { Avatar } from '../Avatar'
 
@@ -15,6 +17,15 @@ export interface Props extends NativeStackHeaderProps {}
 
 export const MastersHeader: FC<Props> = () => {
     const user = useStore($currentUser)
+    const masterFiltersApplied = useStore($masterFiltersApplied)
+    const { rating, feedbacks, name } = useStore($mastersSorting)
+    const sortingIcon =
+        rating === SortOrder.ASC || feedbacks === SortOrder.ASC || name === SortOrder.ASC
+            ? 'sort-ascending'
+            : rating === SortOrder.DESC || feedbacks === SortOrder.DESC || name === SortOrder.DESC
+            ? 'sort-descending'
+            : 'sort'
+    const filtersIcon = masterFiltersApplied ? 'filter-check-outline' : 'filter-remove'
 
     const [sortingDialogVisible, setSortingDialogVisible] = useState(false)
     const showSortingDialog = () => setSortingDialogVisible(true)
@@ -34,13 +45,13 @@ export const MastersHeader: FC<Props> = () => {
                 onPress={() => {}}
             />
             <Appbar.Action
-                icon="sort"
+                icon={sortingIcon}
                 color="white"
                 style={styles.smallItem}
                 onPress={showSortingDialog}
             />
             <Appbar.Action
-                icon="filter-outline"
+                icon={filtersIcon}
                 color="white"
                 style={styles.smallItem}
                 onPress={showFiltersDialog}

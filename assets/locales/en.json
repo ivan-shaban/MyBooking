@@ -119,6 +119,30 @@
       "value": "Sunday"
     }
   ],
+  "gender.client": [
+    {
+      "type": 0,
+      "value": "Сlient gender"
+    }
+  ],
+  "gender.female": [
+    {
+      "type": 0,
+      "value": "Female"
+    }
+  ],
+  "gender.male": [
+    {
+      "type": 0,
+      "value": "Male"
+    }
+  ],
+  "gender.master": [
+    {
+      "type": 0,
+      "value": "Master gender"
+    }
+  ],
   "language": [
     {
       "type": 0,
@@ -389,6 +413,12 @@
       "value": "Feedbacks"
     }
   ],
+  "subheader.gender": [
+    {
+      "type": 0,
+      "value": "Gender"
+    }
+  ],
   "subheader.girls": [
     {
       "type": 0,
@@ -407,6 +437,12 @@
       "value": "Men"
     }
   ],
+  "subheader.rating": [
+    {
+      "type": 0,
+      "value": "Rating"
+    }
+  ],
   "subheader.schedule": [
     {
       "type": 0,
@@ -419,10 +455,22 @@
       "value": "Services"
     }
   ],
+  "subheader.speciality": [
+    {
+      "type": 0,
+      "value": "Speciality"
+    }
+  ],
   "subheader.women": [
     {
       "type": 0,
       "value": "Women"
+    }
+  ],
+  "title.filtersList": [
+    {
+      "type": 0,
+      "value": "Filters"
     }
   ],
   "title.sorting": [

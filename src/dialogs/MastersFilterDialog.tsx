@@ -1,7 +1,7 @@
 import { useStore } from 'effector-react'
 import React, { FC, memo, useCallback, useEffect, useState } from 'react'
 import { FormattedMessage } from 'react-intl'
-import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native'
+import { ScrollView, StyleProp, StyleSheet, View, ViewStyle } from 'react-native'
 import { Button, Dialog, Portal } from 'react-native-paper'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
@@ -124,11 +124,11 @@ export const MastersFilterDialog: FC<Props> = memo(function MastersFilterDialog(
 
     return (
         <Portal>
-            <Dialog {...props}>
+            <Dialog {...props} style={[props.style, styles.base]}>
                 <Dialog.Title>
                     <FormattedMessage id={titleLocale.filters.id} />
                 </Dialog.Title>
-                <Dialog.Content>
+                <ScrollView contentContainerStyle={styles.content}>
                     <FilterParagraph icon="human-male-female" title={mastersGenderLocale.master}>
                         {[Gender.Male, Gender.Female].map((gender) => (
                             <FilterCheckbox
@@ -218,7 +218,8 @@ export const MastersFilterDialog: FC<Props> = memo(function MastersFilterDialog(
                                 />
                             ))}
                     </FilterParagraph>
-                </Dialog.Content>
+                </ScrollView>
+
                 <Dialog.Actions>
                     <Button onPress={handleReset}>
                         <FormattedMessage id="button.reset" defaultMessage="Сбросить" />
@@ -233,6 +234,8 @@ export const MastersFilterDialog: FC<Props> = memo(function MastersFilterDialog(
 })
 
 const styles = StyleSheet.create({
+    base: { maxHeight: '90%' },
+    content: { marginHorizontal: 16 },
     ratingItem: {
         flexDirection: 'row',
         alignItems: 'center',

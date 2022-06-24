@@ -1,21 +1,12 @@
 import { ClientType, Gender, allGenders } from '../constants/genders'
-import { MasterLanguage, MasterType, masterLanguages } from '../constants/masters'
+import { MasterLanguage, MasterType, masterLanguages, masterTypes } from '../constants/masters'
 import { Service, serviceValuesList } from '../constants/services'
 import { delay } from '../utils/time'
-import { $mastersSorting, SortOrder } from './sorting'
+import { $masterFiltersApplied, $mastersFilters } from './filtering'
+import { $mastersSorting, $mastersSortingApplied, SortOrder } from './sorting'
 import faker from '@faker-js/faker'
 import { combine, createEffect, createStore } from 'effector'
 import shuffle from 'lodash.shuffle'
-
-export const allMasterTypes = [
-    MasterType.Hairdresser,
-    MasterType.Stylist,
-    MasterType.Masseur,
-    MasterType.Podiatrist,
-    MasterType.NailsMaster,
-    MasterType.Beautician,
-    MasterType.Cosmetic,
-] as const
 
 export interface Master {
     readonly id: number
@@ -47,11 +38,7 @@ export const requestAllMastersDataFx = createEffect({
             return {
                 id: index,
                 name: `${faker.name.firstName(gender)} ${faker.name.lastName(gender)}`,
-                type: [
-                    allMasterTypes[
-                        faker.datatype.number({ min: 0, max: allMasterTypes.length - 1 })
-                    ],
-                ],
+                type: [masterTypes[faker.datatype.number({ min: 0, max: masterTypes.length - 1 })]],
                 shortDescription: faker.random.words(5),
                 description: faker.random.words(20),
                 gender,
@@ -88,28 +75,71 @@ export const $masters = createStore<Master[]>([]).on(
     (_, data) => data,
 )
 
-export const $sortedMasters = combine(
+/**
+ * Filtered and sorted masters list.
+ */
+export const $managedMasters = combine(
     $masters,
+    $mastersSortingApplied,
     $mastersSorting,
-    (masters, { name, rating, feedbacks }) => {
-        if (feedbacks !== SortOrder.NONE) {
-            masters = [...masters].sort((a, b) =>
-                feedbacks === SortOrder.ASC
-                    ? b.feedbacks.length - a.feedbacks.length
-                    : a.feedbacks.length - b.feedbacks.length,
-            )
+    $masterFiltersApplied,
+    $mastersFilters,
+    (masters, applySorting, { name, rating, feedbacks }, applyFilters, filters) => {
+        if (applyFilters) {
+            if (filters.rating !== $mastersFilters.defaultState.rating) {
+                masters = masters.filter(({ rating }) =>
+                    filters.rating.some((r) => r === 5 ? rating >= 4.8 : r <= rating && r + 1 > rating),
+                )
+            }
+            if (filters.languages !== $mastersFilters.defaultState.languages) {
+                masters = masters.filter(({ languages }) =>
+                    filters.languages.some((lang) => languages.includes(lang)),
+                )
+            }
+            if (filters.mastersGender !== $mastersFilters.defaultState.mastersGender) {
+                masters = masters.filter(({ gender }) => filters.mastersGender.includes(gender))
+            }
+            if (filters.clientsGender !== $mastersFilters.defaultState.clientsGender) {
+                masters = masters.filter(({ worksWith }) =>
+                    filters.clientsGender.some((gender) =>
+                        gender === Gender.Male
+                            ? worksWith.includes(ClientType.Men) ||
+                              worksWith.includes(ClientType.Boys)
+                            : worksWith.includes(ClientType.Women) ||
+                              worksWith.includes(ClientType.Girls),
+                    ),
+                )
+            }
+            if (filters.services !== $mastersFilters.defaultState.services) {
+                masters = masters.filter(({ services }) =>
+                    filters.services.some((service) => services.includes(service)),
+                )
+            }
+            if (filters.types !== $mastersFilters.defaultState.types) {
+                masters = masters.filter(({ type }) => filters.types.some((t) => type.includes(t)))
+            }
         }
-        if (rating !== SortOrder.NONE) {
-            masters = [...masters].sort((a, b) =>
-                rating === SortOrder.ASC ? b.rating - a.rating : a.rating - b.rating,
-            )
-        }
-        if (name !== SortOrder.NONE) {
-            masters = [...masters].sort((a, b) =>
-                name === SortOrder.ASC
-                    ? a.name.localeCompare(b.name)
-                    : b.name.localeCompare(a.name),
-            )
+
+        if (applySorting) {
+            if (feedbacks !== SortOrder.NONE) {
+                masters = [...masters].sort((a, b) =>
+                    feedbacks === SortOrder.ASC
+                        ? b.feedbacks.length - a.feedbacks.length
+                        : a.feedbacks.length - b.feedbacks.length,
+                )
+            }
+            if (rating !== SortOrder.NONE) {
+                masters = [...masters].sort((a, b) =>
+                    rating === SortOrder.ASC ? b.rating - a.rating : a.rating - b.rating,
+                )
+            }
+            if (name !== SortOrder.NONE) {
+                masters = [...masters].sort((a, b) =>
+                    name === SortOrder.ASC
+                        ? a.name.localeCompare(b.name)
+                        : b.name.localeCompare(a.name),
+                )
+            }
         }
         return masters
     },

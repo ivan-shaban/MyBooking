@@ -1,4 +1,4 @@
-import { createEvent, createStore } from 'effector'
+import { combine, createEvent, createStore } from 'effector'
 
 export enum SortOrder {
     ASC,
@@ -21,6 +21,11 @@ export const $mastersSorting = createStore<MastersSorting>({
 })
     .on(setMastersOrdering, (_, state) => state)
     .reset(resetMastersOrdering)
+
+export const $mastersSortingApplied = combine(
+    $mastersSorting,
+    (sorting) => JSON.stringify(sorting) !== JSON.stringify($mastersSorting.defaultState),
+)
 
 export interface LocationsSorting {
     readonly name: SortOrder

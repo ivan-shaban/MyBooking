@@ -30,7 +30,7 @@ export const MasterItem: FC<Props> = memo(function MasterItem({ master, isLast }
             screen: 'Description',
             params: { master },
         })
-    }, [master])
+    }, [navigation, master])
 
     return (
         <TouchableOpacity onPress={handleOpenProfile}>

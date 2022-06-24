@@ -33,7 +33,7 @@ export const $mastersFilters = createStore<MastersFilters>({
 
 export const $masterFiltersApplied = combine(
     $mastersFilters,
-    (filters) => filters !== $mastersFilters.defaultState,
+    (filters) => JSON.stringify(filters) !== JSON.stringify($mastersFilters.defaultState),
 )
 
 export interface LocationsFilters {
@@ -54,5 +54,5 @@ export const $locationsFilters = createStore<LocationsFilters>({
 
 export const $locationsFiltersApplied = combine(
     $locationsFilters,
-    (filters) => filters !== $locationsFilters.defaultState,
+    (filters) => JSON.stringify(filters) !== JSON.stringify($locationsFilters.defaultState),
 )

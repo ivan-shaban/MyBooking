@@ -5,12 +5,12 @@ import { StyleSheet } from 'react-native'
 import { MasterItem } from '../components/MasterItem'
 import { ScrollView } from '../components/Themed'
 import { Tab } from '../constants/Tab'
-import { $sortedMasters } from '../store/masters'
+import { $managedMasters } from '../store/masters'
 import { RootTabScreenProps } from '../types'
 
 export function MastersScreen({ navigation }: RootTabScreenProps<Tab.Masters>) {
     // const masters = useStore($masters)
-    const masters = useStore($sortedMasters)
+    const masters = useStore($managedMasters)
 
     return (
         <ScrollView style={styles.container}>

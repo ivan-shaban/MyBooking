@@ -83,26 +83,26 @@ export const $locations = createStore<Location[]>([]).on(
 export const $sortedLocations = combine(
     $locations,
     $locationsSorting,
-    (masters, { name, rating, feedbacks }) => {
+    (locations, { name, rating, feedbacks }) => {
         if (feedbacks !== SortOrder.NONE) {
-            masters = [...masters].sort((a, b) =>
+            locations = [...locations].sort((a, b) =>
                 feedbacks === SortOrder.ASC
                     ? b.feedbacks.length - a.feedbacks.length
                     : a.feedbacks.length - b.feedbacks.length,
             )
         }
         if (rating !== SortOrder.NONE) {
-            masters = [...masters].sort((a, b) =>
+            locations = [...locations].sort((a, b) =>
                 rating === SortOrder.ASC ? b.rating - a.rating : a.rating - b.rating,
             )
         }
         if (name !== SortOrder.NONE) {
-            masters = [...masters].sort((a, b) =>
+            locations = [...locations].sort((a, b) =>
                 name === SortOrder.ASC
                     ? a.name.localeCompare(b.name)
                     : b.name.localeCompare(a.name),
             )
         }
-        return masters
+        return locations
     },
 )

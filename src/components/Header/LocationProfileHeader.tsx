@@ -4,9 +4,9 @@ import React, { useCallback } from 'react'
 import { Platform, StyleSheet } from 'react-native'
 import { Appbar } from 'react-native-paper'
 
-import { colorByTab } from '../../constants/Colors'
 import { Tab } from '../../constants/Tab'
 import { useLocation } from '../../hooks/useLocation'
+import { $headerColor } from '../../store/header'
 import {
     $currentUser,
     $isFavouriteLocationRequestPending,
@@ -27,6 +27,7 @@ export const LocationProfileHeader = ({
     route,
 }: RootStackScreenProps<'LocationProfile'>) => {
     const currentUser = useStore($currentUser)
+    const headerColor = useStore($headerColor)
     const isFavouriteLocationRequestPending = useStore($isFavouriteLocationRequestPending)
     const location = useLocation(route.params.id)
     const isFavourite = currentUser?.favourite.locations.includes(location.id)
@@ -42,7 +43,7 @@ export const LocationProfileHeader = ({
     }, [navigation])
 
     return (
-        <Appbar.Header style={styles.base}>
+        <Appbar.Header style={[styles.base, { backgroundColor: headerColor }]}>
             <Appbar.BackAction color="white" onPress={navigateToBack} />
             <Appbar.Content color="white" title={location.name} subtitle={location.address} />
             <Appbar.Action
@@ -72,7 +73,7 @@ export const LocationProfileHeader = ({
 }
 
 const styles = StyleSheet.create({
-    base: { backgroundColor: colorByTab[Tab.Locations] },
+    base: {},
     bigItem: {
         marginLeft: 'auto',
     },

@@ -5,10 +5,10 @@ import { useIntl } from 'react-intl'
 import { Platform, StyleSheet } from 'react-native'
 import { Appbar } from 'react-native-paper'
 
-import { colorByTab } from '../../constants/Colors'
 import { Tab } from '../../constants/Tab'
 import { useMaster } from '../../hooks/useMaster'
 import { mastersLocale } from '../../locales/masters'
+import { $headerColor } from '../../store/header'
 import {
     $currentUser,
     $isFavouriteMasterRequestPending,
@@ -26,6 +26,7 @@ export const MasterProfileHeader = ({
 }: RootStackScreenProps<'MasterProfile'>) => {
     const intl = useIntl()
     const currentUser = useStore($currentUser)
+    const headerColor = useStore($headerColor)
     const isFavouriteMasterRequestPending = useStore($isFavouriteMasterRequestPending)
     const master = useMaster(route.params.id)
     const isFavourite = currentUser?.favourite.masters.includes(master.id)
@@ -47,7 +48,7 @@ export const MasterProfileHeader = ({
     }, [navigation])
 
     return (
-        <Appbar.Header style={styles.base}>
+        <Appbar.Header style={[styles.base, { backgroundColor: headerColor }]}>
             <Appbar.BackAction onPress={navigateToBack} />
             <Avatar uri={master.avatar} onPress={handleOpenMasterPhotoModal} />
             <Appbar.Content
@@ -75,7 +76,7 @@ export const MasterProfileHeader = ({
 }
 
 const styles = StyleSheet.create({
-    base: { backgroundColor: colorByTab[Tab.Masters] },
+    base: {},
     bigItem: {
         marginLeft: 'auto',
     },

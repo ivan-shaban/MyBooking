@@ -64,6 +64,7 @@ export const MasterProfileHeader = ({
                 disabled={isFavouriteMasterRequestPending}
                 onPress={handleFavouritePress}
             />
+            <Appbar.Action style={styles.smallItem} icon="forum" color="white" onPress={() => {}} />
             {/*<ShareButton*/}
             {/*    style={styles.smallItem}*/}
             {/*    title={`Master profile: ${master.name}`}*/}

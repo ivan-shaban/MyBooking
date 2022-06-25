@@ -53,6 +53,7 @@ export const LocationProfileHeader = ({
                 disabled={isFavouriteLocationRequestPending}
                 onPress={handleFavouritePress}
             />
+            <Appbar.Action style={styles.smallItem} icon="forum" color="white" onPress={() => {}} />
             {/*<ShareButton*/}
             {/*    style={styles.smallItem}*/}
             {/*    title={`Location profile: ${location.name}`}*/}

@@ -17,7 +17,8 @@ export const ProfileHeader: FC<Props> = () => {
     return (
         <Appbar.Header style={styles.base}>
             <Avatar style={styles.avatar} uri={user?.avatar} />
-            <Appbar.Action icon="bell" color="white" style={styles.smallItem} onPress={() => {}} />
+            <Appbar.Action style={styles.smallItem} icon="bell" color="white" onPress={() => {}} />
+            <Appbar.Action style={styles.smallItem} icon="forum" color="white" onPress={() => {}} />
         </Appbar.Header>
     )
 }

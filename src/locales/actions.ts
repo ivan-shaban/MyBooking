@@ -1,5 +1,7 @@
 import { defineMessages } from 'react-intl'
 
+import { WorkType } from '../store/filtering'
+
 export const actionsLocale = defineMessages({
     signUpSoon: {
         id: 'actions.signUpSoon',
@@ -20,5 +22,20 @@ export const actionsLocale = defineMessages({
     sendMessage: {
         id: 'actions.sendMessage',
         defaultMessage: 'Оставить сообщение',
+    },
+})
+
+export const scheduleActionsLocale = defineMessages({
+    workType: {
+        id: 'schedule.workType',
+        defaultMessage: 'Режим работы',
+    },
+    [WorkType.OPEN_NOW]: {
+        id: 'schedule.openNow',
+        defaultMessage: 'Открыто сейчас',
+    },
+    [WorkType.ALL]: {
+        id: 'schedule.all',
+        defaultMessage: 'Все',
     },
 })

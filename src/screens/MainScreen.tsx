@@ -34,6 +34,7 @@ export const MainScreen: FC<Props> = function MainScreen(props) {
     return (
         <BottomTab.Navigator
             shifting={true}
+            initialRouteName={Tab.Locations}
             sceneAnimationEnabled={false}
             // @ts-ignore
             screenListeners={listeners}

@@ -275,6 +275,24 @@
       "value": "Профиль"
     }
   ],
+  "schedule.all": [
+    {
+      "type": 0,
+      "value": "Все"
+    }
+  ],
+  "schedule.openNow": [
+    {
+      "type": 0,
+      "value": "Открыто сейчас"
+    }
+  ],
+  "schedule.workType": [
+    {
+      "type": 0,
+      "value": "Режим работы"
+    }
+  ],
   "service.coloring_airtouch": [
     {
       "type": 0,

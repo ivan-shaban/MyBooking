@@ -86,12 +86,14 @@ export const $managedMasters = combine(
     $mastersFilters,
     (masters, applySorting, { name, rating, feedbacks }, applyFilters, filters) => {
         if (applyFilters) {
-            if (filters.rating !== $mastersFilters.defaultState.rating) {
+            if (filters.rating.length) {
                 masters = masters.filter(({ rating }) =>
-                    filters.rating.some((r) => r === 5 ? rating >= 4.8 : r <= rating && r + 1 > rating),
+                    filters.rating.some((r) =>
+                        r === 5 ? rating >= 4.8 : r <= rating && r + 1 > rating,
+                    ),
                 )
             }
-            if (filters.languages !== $mastersFilters.defaultState.languages) {
+            if (filters.languages.length) {
                 masters = masters.filter(({ languages }) =>
                     filters.languages.some((lang) => languages.includes(lang)),
                 )
@@ -110,12 +112,13 @@ export const $managedMasters = combine(
                     ),
                 )
             }
-            if (filters.services !== $mastersFilters.defaultState.services) {
+
+            if (filters.services.length) {
                 masters = masters.filter(({ services }) =>
                     filters.services.some((service) => services.includes(service)),
                 )
             }
-            if (filters.types !== $mastersFilters.defaultState.types) {
+            if (filters.types.length) {
                 masters = masters.filter(({ type }) => filters.types.some((t) => type.includes(t)))
             }
         }

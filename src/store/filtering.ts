@@ -3,10 +3,9 @@ import { MasterLanguage, MasterType } from '../constants/masters'
 import { Service } from '../constants/services'
 import { combine, createEvent, createStore } from 'effector'
 
-export enum SortOrder {
-    ASC,
-    DESC,
-    NONE,
+export enum WorkType {
+    OPEN_NOW = 'open_now',
+    ALL = 'all',
 }
 
 export interface MastersFilters {
@@ -37,17 +36,17 @@ export const $masterFiltersApplied = combine(
 )
 
 export interface LocationsFilters {
-    readonly name: SortOrder
-    readonly rating: SortOrder
-    readonly feedbacks: SortOrder
+    readonly services: Service[]
+    readonly rating: number[]
+    readonly open: WorkType
 }
 
 export const resetLocationFilters = createEvent('reset locations filters')
 export const setLocationsFilters = createEvent<LocationsFilters>('set locations filters')
 export const $locationsFilters = createStore<LocationsFilters>({
-    name: SortOrder.NONE,
-    rating: SortOrder.NONE,
-    feedbacks: SortOrder.NONE,
+    services: [],
+    rating: [],
+    open: WorkType.ALL,
 })
     .on(setLocationsFilters, (_, state) => state)
     .reset(resetLocationFilters)

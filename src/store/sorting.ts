@@ -42,3 +42,8 @@ export const $locationsSorting = createStore<LocationsSorting>({
 })
     .on(setLocationsOrdering, (_, state) => state)
     .reset(resetLocationOrdering)
+
+export const $locationsSortingApplied = combine(
+    $locationsSorting,
+    (sorting) => JSON.stringify(sorting) !== JSON.stringify($locationsSorting.defaultState),
+)

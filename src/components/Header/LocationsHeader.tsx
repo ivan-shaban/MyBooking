@@ -6,6 +6,7 @@ import { Appbar } from 'react-native-paper'
 
 import { colorByTab } from '../../constants/Colors'
 import { Tab } from '../../constants/Tab'
+import { LocationsFilterDialog } from '../../dialogs/LocationsFilterDialog'
 import { LocationsSortingDialog } from '../../dialogs/LocationsSortingDialog'
 import { $locationsFiltersApplied } from '../../store/filtering'
 import { $locationsSorting, SortOrder } from '../../store/sorting'
@@ -16,7 +17,6 @@ export interface Props extends NativeStackHeaderProps {}
 
 export const LocationsHeader: FC<Props> = () => {
     const user = useStore($currentUser)
-    const [visible, setVisible] = useState(false)
     const locationsFiltersApplied = useStore($locationsFiltersApplied)
     const { rating, feedbacks, name } = useStore($locationsSorting)
     const sortingIcon =
@@ -25,10 +25,16 @@ export const LocationsHeader: FC<Props> = () => {
             : rating === SortOrder.DESC || feedbacks === SortOrder.DESC || name === SortOrder.DESC
             ? 'sort-descending'
             : 'sort'
+
     const filtersIcon = locationsFiltersApplied ? 'filter-check-outline' : 'filter-remove'
 
-    const showDialog = () => setVisible(true)
-    const hideDialog = () => setVisible(false)
+    const [sortingDialogVisible, setSortingDialogVisible] = useState(false)
+    const showDialog = () => setSortingDialogVisible(true)
+    const hideSortingDialog = () => setSortingDialogVisible(false)
+
+    const [filtersDialogVisible, setFiltersDialogVisible] = useState(false)
+    const showFiltersDialog = () => setFiltersDialogVisible(true)
+    const hideFiltersDialog = () => setFiltersDialogVisible(false)
 
     return (
         <Appbar.Header style={styles.base}>
@@ -55,10 +61,11 @@ export const LocationsHeader: FC<Props> = () => {
                 icon={filtersIcon}
                 color="white"
                 style={styles.smallItem}
-                onPress={() => {}}
+                onPress={showFiltersDialog}
             />
             <Appbar.Action icon="bell" color="white" style={styles.smallItem} onPress={() => {}} />
-            <LocationsSortingDialog visible={visible} onDismiss={hideDialog} />
+            <LocationsSortingDialog visible={sortingDialogVisible} onDismiss={hideSortingDialog} />
+            <LocationsFilterDialog visible={filtersDialogVisible} onDismiss={hideFiltersDialog} />
         </Appbar.Header>
     )
 }

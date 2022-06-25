@@ -1,6 +1,10 @@
 import { ClientType, allGenders } from '../constants/genders'
+import { Service } from '../constants/services'
+import { isLocationOpen } from '../utils/locations'
 import { delay } from '../utils/time'
-import { $locationsSorting, SortOrder } from './sorting'
+import { $locationsFilters, $locationsFiltersApplied, WorkType } from './filtering'
+import { $masters } from './masters'
+import { $locationsSorting, $locationsSortingApplied, SortOrder } from './sorting'
 import faker from '@faker-js/faker'
 import { combine, createEffect, createStore } from 'effector'
 import shuffle from 'lodash.shuffle'
@@ -80,28 +84,59 @@ export const $locations = createStore<Location[]>([]).on(
     (_, data) => data,
 )
 
-export const $sortedLocations = combine(
+export const $managedLocations = combine(
     $locations,
+    $masters,
+    $locationsSortingApplied,
     $locationsSorting,
-    (locations, { name, rating, feedbacks }) => {
-        if (feedbacks !== SortOrder.NONE) {
-            locations = [...locations].sort((a, b) =>
-                feedbacks === SortOrder.ASC
-                    ? b.feedbacks.length - a.feedbacks.length
-                    : a.feedbacks.length - b.feedbacks.length,
-            )
+    $locationsFiltersApplied,
+    $locationsFilters,
+    (locations, masters, applySorting, { name, rating, feedbacks }, applyFilters, filters) => {
+        if (applyFilters) {
+            if (filters.rating.length) {
+                locations = locations.filter(({ rating }) =>
+                    filters.rating.some((r) =>
+                        r === 5 ? rating >= 4.8 : r <= rating && r + 1 > rating,
+                    ),
+                )
+            }
+            if (filters.open !== WorkType.ALL) {
+                locations = locations.filter(isLocationOpen)
+            }
+            if (filters.services.length) {
+                locations = locations.filter(({ id }) => {
+                    const localServices = masters
+                        .filter(({ locationId }) => locationId === id)
+                        .reduce((result, { services }) => {
+                            services.forEach((service) => result.add(service))
+                            return result
+                        }, new Set<Service>())
+
+                    return filters.services.some((service) => localServices.has(service))
+                })
+            }
         }
-        if (rating !== SortOrder.NONE) {
-            locations = [...locations].sort((a, b) =>
-                rating === SortOrder.ASC ? b.rating - a.rating : a.rating - b.rating,
-            )
-        }
-        if (name !== SortOrder.NONE) {
-            locations = [...locations].sort((a, b) =>
-                name === SortOrder.ASC
-                    ? a.name.localeCompare(b.name)
-                    : b.name.localeCompare(a.name),
-            )
+
+        if (applySorting) {
+            if (feedbacks !== SortOrder.NONE) {
+                locations = [...locations].sort((a, b) =>
+                    feedbacks === SortOrder.ASC
+                        ? b.feedbacks.length - a.feedbacks.length
+                        : a.feedbacks.length - b.feedbacks.length,
+                )
+            }
+            if (rating !== SortOrder.NONE) {
+                locations = [...locations].sort((a, b) =>
+                    rating === SortOrder.ASC ? b.rating - a.rating : a.rating - b.rating,
+                )
+            }
+            if (name !== SortOrder.NONE) {
+                locations = [...locations].sort((a, b) =>
+                    name === SortOrder.ASC
+                        ? a.name.localeCompare(b.name)
+                        : b.name.localeCompare(a.name),
+                )
+            }
         }
         return locations
     },

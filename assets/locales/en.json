@@ -275,6 +275,24 @@
       "value": "Profile"
     }
   ],
+  "schedule.all": [
+    {
+      "type": 0,
+      "value": "All"
+    }
+  ],
+  "schedule.openNow": [
+    {
+      "type": 0,
+      "value": "Open now"
+    }
+  ],
+  "schedule.workType": [
+    {
+      "type": 0,
+      "value": "Working hours"
+    }
+  ],
   "service.coloring_airtouch": [
     {
       "type": 0,

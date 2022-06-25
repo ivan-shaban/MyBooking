@@ -14,6 +14,8 @@ import {
     removeFavouriteLocationFx,
 } from '../../store/user'
 import { RootStackScreenProps } from '../../types'
+import { useThemeColor } from '../Themed'
+import { HeaderAction } from './HeaderAction'
 
 const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical'
 
@@ -26,6 +28,7 @@ export const LocationProfileHeader = ({
     navigation,
     route,
 }: RootStackScreenProps<'LocationProfile'>) => {
+    const textColor = useThemeColor({}, 'background')
     const currentUser = useStore($currentUser)
     const headerColor = useStore($headerColor)
     const isFavouriteLocationRequestPending = useStore($isFavouriteLocationRequestPending)
@@ -44,18 +47,22 @@ export const LocationProfileHeader = ({
 
     return (
         <Appbar.Header style={[styles.base, { backgroundColor: headerColor }]}>
-            <Appbar.BackAction color="white" onPress={navigateToBack} />
-            <Appbar.Content color="white" title={location.name} subtitle={location.address} />
-            <Appbar.Action
+            <Appbar.BackAction color={textColor} onPress={navigateToBack} />
+            <Appbar.Content
                 style={styles.bigItem}
+                color={textColor}
+                title={location.name}
+                subtitle={location.address}
+            />
+            <HeaderAction
                 icon={isFavourite ? 'cards-heart' : 'cards-heart-outline'}
                 color="red"
                 disabled={isFavouriteLocationRequestPending}
                 onPress={handleFavouritePress}
             />
-            <Appbar.Action style={styles.smallItem} icon="forum" color="white" onPress={() => {}} />
+            <HeaderAction icon="forum" onPress={() => {}} />
             {/*<ShareButton*/}
-            {/*    style={styles.smallItem}*/}
+            {/*    */}
             {/*    title={`Location profile: ${location.name}`}*/}
             {/*    message={Linking.createURL(`locations/${location.id}`)}*/}
             {/*    // message={`intent:#Intent;scheme=${expo.scheme}://locations/${location.id};package=${expo.android.package};end`}*/}
@@ -63,12 +70,7 @@ export const LocationProfileHeader = ({
             {/*    // message={`Please install this app and stay safe , AppLink: ${getAppStoreURL()}`}*/}
             {/*    url={Linking.createURL(`locations/${location.id}`)}*/}
             {/*/>*/}
-            <Appbar.Action
-                style={styles.smallItem}
-                icon={MORE_ICON}
-                color="white"
-                onPress={() => {}}
-            />
+            <HeaderAction icon={MORE_ICON} onPress={() => {}} />
         </Appbar.Header>
     )
 }
@@ -76,9 +78,7 @@ export const LocationProfileHeader = ({
 const styles = StyleSheet.create({
     base: {},
     bigItem: {
-        marginLeft: 'auto',
-    },
-    smallItem: {
-        marginLeft: -5,
+        marginLeft: -10,
+        marginRight: 'auto',
     },
 })

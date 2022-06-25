@@ -12,6 +12,7 @@ import { $masterFiltersApplied } from '../../store/filtering'
 import { $mastersSorting, SortOrder } from '../../store/sorting'
 import { $currentUser } from '../../store/user'
 import { Avatar } from '../Avatar'
+import { HeaderAction } from './HeaderAction'
 
 export interface Props extends NativeStackHeaderProps {}
 
@@ -38,25 +39,10 @@ export const MastersHeader: FC<Props> = () => {
     return (
         <Appbar.Header style={styles.base}>
             <Avatar style={styles.avatar} uri={user?.avatar} />
-            <Appbar.Action
-                icon="magnify"
-                color="white"
-                style={styles.smallItem}
-                onPress={() => {}}
-            />
-            <Appbar.Action
-                icon={sortingIcon}
-                color="white"
-                style={styles.smallItem}
-                onPress={showSortingDialog}
-            />
-            <Appbar.Action
-                icon={filtersIcon}
-                color="white"
-                style={styles.smallItem}
-                onPress={showFiltersDialog}
-            />
-            <Appbar.Action icon="bell" color="white" style={styles.smallItem} onPress={() => {}} />
+            <HeaderAction icon="magnify" onPress={() => {}} />
+            <HeaderAction icon={sortingIcon} onPress={showSortingDialog} />
+            <HeaderAction icon={filtersIcon} onPress={showFiltersDialog} />
+            <HeaderAction icon="bell" onPress={() => {}} />
             <MastersSortingDialog visible={sortingDialogVisible} onDismiss={hideSortingDialog} />
             <MastersFilterDialog visible={filtersDialogVisible} onDismiss={hideFiltersDialog} />
         </Appbar.Header>
@@ -70,8 +56,5 @@ const styles = StyleSheet.create({
     },
     avatar: {
         marginRight: 'auto',
-    },
-    smallItem: {
-        marginRight: -5,
     },
 })

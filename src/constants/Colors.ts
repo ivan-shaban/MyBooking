@@ -1,21 +1,22 @@
 import { Tab } from './Tab'
 
-const tintColorLight = '#2f95dc'
-const tintColorDark = '#fff'
+// we need full color code to add alpha channel
+const tintColorLight = '#ffffff'
+const tintColorDark = '#2f95dc'
 
 export default {
     light: {
-        text: '#000',
-        background: '#fff',
+        text: '#000000',
+        background: '#ffffff',
         tint: tintColorLight,
-        tabIconDefault: '#ccc',
+        tabIconDefault: '#cccccc',
         tabIconSelected: tintColorLight,
     },
     dark: {
-        text: '#fff',
-        background: '#000',
+        text: '#ffffff',
+        background: '#000000',
         tint: tintColorDark,
-        tabIconDefault: '#ccc',
+        tabIconDefault: '#cccccc',
         tabIconSelected: tintColorDark,
     },
 }

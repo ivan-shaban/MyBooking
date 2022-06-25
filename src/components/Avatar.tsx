@@ -8,6 +8,8 @@ import {
 } from 'react-native'
 import { Avatar as PaperAvatar } from 'react-native-paper'
 
+import { useThemeColor } from './Themed'
+
 export interface Props {
     readonly uri?: string
     readonly size?: number
@@ -16,9 +18,17 @@ export interface Props {
 }
 
 export const Avatar: FC<Props> = memo(function Avatar({ uri, size = 40, style, onPress }) {
+    const themedColor = useThemeColor({}, 'background')
+    const opacityPart = ((0.7 * 255) >> 0).toString(16).toUpperCase()
+    console.log(`>> 111`, themedColor + opacityPart)
+
     return (
         <TouchableOpacity
-            style={[styles.base, { borderRadius: size }, style]}
+            style={[
+                styles.base,
+                { borderRadius: size, borderColor: themedColor + opacityPart },
+                style,
+            ]}
             onPress={onPress}
             disabled={!onPress}
         >
@@ -35,6 +45,5 @@ export const Avatar: FC<Props> = memo(function Avatar({ uri, size = 40, style, o
 const styles = StyleSheet.create({
     base: {
         borderWidth: 3,
-        borderColor: 'rgba(255,255,255,0.7)',
     },
 })

@@ -8,6 +8,7 @@ import { colorByTab } from '../../constants/Colors'
 import { Tab } from '../../constants/Tab'
 import { $currentUser } from '../../store/user'
 import { Avatar } from '../Avatar'
+import { HeaderAction } from './HeaderAction'
 
 export interface Props extends NativeStackHeaderProps {}
 
@@ -17,8 +18,8 @@ export const ProfileHeader: FC<Props> = () => {
     return (
         <Appbar.Header style={styles.base}>
             <Avatar style={styles.avatar} uri={user?.avatar} />
-            <Appbar.Action style={styles.smallItem} icon="bell" color="white" onPress={() => {}} />
-            <Appbar.Action style={styles.smallItem} icon="forum" color="white" onPress={() => {}} />
+            <HeaderAction icon="bell" onPress={() => {}} />
+            <HeaderAction icon="forum" onPress={() => {}} />
         </Appbar.Header>
     )
 }
@@ -30,8 +31,5 @@ const styles = StyleSheet.create({
     },
     avatar: {
         marginRight: 'auto',
-    },
-    smallItem: {
-        marginRight: -5,
     },
 })

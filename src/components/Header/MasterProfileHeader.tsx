@@ -17,6 +17,8 @@ import {
 } from '../../store/user'
 import { RootStackScreenProps } from '../../types'
 import { Avatar } from '../Avatar'
+import { useThemeColor } from '../Themed'
+import { HeaderAction } from './HeaderAction'
 
 const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical'
 
@@ -25,6 +27,7 @@ export const MasterProfileHeader = ({
     route,
 }: RootStackScreenProps<'MasterProfile'>) => {
     const intl = useIntl()
+    const textColor = useThemeColor({}, 'background')
     const currentUser = useStore($currentUser)
     const headerColor = useStore($headerColor)
     const isFavouriteMasterRequestPending = useStore($isFavouriteMasterRequestPending)
@@ -49,29 +52,30 @@ export const MasterProfileHeader = ({
 
     return (
         <Appbar.Header style={[styles.base, { backgroundColor: headerColor }]}>
-            <Appbar.BackAction onPress={navigateToBack} />
+            <Appbar.BackAction color={textColor} onPress={navigateToBack} />
             <Avatar uri={master.avatar} onPress={handleOpenMasterPhotoModal} />
             <Appbar.Content
+                style={styles.bigItem}
+                color={textColor}
                 title={master.name}
                 subtitle={master.type
                     .map((type) => intl.formatMessage(mastersLocale[type]))
                     .join(', ')}
             />
-            <Appbar.Action
-                style={styles.bigItem}
+            <HeaderAction
                 icon={isFavourite ? 'cards-heart' : 'cards-heart-outline'}
                 color="red"
                 disabled={isFavouriteMasterRequestPending}
                 onPress={handleFavouritePress}
             />
-            <Appbar.Action style={styles.smallItem} icon="forum" color="white" onPress={() => {}} />
+            <HeaderAction icon="forum" onPress={() => {}} />
             {/*<ShareButton*/}
-            {/*    style={styles.smallItem}*/}
+            {/*    */}
             {/*    title={`Master profile: ${master.name}`}*/}
             {/*    message={Linking.createURL(`masters/${master.id}`)}*/}
             {/*    url={Linking.createURL(`masters/${master.id}`)}*/}
             {/*/>*/}
-            <Appbar.Action style={styles.smallItem} icon={MORE_ICON} onPress={() => {}} />
+            <HeaderAction icon={MORE_ICON} onPress={() => {}} />
         </Appbar.Header>
     )
 }
@@ -79,9 +83,7 @@ export const MasterProfileHeader = ({
 const styles = StyleSheet.create({
     base: {},
     bigItem: {
-        marginLeft: 'auto',
-    },
-    smallItem: {
         marginLeft: -5,
+        marginRight: 'auto',
     },
 })

@@ -3,12 +3,13 @@ import { StyleSheet, View, ViewStyle } from 'react-native'
 import { Appbar } from 'react-native-paper'
 
 import { share } from '../utils/share'
+import { HeaderAction } from './Header/HeaderAction'
 
 export interface Props {
-    title: string
-    message: string
-    url: string
-    style?: ViewStyle
+    readonly title: string
+    readonly message: string
+    readonly url: string
+    readonly style?: ViewStyle
 }
 
 export const ShareButton: FC<Props> = memo(function ShareButton({ title, message, url, style }) {
@@ -16,5 +17,5 @@ export const ShareButton: FC<Props> = memo(function ShareButton({ title, message
         share(title, message, url)
     }, [title, message, url])
 
-    return <Appbar.Action style={style} icon="share-variant" onPress={handlePress} color="white" />
+    return <HeaderAction style={style} icon="share-variant" onPress={handlePress} />
 })

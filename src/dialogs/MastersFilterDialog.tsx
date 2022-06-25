@@ -35,15 +35,6 @@ export interface Props {
     readonly style?: StyleProp<ViewStyle>
 }
 
-/**
- * Должна быть возможность фильтровать список по следующим значениям:
-     - пол мастера
-     - языку которым владеет мастер
-     - тип мастера (парикмахер, косметик и т.д.)
-     - тип клиентов с которыми работает мастер
-     - списку услуг
-     - уровню рейтинга
- */
 export const MastersFilterDialog: FC<Props> = memo(function MastersFilterDialog(props) {
     const iconColor = useThemeColor({}, 'text')
     const filtersData = useStore($mastersFilters)

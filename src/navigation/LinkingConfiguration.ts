@@ -1,17 +1,10 @@
-/**
- * Learn more about deep linking with React Navigation
- * https://reactnavigation.org/docs/deep-linking
- * https://reactnavigation.org/docs/configuring-links
- */
-import {LinkingOptions} from '@react-navigation/native'
-import {name} from '../../package.json'
-import {Tab} from '../constants/Tab'
-import {RootStackParamList} from '../types'
+import { LinkingOptions } from '@react-navigation/native'
 
+import { Tab } from '../constants/Tab'
+import { RootStackParamList } from '../types'
+import { appName } from '../utils/share'
 
-const appName = name.toLowerCase()
 const linking: LinkingOptions<RootStackParamList> = {
-//     prefixes: [Linking.makeUrl('/'), `${expo.scheme}://`, `https://www.${expo.scheme}.io/`],
     prefixes: [`${appName}://`, `https://${appName}.com`, `https://*.${appName}.com`],
     config: {
         initialRouteName: 'Root',

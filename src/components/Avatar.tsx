@@ -20,7 +20,6 @@ export interface Props {
 export const Avatar: FC<Props> = memo(function Avatar({ uri, size = 40, style, onPress }) {
     const themedColor = useThemeColor({}, 'background')
     const opacityPart = ((0.7 * 255) >> 0).toString(16).toUpperCase()
-    console.log(`>> 111`, themedColor + opacityPart)
 
     return (
         <TouchableOpacity

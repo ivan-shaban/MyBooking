@@ -16,6 +16,7 @@ import {
     removeFavouriteMasterFx,
 } from '../../store/user'
 import { RootStackScreenProps } from '../../types'
+import { share } from '../../utils/share'
 import { Avatar } from '../Avatar'
 import { useThemeColor } from '../Themed'
 import { HeaderAction } from './HeaderAction'
@@ -42,6 +43,11 @@ export const MasterProfileHeader = ({
             master,
         })
     }, [master, navigation])
+
+    const handleSharePress = useCallback(() => {
+        share(`Master profile: ${master.name}`, 'ok it is share message', `masters/${master.id}`)
+    }, [master])
+
     const navigateToBack = useCallback(() => {
         navigation.canGoBack()
             ? navigation.goBack()
@@ -69,12 +75,7 @@ export const MasterProfileHeader = ({
                 onPress={handleFavouritePress}
             />
             <HeaderAction icon="forum" onPress={() => {}} />
-            {/*<ShareButton*/}
-            {/*    */}
-            {/*    title={`Master profile: ${master.name}`}*/}
-            {/*    message={Linking.createURL(`masters/${master.id}`)}*/}
-            {/*    url={Linking.createURL(`masters/${master.id}`)}*/}
-            {/*/>*/}
+            <HeaderAction icon="share-variant" onPress={handleSharePress} />
             <HeaderAction icon={MORE_ICON} onPress={() => {}} />
         </Appbar.Header>
     )

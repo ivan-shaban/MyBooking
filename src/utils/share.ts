@@ -1,13 +1,14 @@
-import { Platform, Share } from 'react-native'
+import { Share } from 'react-native'
 
-// import { expo } from '../../app.json'
-// import { $language } from '../store/locale'
+import { name } from '../../package.json'
 
+export const appName = name.toLowerCase()
 export const share = async (title: string, message: string, url: string) => {
     try {
+        url = `${appName}://${url}`
         const result = await Share.share({
             title,
-            message,
+            message: `${message}, follow url: ${url}`,
             url,
         })
         if (result.action === Share.sharedAction) {
@@ -23,7 +24,7 @@ export const share = async (title: string, message: string, url: string) => {
         console.log(`>> ERROR: cannot share`, error)
     }
 }
-//
+
 // const APP_ID = Platform.OS === 'ios' ? expo.name : expo.android.package
 // export function getAppStoreURL() {
 //     const language = $language.getState()

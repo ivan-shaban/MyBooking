@@ -7,7 +7,7 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx",
-    "test:deep-linking:expo": "npx uri-scheme open exp://192.168.18.18:19000/--/locations/3 --android",
+    "test:deep-linking:app": "npx uri-scheme open mybooking://root/profile --android",
     "test:deep-linking:web": "npx uri-scheme open https://www.amazinghorse.io/locations/3 --android",
     "build:android": "eas build --platform android",
     "postbuild:android": "ts-node ./scripts/incrementAndroidVersion.ts",

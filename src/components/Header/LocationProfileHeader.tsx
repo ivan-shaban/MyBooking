@@ -1,7 +1,7 @@
 import { useStore } from 'effector-react'
 // import * as Linking from 'expo-linking'
 import React, { useCallback } from 'react'
-import { Platform, StyleSheet } from 'react-native'
+import { Linking, Platform, StyleSheet } from 'react-native'
 import { Appbar } from 'react-native-paper'
 
 import { Tab } from '../../constants/Tab'
@@ -14,6 +14,7 @@ import {
     removeFavouriteLocationFx,
 } from '../../store/user'
 import { RootStackScreenProps } from '../../types'
+import { share } from '../../utils/share'
 import { useThemeColor } from '../Themed'
 import { HeaderAction } from './HeaderAction'
 
@@ -37,6 +38,15 @@ export const LocationProfileHeader = ({
     const handleFavouritePress = useCallback(() => {
         isFavourite ? removeFavouriteLocationFx(location.id) : addFavouriteLocationFx(location.id)
     }, [location, isFavourite])
+
+    const handleSharePress = useCallback(() => {
+        share(
+            `Location profile: ${location.name}`,
+            'ok it is share message',
+            `locations/${location.id}`,
+        )
+    }, [location])
+
     const navigateToBack = useCallback(() => {
         navigation.canGoBack()
             ? navigation.goBack()
@@ -61,15 +71,7 @@ export const LocationProfileHeader = ({
                 onPress={handleFavouritePress}
             />
             <HeaderAction icon="forum" onPress={() => {}} />
-            {/*<ShareButton*/}
-            {/*    */}
-            {/*    title={`Location profile: ${location.name}`}*/}
-            {/*    message={Linking.createURL(`locations/${location.id}`)}*/}
-            {/*    // message={`intent:#Intent;scheme=${expo.scheme}://locations/${location.id};package=${expo.android.package};end`}*/}
-            {/*    // message={`Please install this app and stay safe , AppLink: ${`https://www.amazinghorse.io/locations/${location.id}`}`}*/}
-            {/*    // message={`Please install this app and stay safe , AppLink: ${getAppStoreURL()}`}*/}
-            {/*    url={Linking.createURL(`locations/${location.id}`)}*/}
-            {/*/>*/}
+            <HeaderAction icon="share-variant" onPress={handleSharePress} />
             <HeaderAction icon={MORE_ICON} onPress={() => {}} />
         </Appbar.Header>
     )

@@ -3,7 +3,6 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import { NavigationState } from '@react-navigation/routers/src/types'
 import React, { FC, useMemo } from 'react'
 import { useIntl } from 'react-intl'
-import { StyleSheet } from 'react-native'
 
 import { colorByTab } from '../constants/Colors'
 import { Tab } from '../constants/Tab'
@@ -34,7 +33,6 @@ export const MainScreen: FC<Props> = function MainScreen(props) {
     return (
         <BottomTab.Navigator
             shifting={true}
-            initialRouteName={Tab.Locations}
             sceneAnimationEnabled={false}
             // @ts-ignore
             screenListeners={listeners}
@@ -79,5 +77,3 @@ export const MainScreen: FC<Props> = function MainScreen(props) {
         </BottomTab.Navigator>
     )
 }
-
-const styles = StyleSheet.create({})

@@ -1,6 +1,6 @@
 {
   "name": "MyBooking",
-  "version": "0.0.5",
+  "version": "0.0.15",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
@@ -9,11 +9,9 @@
     "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx",
     "test:deep-linking:app": "npx uri-scheme open mybooking://root/profile --android",
     "test:deep-linking:web": "npx uri-scheme open https://www.amazinghorse.io/locations/3 --android",
-    "build:prod:android": "react-native run-android --variant=release",
-    "postbuild:prod:android": "yarn version --patch --no-commit-hooks",
+    "build:android": "yarn android -- --variant=release",
+    "postbuild:android": "yarn version --patch --no-commit-hooks",
     "postversion": "react-native-version",
-    "build:android": "eas build --platform android",
-    "postbuild:android": "ts-node ./scripts/incrementAndroidVersion.ts",
     "i18n:extract": "formatjs extract \"src/**/*.{js,jsx,ts,tsx}\" --ignore=\"**/*.d.ts\" --format simple --id-interpolation-pattern [sha512:contenthash:base64:6] --out-file generated/locales/ru.json",
     "i18n:compile": "formatjs compile-folder --ast --format simple generated/locales assets/locales"
   },

@@ -1,4 +1,4 @@
-package com.mybooking;
+package com.ivanshaban.appointmentbookingservice;
 
 import android.os.Bundle;
 
@@ -14,7 +14,7 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "MyBooking";
+    return "MyBookingApp";
   }
 
   @Override

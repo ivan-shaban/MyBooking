@@ -1,4 +1,4 @@
-package com.mybooking.newarchitecture;
+package com.ivanshaban.appointmentbookingservice.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -19,9 +19,9 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.EmptyReactNativeConfig;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.mybooking.BuildConfig;
-import com.mybooking.newarchitecture.components.MainComponentsRegistry;
-import com.mybooking.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.ivanshaban.appointmentbookingservice.BuildConfig;
+import com.ivanshaban.appointmentbookingservice.newarchitecture.components.MainComponentsRegistry;
+import com.ivanshaban.appointmentbookingservice.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 

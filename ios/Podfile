@@ -4,7 +4,7 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 platform :ios, '12.4'
 install! 'cocoapods', :deterministic_uuids => false
 
-target 'MyBooking' do
+target 'MyBookingApp' do
   config = use_native_modules!
 
   # Flags change depending on the env values.
@@ -21,7 +21,7 @@ target 'MyBooking' do
 
   pod 'RNSVG', :path => '../node_modules/react-native-svg'
 
-  target 'MyBookingTests' do
+  target 'MyBookingAppTests' do
     inherit! :complete
     # Pods for testing
   end

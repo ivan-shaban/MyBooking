@@ -1,4 +1,4 @@
-package com.mybooking.newarchitecture.modules;
+package com.ivanshaban.appointmentbookingservice.newarchitecture.modules;
 
 import com.facebook.jni.HybridData;
 import com.facebook.react.ReactPackage;

@@ -80,6 +80,7 @@ import org.apache.tools.ant.taskdefs.condition.Os
 
 project.ext.react = [
     enableHermes: false,  // clean and rebuild if changing
+    entryFile: "src/index.js",
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
@@ -139,8 +140,8 @@ android {
         applicationId "com.mybooking"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 14
-        versionName "0.0.5"
+        versionCode 16
+        versionName "0.0.16"
         buildConfigField "boolean", "IS_NEW_ARCHITECTURE_ENABLED", isNewArchitectureEnabled().toString()
 
         if (isNewArchitectureEnabled()) {

@@ -1,3 +1,5 @@
+import { LatLng } from 'react-native-maps'
+
 import { ClientType, allGenders } from '../constants/genders'
 import { Service } from '../constants/services'
 import { isLocationOpen } from '../utils/locations'
@@ -9,14 +11,47 @@ import faker from '@faker-js/faker'
 import { combine, createEffect, createStore } from 'effector'
 import shuffle from 'lodash.shuffle'
 
-export interface Location {
+const fakeCoordinatesInBatumi: LatLng[] = [
+    {
+        latitude: 41.638020256264674,
+        longitude: 41.609965523454406,
+    },
+    {
+        latitude: 41.63523689733641,
+        longitude: 41.60525168735286,
+    },
+    {
+        latitude: 41.63220692317453,
+        longitude: 41.603225056920294,
+    },
+    {
+        latitude: 41.63516538802861,
+        longitude: 41.62693560032177,
+    },
+    {
+        latitude: 41.643973973358406,
+        longitude: 41.619913143782675,
+    },
+    {
+        latitude: 41.64319752940102,
+        longitude: 41.63118093080976,
+    },
+    {
+        latitude: 41.64827138759108,
+        longitude: 41.623494264704256,
+    },
+    {
+        latitude: 41.64989182907961,
+        longitude: 41.62585144284388,
+    },
+]
+
+export interface Location extends LatLng {
     readonly id: number
     readonly name: string
     readonly address: string
     readonly description: string
     readonly worksWith: ClientType[]
-    readonly lat: number
-    readonly lng: number
     readonly tel: string[]
     readonly gallery: string[]
     readonly rating: number
@@ -32,16 +67,15 @@ export const requestAllLocationsDataFx = createEffect({
     handler: async () => {
         await delay(500)
 
-        return faker.datatype.array(8).map((_, index): Location => {
+        return faker.datatype.array(fakeCoordinatesInBatumi.length).map((_, index): Location => {
             const shuffledGenders = shuffle(allGenders)
 
             return {
+                ...fakeCoordinatesInBatumi[index],
                 id: index,
                 name: faker.company.companyName(),
                 description: faker.random.words(20),
                 address: faker.address.streetAddress(true),
-                lat: 0,
-                lng: 0,
                 tel: faker.datatype
                     .array(faker.datatype.number({ min: 1, max: 4 }))
                     .map(() => faker.phone.phoneNumber('+375 29 ### ## ##')),

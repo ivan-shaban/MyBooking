@@ -30,6 +30,7 @@ export type RootStackParamList = {
     MasterProfile: { id: string } & NavigatorScreenParams<MasterProfileTabParamList>
     LocationProfile: { id: string } & NavigatorScreenParams<LocationProfileTabParamList>
     MasterPhotoModal: { master: Master }
+    Map?: { id?: string }
 }
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<

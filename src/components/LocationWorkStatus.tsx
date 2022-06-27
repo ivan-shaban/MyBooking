@@ -3,6 +3,7 @@ import { FormattedMessage, useIntl } from 'react-intl'
 import { StyleSheet, View } from 'react-native'
 import { Text } from 'react-native-paper'
 
+import Colors from '../constants/Colors'
 import { daysLocale } from '../locales/days'
 import { Location } from '../store/locations'
 import moment from 'moment'
@@ -20,9 +21,13 @@ const LOCATION_OPENS_IN_DAY_TIME = ({ day, time }: { day: string; time: string }
 
 export interface Props {
     readonly location: Location
+    readonly useLightTheme?: boolean
 }
 
-export const LocationWorkStatus: FC<Props> = memo(function LocationWorkStatus({ location }) {
+export const LocationWorkStatus: FC<Props> = memo(function LocationWorkStatus({
+    location,
+    useLightTheme,
+}) {
     const intl = useIntl()
     const now = moment().local(true)
     const schedule = location.schedules[now.isoWeekday() - 1]
@@ -70,7 +75,7 @@ export const LocationWorkStatus: FC<Props> = memo(function LocationWorkStatus({ 
     return (
         <View style={styles.base}>
             {schedule === false ? (
-                <Text>
+                <Text style={useLightTheme ? styles.lightText : null}>
                     <Text style={styles.closed}>
                         <FormattedMessage id="day.dayoff" />
                     </Text>{' '}
@@ -96,7 +101,7 @@ export const LocationWorkStatus: FC<Props> = memo(function LocationWorkStatus({ 
                     )}
                 </Text>
             ) : isOpen ? (
-                <Text>
+                <Text style={useLightTheme ? styles.lightText : null}>
                     <Text style={styles.openned}>
                         <FormattedMessage id="location.opened" defaultMessage="Открыто" />
                     </Text>{' '}
@@ -107,7 +112,7 @@ export const LocationWorkStatus: FC<Props> = memo(function LocationWorkStatus({ 
                     />
                 </Text>
             ) : (
-                <Text>
+                <Text style={useLightTheme ? styles.lightText : null}>
                     <Text style={styles.closed}>
                         <FormattedMessage id="location.closed" defaultMessage="Закрыто" />
                     </Text>{' '}
@@ -146,5 +151,8 @@ const styles = StyleSheet.create({
     },
     closed: {
         color: 'red',
+    },
+    lightText: {
+        color: Colors.light.text,
     },
 })

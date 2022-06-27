@@ -2,6 +2,7 @@ import { useStore } from 'effector-react'
 // import { locale } from 'expo-localization'
 import React, { useCallback, useEffect } from 'react'
 import { IntlProvider } from 'react-intl'
+import { enableLatestRenderer } from 'react-native-maps'
 import { Provider as PaperProvider } from 'react-native-paper'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
@@ -14,6 +15,8 @@ import { requestInitialData, requestPermissions } from './store/main'
 import { OnErrorFn } from '@formatjs/intl/src/types'
 import 'intl'
 import 'intl/locale-data/jsonp/en'
+
+enableLatestRenderer()
 
 export function App() {
     const isLoadingComplete = useCachedResources()

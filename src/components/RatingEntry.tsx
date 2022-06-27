@@ -3,20 +3,29 @@ import { StyleSheet } from 'react-native'
 import { Text } from 'react-native-paper'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
+import Colors from '../constants/Colors'
 import { useThemeColor } from './Themed'
 import faker from '@faker-js/faker'
 
 export interface Props {
     readonly rating: number
     readonly feedbacksCount?: number
+    readonly useLightTheme?: boolean
 }
 
-export const RatingEntry: FC<Props> = memo(function RatingEntry({ rating, feedbacksCount }) {
+const customColors = { light: '#ccc', dark: 'white' }
+export const RatingEntry: FC<Props> = memo(function RatingEntry({
+    rating,
+    feedbacksCount,
+    useLightTheme,
+}) {
     const roundedRating = Math.round(rating)
-    const starColor = useThemeColor({ light: '#ccc', dark: 'white' }, 'tabIconDefault')
+    const starColor = useLightTheme
+        ? customColors.light
+        : useThemeColor(customColors, 'tabIconDefault')
 
     return rating ? (
-        <Text>
+        <Text style={useLightTheme ? styles.lightText : null}>
             {faker.datatype.array(5).map((_m, index) => (
                 <MaterialCommunityIcons
                     size={12}
@@ -33,4 +42,7 @@ export const RatingEntry: FC<Props> = memo(function RatingEntry({ rating, feedba
 
 const styles = StyleSheet.create({
     base: {},
+    lightText: {
+        color: Colors.light.text,
+    },
 })

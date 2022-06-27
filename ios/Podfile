@@ -21,6 +21,8 @@ target 'MyBookingApp' do
 
   pod 'RNSVG', :path => '../node_modules/react-native-svg'
 
+  pod 'react-native-config', :path => '../node_modules/react-native-config'
+
   target 'MyBookingAppTests' do
     inherit! :complete
     # Pods for testing

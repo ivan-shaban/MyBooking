@@ -7,6 +7,7 @@ import { ScreenHeader } from '../components/ScreenHeader'
 import MasterPhoto from '../modals/MasterPhoto'
 import { LocationProfile } from '../screens/LocationProfile'
 import { MainScreen } from '../screens/MainScreen'
+import { MapScreen } from '../screens/MapScreen'
 import { MasterProfile } from '../screens/MasterProfile'
 import { RootStackParamList } from '../types'
 import linking from './LinkingConfiguration'
@@ -27,6 +28,7 @@ export default function Navigation() {
                 <Stack.Screen name="Root" component={MainScreen} />
                 <Stack.Screen name="MasterProfile" component={MasterProfile} />
                 <Stack.Screen name="LocationProfile" component={LocationProfile} />
+                <Stack.Screen name="Map" component={MapScreen} />
                 <Stack.Group screenOptions={{ presentation: 'modal' }}>
                     <Stack.Screen name="MasterPhotoModal" component={MasterPhoto} />
                 </Stack.Group>

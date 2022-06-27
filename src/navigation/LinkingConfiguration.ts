@@ -28,6 +28,7 @@ const linking: LinkingOptions<RootStackParamList> = {
                     },
                 },
             },
+            Map: 'map/:id?',
             MasterPhotoModal: 'masters/:id/photo',
             MasterProfile: {
                 path: 'masters/:id',

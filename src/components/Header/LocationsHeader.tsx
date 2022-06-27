@@ -1,6 +1,6 @@
 import { NativeStackHeaderProps } from '@react-navigation/native-stack'
 import { useStore } from 'effector-react'
-import React, { FC, useState } from 'react'
+import React, { FC, useCallback, useState } from 'react'
 import { StyleSheet } from 'react-native'
 import { Appbar } from 'react-native-paper'
 
@@ -16,7 +16,7 @@ import { HeaderAction } from './HeaderAction'
 
 export interface Props extends NativeStackHeaderProps {}
 
-export const LocationsHeader: FC<Props> = () => {
+export const LocationsHeader: FC<Props> = ({ navigation }) => {
     const user = useStore($currentUser)
     const locationsFiltersApplied = useStore($locationsFiltersApplied)
     const { rating, feedbacks, name } = useStore($locationsSorting)
@@ -37,11 +37,15 @@ export const LocationsHeader: FC<Props> = () => {
     const showFiltersDialog = () => setFiltersDialogVisible(true)
     const hideFiltersDialog = () => setFiltersDialogVisible(false)
 
+    const handleMapPress = useCallback(() => {
+        navigation.navigate('Map')
+    }, [navigation])
+
     return (
         <Appbar.Header style={styles.base}>
             <Avatar style={styles.avatar} uri={user?.avatar} />
             <HeaderAction icon="magnify" onPress={() => {}} />
-            <HeaderAction icon="map-search-outline" onPress={() => {}} />
+            <HeaderAction icon="map-search-outline" onPress={handleMapPress} />
             <HeaderAction icon={sortingIcon} onPress={showDialog} />
             <HeaderAction icon={filtersIcon} onPress={showFiltersDialog} />
             <HeaderAction icon="bell" onPress={() => {}} />

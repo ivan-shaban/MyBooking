@@ -1,5 +1,6 @@
 import { MaterialTopTabScreenProps } from '@react-navigation/material-top-tabs/src/types'
-import React, { FC } from 'react'
+import { useNavigation } from '@react-navigation/native'
+import React, { FC, useCallback } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { Subheading } from 'react-native-paper'
 
@@ -18,6 +19,12 @@ export interface Props
 
 export const DescriptionTab: FC<Props> = function Description({ route }) {
     const { location } = route.params
+    const navigation = useNavigation()
+    const handleAddressPress = useCallback(() => {
+        navigation.navigate('Map', {
+            id: location.id.toString(),
+        })
+    }, [navigation, navigation])
 
     return (
         <ScrollView showsVerticalScrollIndicator={true}>
@@ -28,7 +35,9 @@ export const DescriptionTab: FC<Props> = function Description({ route }) {
                 <Subheading>{location.description}</Subheading>
             </Paragpaph>
             <Paragpaph icon="map-outline" title={subheadersLocale.address} collapsable>
-                <Subheading>{location.address}</Subheading>
+                <Subheading style={styles.address} onPress={handleAddressPress}>
+                    {location.address}
+                </Subheading>
             </Paragpaph>
             <Paragpaph icon="phone-outline" title={subheadersLocale.contacts} collapsable>
                 {location.tel.map((tel) => (
@@ -47,4 +56,5 @@ export const DescriptionTab: FC<Props> = function Description({ route }) {
 
 const styles = StyleSheet.create({
     bottomOffset: { height: 20 },
+    address: { color: 'blue' },
 })

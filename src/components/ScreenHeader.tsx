@@ -66,7 +66,7 @@ export const ScreenHeader: FC<NativeStackHeaderProps> = (props) => {
                 backgroundColor={headerColor}
                 barStyle={theme === 'dark' ? 'dark-content' : 'light-content'}
                 // showHideTransition={statusBarTransition}
-                // hidden={hidden}
+                hidden={!header}
             />
             {header}
         </>

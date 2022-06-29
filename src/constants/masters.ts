@@ -12,7 +12,7 @@ export const masterTypes = Object.values(MasterType)
 
 export enum MasterLanguage {
     ru = 'ru',
-    ge = 'ge',
+    ka = 'ka', // грузинский
     en = 'en',
     fr = 'fr',
     de = 'de',

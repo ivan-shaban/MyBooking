@@ -57,7 +57,7 @@ export const DescriptionTab: FC<Props> = function Description({ route }) {
                 <View style={styles.servicesContainer}>
                     {master.languages.map((language, index) => (
                         <Fragment key={language}>
-                            <Flag language={language} indicator />
+                            <Flag language={language} />
                             {index !== master.languages.length - 1 && (
                                 <DefaultView style={styles.divider} />
                             )}

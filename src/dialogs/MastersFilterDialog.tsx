@@ -151,7 +151,7 @@ export const MastersFilterDialog: FC<Props> = memo(function MastersFilterDialog(
                     <FilterParagraph icon="translate" title="language" inline>
                         {masterLanguages.map((language) => (
                             <FilterCheckbox
-                                postfix={<Flag language={language} indicator />}
+                                postfix={<Flag language={language} />}
                                 data={language}
                                 checked={languages.includes(language)}
                                 key={language}

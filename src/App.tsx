@@ -35,13 +35,6 @@ export function App() {
         requestPermissions()
     }, [])
 
-    // find solution, otherwise it crashes app on android
-    // useEffect(() => {
-    // if (isInitialDataLoaded) {
-    //     moment.locale(locale) // we get ru-BY
-    // }
-    // }, [isInitialDataLoaded])
-
     if (isLoadingComplete && isInitialDataLoaded) {
         return (
             <IntlProvider

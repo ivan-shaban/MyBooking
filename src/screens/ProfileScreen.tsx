@@ -1,9 +1,9 @@
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import { useStore } from 'effector-react'
 import React, { useCallback } from 'react'
 import { FormattedMessage } from 'react-intl'
 import { View as DefaultView, StyleSheet } from 'react-native'
 import { Subheading, Title } from 'react-native-paper'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import { version } from '../../package.json'
 import { Flag } from '../components/Flag'
@@ -11,6 +11,7 @@ import { Paragpaph } from '../components/Paragpaph'
 import { PhoneRecord } from '../components/PhoneRecord'
 import { View, useThemeColor } from '../components/Themed'
 import { Tab } from '../constants/Tab'
+import { MasterLanguage } from '../constants/masters'
 import { subheadersLocale } from '../locales/subheaders'
 import { $currentUser } from '../store/user'
 import { RootTabScreenProps } from '../types'
@@ -33,11 +34,11 @@ export function ProfileScreen({ navigation }: RootTabScreenProps<Tab.Profile>) {
                     <FormattedMessage id="language" defaultMessage="Язык" />
                 </Title>
                 <View style={styles.flags}>
-                    <Flag language="ru" />
+                    <Flag language={MasterLanguage.ru} locale="ru-RU" />
                     <DefaultView style={styles.divider} />
-                    <Flag language="ge" />
+                    <Flag language={MasterLanguage.ka} locale="ka_GE" />
                     <DefaultView style={styles.divider} />
-                    <Flag language="en" />
+                    <Flag language={MasterLanguage.en} locale="en-US" />
                 </View>
             </View>
             <Paragpaph

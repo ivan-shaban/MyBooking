@@ -1,10 +1,10 @@
-// import { locale } from 'expo-localization'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { NativeModules, Platform } from 'react-native'
 
 import en from '../../assets/locales/en.json'
 import ka from '../../assets/locales/ka.json'
 import ru from '../../assets/locales/ru.json'
-import { createEvent, createStore } from 'effector'
+import { createEffect, createEvent, createStore } from 'effector'
 
 const getLangFromLocale = (locale: string) => locale.split(/[-_]/)[0] as Language
 
@@ -34,7 +34,34 @@ const translations = {
     ru,
 }
 
+export const loadLocaleFx = createEffect({
+    name: 'request device locale',
+    handler: async () => {
+        try {
+            const locale = await AsyncStorage.getItem('@locale')
+            return locale || getDeviceLocaleLang()
+        } catch (e) {
+            console.log(`>> Error: cannot load locale`, e)
+            return locales[0]
+        }
+    },
+})
+
+export const saveLocaleFx = createEffect({
+    name: 'save device locale',
+    handler: async (locale: string) => {
+        try {
+            await AsyncStorage.setItem('@locale', locale)
+        } catch (e) {
+            console.log(`>> Error: cannot save locale`, locale)
+        }
+    },
+})
+
 export const changeLocale = createEvent<string>('change locale')
-export const $locale = createStore(getDeviceLocaleLang()).on(changeLocale, (_, locale) => locale)
-export const $language = $locale.map((locale) => getLangFromLocale(locale))
-export const $messages = $language.map((language) => translations[language])
+export const $locale = createStore<Nullable<string>>(null)
+    .on(changeLocale, (_, locale) => locale)
+    .on(loadLocaleFx.doneData, (_, locale) => locale)
+
+export const $language = $locale.map((locale) => (locale ? getLangFromLocale(locale) : null))
+export const $messages = $language.map((language) => (language ? translations[language] : null))

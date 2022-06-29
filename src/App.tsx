@@ -35,7 +35,7 @@ export function App() {
         requestPermissions()
     }, [])
 
-    if (isLoadingComplete && isInitialDataLoaded) {
+    if (isLoadingComplete && isInitialDataLoaded && messages && language) {
         return (
             <IntlProvider
                 messages={messages}

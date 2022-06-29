@@ -1,3 +1,4 @@
+import { changeLocale, loadLocaleFx, saveLocaleFx } from './locale'
 import { requestAllLocationsDataFx } from './locations'
 import { requestInitialData } from './main'
 import { requestAllMastersDataFx } from './masters'
@@ -9,6 +10,7 @@ export const $isInitialDataLoaded = combine(
     requestUserDataFx.pending,
     requestAllMastersDataFx.pending,
     requestAllLocationsDataFx.pending,
+    loadLocaleFx.pending,
     (...args) => {
         const isRequestsPending = args.some((flag) => flag)
         if (isRequestsPending) {
@@ -21,7 +23,12 @@ export const $isInitialDataLoaded = combine(
 // load initial data
 sample({
     source: requestInitialData,
-    target: [requestUserDataFx, requestAllMastersDataFx, requestAllLocationsDataFx],
+    target: [requestUserDataFx, requestAllMastersDataFx, requestAllLocationsDataFx, loadLocaleFx],
+})
+
+sample({
+    source: changeLocale,
+    target: saveLocaleFx,
 })
 
 // sample({

@@ -2,9 +2,8 @@ import React, { FC, memo, useCallback, useState } from 'react'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { StyleSheet, TouchableOpacity, View } from 'react-native'
 import { IconButton, Subheading } from 'react-native-paper'
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
-import { useThemeColor } from './Themed'
+import { MaterialIcon } from './MaterialIcon'
 import { MessageDescriptor } from '@formatjs/intl/src/types'
 
 export interface Props {
@@ -20,7 +19,6 @@ export const FilterParagraph: FC<Props> = memo(function FilterParagraph({
     children,
 }) {
     const [collapsed, setCollapsed] = useState(true)
-    const iconColor = useThemeColor({}, 'text')
     const intl = useIntl()
     const handleCollapse = useCallback(() => {
         setCollapsed((prev) => !prev)
@@ -30,11 +28,9 @@ export const FilterParagraph: FC<Props> = memo(function FilterParagraph({
     return (
         <View>
             <TouchableOpacity style={styles.header} onPress={handleCollapse}>
-                <MaterialCommunityIcons
+                <MaterialIcon
                     // @ts-ignore
                     name={icon}
-                    size={20}
-                    color={iconColor}
                 />
                 <Subheading style={styles.title} numberOfLines={1} ellipsizeMode="tail">
                     {typeof title === 'string' ? (
@@ -43,13 +39,7 @@ export const FilterParagraph: FC<Props> = memo(function FilterParagraph({
                         intl.formatMessage(title)
                     )}
                 </Subheading>
-                {
-                    <IconButton
-                        icon={collapsed ? 'chevron-down' : 'chevron-up'}
-                        color={iconColor}
-                        size={20}
-                    />
-                }
+                {<IconButton icon={collapsed ? 'chevron-down' : 'chevron-up'} size={20} />}
             </TouchableOpacity>
             {!collapsed && <View style={contentStyles}>{children}</View>}
         </View>

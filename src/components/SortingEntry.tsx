@@ -1,9 +1,9 @@
 import React, { FC, ReactNode, memo, useCallback } from 'react'
 import { StyleSheet, TouchableOpacity } from 'react-native'
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import { Text } from 'react-native-paper'
 
 import { SortOrder } from '../store/sorting'
-import { Text, useThemeColor } from './Themed'
+import { MaterialIcon } from './MaterialIcon'
 
 export interface Props {
     readonly title: ReactNode
@@ -12,7 +12,6 @@ export interface Props {
 }
 
 export const SortingEntry: FC<Props> = memo(function SortingEntry({ title, order, onChange }) {
-    const color = useThemeColor({}, 'text')
     const handlePress = useCallback(() => {
         onChange(
             order === SortOrder.ASC
@@ -26,7 +25,7 @@ export const SortingEntry: FC<Props> = memo(function SortingEntry({ title, order
     return (
         <TouchableOpacity style={styles.base} onPress={handlePress}>
             <Text>{title}</Text>
-            <MaterialCommunityIcons
+            <MaterialIcon
                 size={24}
                 name={
                     order === SortOrder.ASC
@@ -35,7 +34,6 @@ export const SortingEntry: FC<Props> = memo(function SortingEntry({ title, order
                         ? 'sort-descending'
                         : 'sort'
                 }
-                color={color}
             />
             {/*<MaterialCommunityIcons size={16} name="sort-reverse-variant" color={color} />*/}
         </TouchableOpacity>

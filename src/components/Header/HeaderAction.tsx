@@ -1,9 +1,7 @@
 import React, { FC, memo } from 'react'
 import { StyleSheet, ViewStyle } from 'react-native'
-import { Appbar } from 'react-native-paper'
+import { Appbar, useTheme } from 'react-native-paper'
 import { IconSource } from 'react-native-paper/lib/typescript/components/Icon'
-
-import { useThemeColor } from '../Themed'
 
 export interface Props {
     readonly style?: ViewStyle
@@ -20,13 +18,12 @@ export const HeaderAction: FC<Props> = memo(function HeaderAction({
     onPress,
     disabled,
 }) {
-    const themedColor = useThemeColor({}, 'background')
-
+    const { colors } = useTheme()
     return (
         <Appbar.Action
             style={[styles.base, style]}
             icon={icon}
-            color={color || themedColor}
+            color={color || colors.background}
             onPress={onPress}
             disabled={disabled}
         />

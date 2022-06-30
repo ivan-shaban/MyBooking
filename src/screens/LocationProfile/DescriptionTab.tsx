@@ -1,7 +1,7 @@
 import { MaterialTopTabScreenProps } from '@react-navigation/material-top-tabs/src/types'
 import { useNavigation } from '@react-navigation/native'
 import React, { FC, useCallback } from 'react'
-import { StyleSheet, View } from 'react-native'
+import { ScrollView, StyleSheet, View } from 'react-native'
 import { Subheading } from 'react-native-paper'
 
 import { Gallery } from '../../components/Gallery'
@@ -10,7 +10,6 @@ import { Paragpaph } from '../../components/Paragpaph'
 import { PhoneRecord } from '../../components/PhoneRecord'
 import { RatingEntry } from '../../components/RatingEntry'
 import { Schedule } from '../../components/Schedule'
-import { ScrollView } from '../../components/Themed'
 import { subheadersLocale } from '../../locales/subheaders'
 import { LocationProfileTabParamList } from '../../types'
 
@@ -24,7 +23,7 @@ export const DescriptionTab: FC<Props> = function Description({ route }) {
         navigation.navigate('Map', {
             id: location.id.toString(),
         })
-    }, [navigation, navigation])
+    }, [navigation, location])
 
     return (
         <ScrollView showsVerticalScrollIndicator={true}>
@@ -56,5 +55,5 @@ export const DescriptionTab: FC<Props> = function Description({ route }) {
 
 const styles = StyleSheet.create({
     bottomOffset: { height: 20 },
-    address: { color: 'blue' },
+    address: { color: 'blue', fontWeight: 'bold' },
 })

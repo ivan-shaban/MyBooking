@@ -3,15 +3,14 @@ import { useStore } from 'effector-react'
 import React, { FC, memo, useCallback } from 'react'
 import { Dimensions, StyleSheet, TouchableOpacity, View } from 'react-native'
 import { Avatar, Headline, Text } from 'react-native-paper'
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import { colorByTab } from '../constants/Colors'
 import { Tab } from '../constants/Tab'
 import { Location } from '../store/locations'
 import { $masters } from '../store/masters'
 import { $currentUser } from '../store/user'
+import { MaterialIcon } from './MaterialIcon'
 import { RatingEntry } from './RatingEntry'
-import { View as ThemedView } from './Themed'
 
 export interface Props {
     readonly location: Location
@@ -36,10 +35,10 @@ export const LocationItem: FC<Props> = memo(function LocationItem({ location, is
 
     return (
         <TouchableOpacity onPress={handleOpenDetails}>
-            <ThemedView style={styles.base}>
+            <View style={styles.base}>
                 <Avatar.Icon style={styles.avatar} size={40} icon="map-outline" />
                 <View style={styles.mastersBadge}>
-                    <MaterialCommunityIcons
+                    <MaterialIcon
                         style={styles.mastersBadgeIcon}
                         size={16}
                         name="account-group-outline"
@@ -66,14 +65,14 @@ export const LocationItem: FC<Props> = memo(function LocationItem({ location, is
                     />
                 </View>
                 {isFavourite && (
-                    <MaterialCommunityIcons
+                    <MaterialIcon
                         style={styles.favourite}
                         size={24}
                         name="cards-heart"
                         color="red"
                     />
                 )}
-            </ThemedView>
+            </View>
             {!isLast && <View style={styles.divider} />}
         </TouchableOpacity>
     )

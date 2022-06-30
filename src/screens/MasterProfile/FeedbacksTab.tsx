@@ -1,9 +1,8 @@
 import { MaterialTopTabScreenProps } from '@react-navigation/material-top-tabs/src/types'
 import React, { FC } from 'react'
-import { StyleSheet, View } from 'react-native'
+import { ScrollView, StyleSheet, View } from 'react-native'
 
 import { FeedbackEntry } from '../../components/FeedbackEntry'
-import { ScrollView } from '../../components/Themed'
 import { MasterProfileTabParamList } from '../../types'
 
 export interface Props extends MaterialTopTabScreenProps<MasterProfileTabParamList, 'Feedbacks'> {}

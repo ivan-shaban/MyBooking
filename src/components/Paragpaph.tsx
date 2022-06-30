@@ -1,10 +1,9 @@
 import React, { FC, memo, useCallback, useState } from 'react'
 import { useIntl } from 'react-intl'
-import { Dimensions, StyleSheet, TouchableOpacity } from 'react-native'
+import { Dimensions, StyleSheet, TouchableOpacity, View } from 'react-native'
 import { IconButton, Title } from 'react-native-paper'
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
-import { View, useThemeColor } from './Themed'
+import { MaterialIcon } from './MaterialIcon'
 import { MessageDescriptor } from '@formatjs/intl/src/types'
 
 export const paragpaphOffset = 44
@@ -30,7 +29,6 @@ export const Paragpaph: FC<Props> = memo(function Paragpaph({
     onEdit,
 }) {
     const [collapsed, setCollapsed] = useState(false)
-    const iconColor = useThemeColor({}, 'text')
     const intl = useIntl()
     const handleCollapse = useCallback(() => {
         setCollapsed((prev) => !prev)
@@ -39,40 +37,28 @@ export const Paragpaph: FC<Props> = memo(function Paragpaph({
     return collapsable ? (
         <View style={styles.base}>
             <TouchableOpacity style={styles.header} onPress={handleCollapse}>
-                <MaterialCommunityIcons
+                <MaterialIcon
                     // @ts-ignore
                     name={icon}
-                    size={20}
-                    color={iconColor}
                 />
                 <Title style={styles.title} numberOfLines={1} ellipsizeMode="tail">
                     {typeof title === 'string' ? title : intl.formatMessage(title)}
                 </Title>
-                {
-                    <IconButton
-                        icon={collapsed ? 'chevron-down' : 'chevron-up'}
-                        color={iconColor}
-                        size={20}
-                    />
-                }
+                {<IconButton icon={collapsed ? 'chevron-down' : 'chevron-up'} size={20} />}
             </TouchableOpacity>
             {collapsable && collapsed ? null : <View style={styles.content}>{children}</View>}
         </View>
     ) : (
         <View style={styles.base}>
             <View style={styles.header}>
-                <MaterialCommunityIcons
+                <MaterialIcon
                     // @ts-ignore
                     name={icon}
-                    size={20}
-                    color={iconColor}
                 />
                 <Title style={styles.title} numberOfLines={1} ellipsizeMode="tail">
                     {typeof title === 'string' ? title : intl.formatMessage(title)}
                 </Title>
-                {onEdit && (
-                    <IconButton icon="pencil" color={iconColor} size={20} onPress={onEdit} />
-                )}
+                {onEdit && <IconButton icon="pencil" size={20} onPress={onEdit} />}
             </View>
             <View style={styles.content}>{children}</View>
         </View>

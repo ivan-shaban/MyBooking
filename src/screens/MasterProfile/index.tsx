@@ -1,10 +1,9 @@
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 import React, { useState } from 'react'
 import { useIntl } from 'react-intl'
-import { StyleSheet } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import { Badge, FAB } from 'react-native-paper'
 
-import { View } from '../../components/Themed'
 import { colorByTab } from '../../constants/Colors'
 import { Tab } from '../../constants/Tab'
 import { useMaster } from '../../hooks/useMaster'

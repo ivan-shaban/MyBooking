@@ -1,10 +1,9 @@
 import React, { FC, memo } from 'react'
 import { StyleSheet, View } from 'react-native'
-import { Caption } from 'react-native-paper'
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import { Paragraph } from 'react-native-paper'
 
+import { MaterialIcon } from './MaterialIcon'
 import { RatingEntry } from './RatingEntry'
-import { useThemeColor } from './Themed'
 import moment from 'moment'
 
 export interface Props {
@@ -12,23 +11,17 @@ export interface Props {
 }
 
 export const FeedbackEntry: FC<Props> = memo(function FeedbackEntry({ feedback }) {
-    const color = useThemeColor({}, 'text')
-
     return (
         <View style={styles.base}>
-            <MaterialCommunityIcons
-                style={styles.icon}
-                size={16}
-                name="comment-text-outline"
-                color={color}
-            />
+            <MaterialIcon style={styles.icon} size={16} name="comment-text-outline" />
             <View style={styles.content}>
-                <Caption style={[styles.title, { color }]}>{feedback.title}</Caption>
-                <Caption>
+                <Paragraph style={styles.title}>{feedback.title}</Paragraph>
+                <Paragraph>
+                    {/* TODO: use FormattedDate */}
                     {moment(feedback.date).format('YYYY.MM.DD, hh:mm')} /{' '}
                     <RatingEntry rating={feedback.rating} />
-                </Caption>
-                <Caption style={{ color }}>{feedback.message}</Caption>
+                </Paragraph>
+                <Paragraph>{feedback.message}</Paragraph>
             </View>
         </View>
     )

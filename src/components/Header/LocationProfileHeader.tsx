@@ -1,8 +1,7 @@
 import { useStore } from 'effector-react'
-// import * as Linking from 'expo-linking'
 import React, { useCallback } from 'react'
-import { Linking, Platform, StyleSheet } from 'react-native'
-import { Appbar } from 'react-native-paper'
+import { Platform, StyleSheet } from 'react-native'
+import { Appbar, useTheme } from 'react-native-paper'
 
 import { Tab } from '../../constants/Tab'
 import { useLocation } from '../../hooks/useLocation'
@@ -15,7 +14,6 @@ import {
 } from '../../store/user'
 import { RootStackScreenProps } from '../../types'
 import { share } from '../../utils/share'
-import { useThemeColor } from '../Themed'
 import { HeaderAction } from './HeaderAction'
 
 const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical'
@@ -29,7 +27,7 @@ export const LocationProfileHeader = ({
     navigation,
     route,
 }: RootStackScreenProps<'LocationProfile'>) => {
-    const textColor = useThemeColor({}, 'background')
+    const { colors } = useTheme()
     const currentUser = useStore($currentUser)
     const headerColor = useStore($headerColor)
     const isFavouriteLocationRequestPending = useStore($isFavouriteLocationRequestPending)
@@ -57,10 +55,10 @@ export const LocationProfileHeader = ({
 
     return (
         <Appbar.Header style={[styles.base, { backgroundColor: headerColor }]}>
-            <Appbar.BackAction color={textColor} onPress={navigateToBack} />
+            <Appbar.BackAction color={colors.background} onPress={navigateToBack} />
             <Appbar.Content
                 style={styles.bigItem}
-                color={textColor}
+                color={colors.background}
                 title={location.name}
                 subtitle={location.address}
             />

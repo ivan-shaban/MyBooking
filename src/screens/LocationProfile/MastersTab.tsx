@@ -1,12 +1,11 @@
 import { MaterialTopTabScreenProps } from '@react-navigation/material-top-tabs/src/types'
 import { useStore } from 'effector-react'
 import React, { FC } from 'react'
-import { Dimensions, StyleSheet, View } from 'react-native'
+import { Dimensions, ScrollView, StyleSheet, View } from 'react-native'
 
 import { MasterItem } from '../../components/MasterItem'
 import { Paragpaph, paragpaphOffset } from '../../components/Paragpaph'
 import { ServiceChip } from '../../components/ServiceChip'
-import { ScrollView } from '../../components/Themed'
 import { Tab } from '../../constants/Tab'
 import { Service } from '../../constants/services'
 import { menuLocale } from '../../locales/menu'

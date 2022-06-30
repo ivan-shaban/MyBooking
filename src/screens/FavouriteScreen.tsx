@@ -1,11 +1,10 @@
 import { useStore } from 'effector-react'
 import React from 'react'
-import { Dimensions, StyleSheet } from 'react-native'
+import { Dimensions, ScrollView, StyleSheet, View } from 'react-native'
 
 import { LocationItem } from '../components/LocationItem'
 import { MasterItem } from '../components/MasterItem'
 import { Paragpaph, paragpaphOffset } from '../components/Paragpaph'
-import { ScrollView, View } from '../components/Themed'
 import { Tab } from '../constants/Tab'
 import { menuLocale } from '../locales/menu'
 import { $locations } from '../store/locations'

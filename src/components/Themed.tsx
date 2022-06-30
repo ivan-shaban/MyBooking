@@ -1,65 +1,29 @@
-/**
- * Learn more about Light and Dark modes:
- * https://docs.expo.io/guides/color-schemes/
- */
-import { useStore } from 'effector-react'
-import React from 'react'
 import {
-    ScrollView as DefaultScrollView,
-    Text as DefaultText,
-    View as DefaultView,
-} from 'react-native'
+    DarkTheme as NavigationDarkTheme,
+    DefaultTheme as NavigationDefaultTheme,
+} from '@react-navigation/native'
+import { useStore } from 'effector-react'
+import { DarkTheme as PaperDarkTheme, DefaultTheme as PaperDefaultTheme } from 'react-native-paper'
 
-import Colors from '../constants/Colors'
 import useColorScheme from '../hooks/useColorScheme'
 import { $theme, Theme } from '../store/theme'
+import merge from 'deepmerge'
 
-export function useTheme() {
+export function useLightTheme() {
     const theme = useStore($theme)
     const systemTheme = useColorScheme()
-    return theme === Theme.System ? systemTheme : (theme as 'light' | 'dark')
+    return theme === Theme.System ? systemTheme === 'light' : theme === Theme.Light
 }
 
-export function useThemeColor(
-    props: { light?: string; dark?: string },
-    colorName: keyof typeof Colors.light & keyof typeof Colors.dark,
-) {
-    const theme = useTheme()
-    const colorFromProps = props[theme]
-
-    if (colorFromProps) {
-        return colorFromProps
-    } else {
-        return Colors[theme][colorName]
-    }
-}
-
-type ThemeProps = {
-    lightColor?: string
-    darkColor?: string
-}
-
-export type TextProps = ThemeProps & DefaultText['props']
-export type ViewProps = ThemeProps & DefaultView['props']
-export type ScrollViewProps = ThemeProps & DefaultScrollView['props']
-
-export function Text(props: TextProps) {
-    const { style, lightColor, darkColor, ...otherProps } = props
-    const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text')
-
-    return <DefaultText style={[{ color }, style]} {...otherProps} />
-}
-
-export function View(props: ViewProps) {
-    const { style, lightColor, darkColor, ...otherProps } = props
-    const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background')
-
-    return <DefaultView style={[{ backgroundColor }, style]} {...otherProps} />
-}
-
-export function ScrollView(props: ScrollViewProps) {
-    const { style, lightColor, darkColor, ...otherProps } = props
-    const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background')
-
-    return <DefaultScrollView style={[{ backgroundColor }, style]} {...otherProps} />
-}
+export const CombinedDefaultTheme = merge(NavigationDefaultTheme, {
+    ...PaperDefaultTheme,
+    colors: {
+        transparentBackground: 'rgba(242, 242, 242, 0.7)',
+    },
+})
+export const CombinedDarkTheme = merge(NavigationDarkTheme, {
+    ...PaperDarkTheme,
+    colors: {
+        transparentBackground: 'rgba(1, 1, 1, 0.7)',
+    },
+})

@@ -1,9 +1,7 @@
 import React, { ReactNode, useCallback } from 'react'
 import { FormattedMessage } from 'react-intl'
 import { StyleSheet, TouchableOpacity, View } from 'react-native'
-import { RadioButton } from 'react-native-paper'
-
-import { Text } from './Themed'
+import { RadioButton, Text } from 'react-native-paper'
 
 export interface Props<T> {
     readonly title?: ReactNode

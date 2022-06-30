@@ -2,13 +2,12 @@ import { useStore } from 'effector-react'
 import React, { FC, memo, useCallback, useEffect, useState } from 'react'
 import { FormattedMessage } from 'react-intl'
 import { ScrollView, StyleProp, StyleSheet, View, ViewStyle } from 'react-native'
-import { Button, Dialog, Portal } from 'react-native-paper'
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import { Button, Dialog, Portal, Text } from 'react-native-paper'
 
 import { FilterCheckbox } from '../components/FilterCheckbox'
 import { FilterParagraph } from '../components/FilterParagraph'
 import { Flag } from '../components/Flag'
-import { Text, useThemeColor } from '../components/Themed'
+import { MaterialIcon } from '../components/MaterialIcon'
 import { Gender } from '../constants/genders'
 import { MasterLanguage, MasterType, masterLanguages, masterTypes } from '../constants/masters'
 import { Service, serviceValuesList } from '../constants/services'
@@ -36,7 +35,6 @@ export interface Props {
 }
 
 export const MastersFilterDialog: FC<Props> = memo(function MastersFilterDialog(props) {
-    const iconColor = useThemeColor({}, 'text')
     const filtersData = useStore($mastersFilters)
     const [{ services, mastersGender, clientsGender, languages, types, rating }, setState] =
         useState(filtersData)
@@ -195,11 +193,7 @@ export const MastersFilterDialog: FC<Props> = memo(function MastersFilterDialog(
                                     title={
                                         <View style={styles.ratingItem}>
                                             <Text>{rate} </Text>
-                                            <MaterialCommunityIcons
-                                                name="star"
-                                                size={16}
-                                                color={iconColor}
-                                            />
+                                            <MaterialIcon name="star" size={16} />
                                         </View>
                                     }
                                     data={rate}

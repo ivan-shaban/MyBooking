@@ -1,18 +1,16 @@
 import { useStore } from 'effector-react'
 import React, { FC, memo, useCallback, useEffect, useState } from 'react'
-import { FormattedMessage, useIntl } from 'react-intl'
+import { FormattedMessage } from 'react-intl'
 import { ScrollView, StyleProp, StyleSheet, View, ViewStyle } from 'react-native'
-import { Button, Dialog, Portal, RadioButton } from 'react-native-paper'
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import { Button, Dialog, Portal, Text } from 'react-native-paper'
 
 import { FilterCheckbox } from '../components/FilterCheckbox'
 import { FilterParagraph } from '../components/FilterParagraph'
 import { FilterRadioButton } from '../components/FilterRadioButton'
-import { Text, useThemeColor } from '../components/Themed'
+import { MaterialIcon } from '../components/MaterialIcon'
 import { Service, serviceValuesList } from '../constants/services'
 import { scheduleActionsLocale } from '../locales/actions'
 import { titleLocale } from '../locales/app'
-import { mastersGenderLocale } from '../locales/masters'
 import { servicesLocale } from '../locales/services'
 import { subheadersLocale } from '../locales/subheaders'
 import {
@@ -40,7 +38,6 @@ export interface Props {
 }
 
 export const LocationsFilterDialog: FC<Props> = memo(function LocationsFilterDialog(props) {
-    const iconColor = useThemeColor({}, 'text')
     const filtersData = useStore($locationsFilters)
     const [{ services, rating, open }, setState] = useState(filtersData)
 
@@ -129,11 +126,7 @@ export const LocationsFilterDialog: FC<Props> = memo(function LocationsFilterDia
                                     title={
                                         <View style={styles.ratingItem}>
                                             <Text>{rate} </Text>
-                                            <MaterialCommunityIcons
-                                                name="star"
-                                                size={16}
-                                                color={iconColor}
-                                            />
+                                            <MaterialIcon name="star" size={16} />
                                         </View>
                                     }
                                     data={rate}

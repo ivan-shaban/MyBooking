@@ -6,11 +6,10 @@ import {
     NativeScrollEvent,
     NativeSyntheticEvent,
     Pressable,
+    ScrollView,
     StyleSheet,
     View,
 } from 'react-native'
-
-import { ScrollView } from './Themed'
 
 export interface ImageInfo {
     url: string

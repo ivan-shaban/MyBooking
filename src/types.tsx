@@ -11,6 +11,17 @@ import { Location } from './store/locations'
 import { Master } from './store/masters'
 
 declare global {
+    namespace ReactNativePaper {
+        interface ThemeColors {
+            transparentBackground: string
+        }
+
+        interface Theme {
+            // example for custom prop
+            // myOwnProperty: boolean
+        }
+    }
+
     namespace ReactNavigation {
         interface RootParamList extends RootStackParamList {}
     }

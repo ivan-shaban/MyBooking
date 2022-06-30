@@ -4,14 +4,13 @@ import React, { FC, memo, useCallback } from 'react'
 import { useIntl } from 'react-intl'
 import { Dimensions, StyleSheet, TouchableOpacity, View } from 'react-native'
 import { Headline, Text } from 'react-native-paper'
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import { mastersLocale } from '../locales/masters'
 import { Master } from '../store/masters'
 import { $currentUser } from '../store/user'
 import { Avatar } from './Avatar'
+import { MaterialIcon } from './MaterialIcon'
 import { RatingEntry } from './RatingEntry'
-import { View as ThemedView } from './Themed'
 
 export interface Props {
     readonly master: Master
@@ -34,7 +33,7 @@ export const MasterItem: FC<Props> = memo(function MasterItem({ master, isLast }
 
     return (
         <TouchableOpacity onPress={handleOpenProfile}>
-            <ThemedView style={styles.base}>
+            <View style={styles.base}>
                 <Avatar style={styles.avatar} uri={master.avatar} />
                 <View>
                     <Headline numberOfLines={1} style={styles.reducedText}>
@@ -52,14 +51,14 @@ export const MasterItem: FC<Props> = memo(function MasterItem({ master, isLast }
                     </Text>
                 </View>
                 {isFavourite && (
-                    <MaterialCommunityIcons
+                    <MaterialIcon
                         style={styles.favourite}
                         size={24}
                         name="cards-heart"
                         color="red"
                     />
                 )}
-            </ThemedView>
+            </View>
             {!isLast && <View style={styles.divider} />}
         </TouchableOpacity>
     )

@@ -25,6 +25,7 @@
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/native-stack": "^6.1.0",
     "babel-plugin-formatjs": "^10.3.24",
+    "deepmerge": "^4.2.2",
     "effector": "^22.3.0",
     "effector-react": "^22.0.6",
     "intl": "^1.2.5",

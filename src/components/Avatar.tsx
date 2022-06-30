@@ -6,9 +6,7 @@ import {
     TouchableOpacity,
     ViewStyle,
 } from 'react-native'
-import { Avatar as PaperAvatar } from 'react-native-paper'
-
-import { useThemeColor } from './Themed'
+import { Avatar as PaperAvatar, useTheme } from 'react-native-paper'
 
 export interface Props {
     readonly uri?: string
@@ -18,14 +16,13 @@ export interface Props {
 }
 
 export const Avatar: FC<Props> = memo(function Avatar({ uri, size = 40, style, onPress }) {
-    const themedColor = useThemeColor({}, 'background')
-    const opacityPart = ((0.7 * 255) >> 0).toString(16).toUpperCase()
+    const theme = useTheme()
 
     return (
         <TouchableOpacity
             style={[
                 styles.base,
-                { borderRadius: size, borderColor: themedColor + opacityPart },
+                { borderRadius: size, borderColor: theme.colors.transparentBackground },
                 style,
             ]}
             onPress={onPress}

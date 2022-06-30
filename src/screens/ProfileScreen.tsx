@@ -1,15 +1,14 @@
 import { useStore } from 'effector-react'
 import React, { useCallback } from 'react'
 import { FormattedMessage } from 'react-intl'
-import { View as DefaultView, StyleSheet, TouchableOpacity } from 'react-native'
-import { Subheading, Title } from 'react-native-paper'
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import { View as DefaultView, StyleSheet, TouchableOpacity, View } from 'react-native'
+import { Subheading, Text, Title } from 'react-native-paper'
 
 import { version } from '../../package.json'
 import { Flag } from '../components/Flag'
+import { MaterialIcon } from '../components/MaterialIcon'
 import { Paragpaph } from '../components/Paragpaph'
 import { PhoneRecord } from '../components/PhoneRecord'
-import { Text, View, useThemeColor } from '../components/Themed'
 import { Tab } from '../constants/Tab'
 import { MasterLanguage } from '../constants/masters'
 import { subheadersLocale } from '../locales/subheaders'
@@ -22,7 +21,6 @@ export function ProfileScreen(props: RootTabScreenProps<Tab.Profile>) {
     const user = useStore($currentUser)
     const theme = useStore($theme)
     const locale = useStore($locale)
-    const iconColor = useThemeColor({}, 'text')
     const handleLocaleChange = useCallback(() => {
         changeLocale(
             locale === locales[0] ? locales[1] : locale === locales[1] ? locales[2] : locales[0],
@@ -38,12 +36,7 @@ export function ProfileScreen(props: RootTabScreenProps<Tab.Profile>) {
     return (
         <View style={styles.base}>
             <TouchableOpacity style={styles.language} onPress={handleLocaleChange}>
-                <MaterialCommunityIcons
-                    style={styles.icon}
-                    name="translate"
-                    size={20}
-                    color={iconColor}
-                />
+                <MaterialIcon style={styles.icon} name="translate" />
                 <Title>
                     <FormattedMessage id="language" defaultMessage="Язык" />
                 </Title>
@@ -56,48 +49,28 @@ export function ProfileScreen(props: RootTabScreenProps<Tab.Profile>) {
                 </View>
             </TouchableOpacity>
             <TouchableOpacity style={styles.theme} onPress={handleThemeChange}>
-                <MaterialCommunityIcons
-                    style={styles.icon}
-                    name="theme-light-dark"
-                    size={20}
-                    color={iconColor}
-                />
+                <MaterialIcon style={styles.icon} name="theme-light-dark" />
                 <Title>
                     <FormattedMessage id="light-theme" defaultMessage="Цветовая схема" />
                 </Title>
                 <View style={styles.themeName}>
                     {theme === Theme.Light ? (
                         <>
-                            <MaterialCommunityIcons
-                                style={styles.icon}
-                                name="white-balance-sunny"
-                                size={20}
-                                color={iconColor}
-                            />
+                            <MaterialIcon style={styles.icon} name="white-balance-sunny" />
                             <Text>
                                 <FormattedMessage id="light-theme.light" defaultMessage="Светлая" />
                             </Text>
                         </>
                     ) : theme === Theme.Dark ? (
                         <>
-                            <MaterialCommunityIcons
-                                style={styles.icon}
-                                name="weather-night"
-                                size={20}
-                                color={iconColor}
-                            />
+                            <MaterialIcon style={styles.icon} name="weather-night" />
                             <Text>
                                 <FormattedMessage id="light-theme.dark" defaultMessage="Темная" />
                             </Text>
                         </>
                     ) : (
                         <>
-                            <MaterialCommunityIcons
-                                style={styles.icon}
-                                name="theme-light-dark"
-                                size={20}
-                                color={iconColor}
-                            />
+                            <MaterialIcon style={styles.icon} name="theme-light-dark" />
                             <Text>
                                 <FormattedMessage
                                     id="light-theme.system"

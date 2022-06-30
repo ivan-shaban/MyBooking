@@ -32,7 +32,7 @@ export const LocationCallout: FC<Props> = memo(function LocationCallout({ locati
                 <RatingEntry
                     rating={location.rating}
                     feedbacksCount={location.feedbacks.length}
-                    useLightTheme
+                    isLightTheme
                 />
                 <LocationWorkStatus location={location} useLightTheme />
             </View>

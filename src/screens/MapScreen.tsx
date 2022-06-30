@@ -1,10 +1,9 @@
 import { useStore } from 'effector-react'
 import React from 'react'
-import { StyleSheet } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'
 
 import { LocationMarker } from '../components/Map/LocationMarker'
-import { View as ThemedView } from '../components/Themed'
 import useColorScheme from '../hooks/useColorScheme'
 import { $managedLocations } from '../store/locations'
 import { RootStackScreenProps } from '../types'
@@ -17,7 +16,7 @@ export function MapScreen({ route }: RootStackScreenProps<'Map'>) {
     const targetLocation = locations.find(({ id }) => id === locationId)
 
     return (
-        <ThemedView style={styles.base}>
+        <View style={styles.base}>
             <MapView
                 provider={PROVIDER_GOOGLE} // remove if not using Google Maps
                 style={styles.map}
@@ -43,7 +42,7 @@ export function MapScreen({ route }: RootStackScreenProps<'Map'>) {
                     />
                 ))}
             </MapView>
-        </ThemedView>
+        </View>
     )
 }
 

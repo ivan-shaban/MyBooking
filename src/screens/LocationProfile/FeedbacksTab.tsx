@@ -1,10 +1,9 @@
 import { MaterialTopTabScreenProps } from '@react-navigation/material-top-tabs/src/types'
 import React, { FC } from 'react'
-import { Dimensions, StyleSheet, View } from 'react-native'
+import { Dimensions, ScrollView, StyleSheet, View } from 'react-native'
 
 import { FeedbackEntry } from '../../components/FeedbackEntry'
 import { Paragpaph, paragpaphOffset } from '../../components/Paragpaph'
-import { ScrollView } from '../../components/Themed'
 import { subheadersLocale } from '../../locales/subheaders'
 import { LocationProfileTabParamList } from '../../types'
 

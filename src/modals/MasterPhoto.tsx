@@ -1,10 +1,9 @@
 import React from 'react'
 import { FormattedMessage, useIntl } from 'react-intl'
-import { StyleSheet, TouchableOpacity } from 'react-native'
+import { StyleSheet, TouchableOpacity, View } from 'react-native'
 import { Subheading, Title } from 'react-native-paper'
 
 import { Avatar } from '../components/Avatar'
-import { View } from '../components/Themed'
 import { mastersLocale } from '../locales/masters'
 import { RootStackScreenProps } from '../types'
 

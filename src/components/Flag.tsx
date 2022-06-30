@@ -1,11 +1,11 @@
 import { useStore } from 'effector-react'
-import React, { FC, memo, useCallback } from 'react'
-import { StyleSheet, TouchableOpacity } from 'react-native'
+import React, { FC, memo } from 'react'
+import { StyleSheet } from 'react-native'
 // @ts-ignore
 import Icon from 'react-native-ico-flags'
 
 import { MasterLanguage } from '../constants/masters'
-import { $language, $locale, changeLocale } from '../store/locale'
+import { $language } from '../store/locale'
 
 export type Props = {
     readonly language: MasterLanguage
@@ -26,20 +26,14 @@ const countryByLang = {
 
 export const Flag: FC<Props> = memo(function Flag({ language, locale }) {
     const lang = useStore($language)
-    const handlePress = useCallback(() => {
-        // @ts-ignore
-        changeLocale(locale)
-    }, [locale])
 
     return locale ? (
-        <TouchableOpacity onPress={handlePress}>
-            <Icon
-                style={styles.icon}
-                name={countryByLang[language]}
-                width={lang === language ? 30 : 20}
-                height={lang === language ? 30 : 20}
-            />
-        </TouchableOpacity>
+        <Icon
+            style={styles.icon}
+            name={countryByLang[language]}
+            width={lang === language ? 30 : 20}
+            height={lang === language ? 30 : 20}
+        />
     ) : (
         <Icon style={styles.icon} name={countryByLang[language]} />
     )

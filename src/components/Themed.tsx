@@ -2,20 +2,29 @@
  * Learn more about Light and Dark modes:
  * https://docs.expo.io/guides/color-schemes/
  */
-import React from 'react';
-import { ScrollView as DefaultScrollView, Text as DefaultText, View as DefaultView } from 'react-native';
+import { useStore } from 'effector-react'
+import React from 'react'
+import {
+    ScrollView as DefaultScrollView,
+    Text as DefaultText,
+    View as DefaultView,
+} from 'react-native'
 
+import Colors from '../constants/Colors'
+import useColorScheme from '../hooks/useColorScheme'
+import { $theme, Theme } from '../store/theme'
 
-
-import Colors from '../constants/Colors';
-import useColorScheme from '../hooks/useColorScheme';
-
+export function useTheme() {
+    const theme = useStore($theme)
+    const systemTheme = useColorScheme()
+    return theme === Theme.System ? systemTheme : (theme as 'light' | 'dark')
+}
 
 export function useThemeColor(
     props: { light?: string; dark?: string },
     colorName: keyof typeof Colors.light & keyof typeof Colors.dark,
 ) {
-    const theme = useColorScheme()
+    const theme = useTheme()
     const colorFromProps = props[theme]
 
     if (colorFromProps) {

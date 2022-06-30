@@ -25,7 +25,7 @@ const getDeviceLocaleLang = () => {
 }
 
 export const languages = ['en', 'ru', 'ka'] as const
-export const locales = ['ru-RU', 'en-US', 'ka_GE'] as const
+export const locales = ['ru-RU', 'ka_GE', 'en-US'] as const
 export type Language = typeof languages[number]
 export const defaultLanguage: Language = 'ru'
 const translations = {

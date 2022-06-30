@@ -70,7 +70,6 @@ export const Paragpaph: FC<Props> = memo(function Paragpaph({
                 <Title style={styles.title} numberOfLines={1} ellipsizeMode="tail">
                     {typeof title === 'string' ? title : intl.formatMessage(title)}
                 </Title>
-                {collapsable && <IconButton icon="chevron-down" color={iconColor} size={20} />}
                 {onEdit && (
                     <IconButton icon="pencil" color={iconColor} size={20} onPress={onEdit} />
                 )}

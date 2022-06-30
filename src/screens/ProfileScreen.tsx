@@ -1,7 +1,7 @@
 import { useStore } from 'effector-react'
 import React, { useCallback } from 'react'
 import { FormattedMessage } from 'react-intl'
-import { View as DefaultView, StyleSheet } from 'react-native'
+import { View as DefaultView, StyleSheet, TouchableOpacity } from 'react-native'
 import { Subheading, Title } from 'react-native-paper'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
@@ -9,21 +9,35 @@ import { version } from '../../package.json'
 import { Flag } from '../components/Flag'
 import { Paragpaph } from '../components/Paragpaph'
 import { PhoneRecord } from '../components/PhoneRecord'
-import { View, useThemeColor } from '../components/Themed'
+import { Text, View, useThemeColor } from '../components/Themed'
 import { Tab } from '../constants/Tab'
 import { MasterLanguage } from '../constants/masters'
 import { subheadersLocale } from '../locales/subheaders'
+import { $locale, changeLocale, locales } from '../store/locale'
+import { $theme, Theme, changeTheme } from '../store/theme'
 import { $currentUser } from '../store/user'
 import { RootTabScreenProps } from '../types'
 
-export function ProfileScreen({ navigation }: RootTabScreenProps<Tab.Profile>) {
+export function ProfileScreen(props: RootTabScreenProps<Tab.Profile>) {
     const user = useStore($currentUser)
+    const theme = useStore($theme)
+    const locale = useStore($locale)
     const iconColor = useThemeColor({}, 'text')
+    const handleLocaleChange = useCallback(() => {
+        changeLocale(
+            locale === locales[0] ? locales[1] : locale === locales[1] ? locales[2] : locales[0],
+        )
+    }, [locale])
+    const handleThemeChange = useCallback(() => {
+        changeTheme(
+            theme === Theme.Light ? Theme.Dark : theme === Theme.Dark ? Theme.System : Theme.Light,
+        )
+    }, [theme])
     const handleTelEdit = useCallback(() => {}, [])
 
     return (
         <View style={styles.base}>
-            <View style={styles.language}>
+            <TouchableOpacity style={styles.language} onPress={handleLocaleChange}>
                 <MaterialCommunityIcons
                     style={styles.icon}
                     name="translate"
@@ -40,7 +54,60 @@ export function ProfileScreen({ navigation }: RootTabScreenProps<Tab.Profile>) {
                     <DefaultView style={styles.divider} />
                     <Flag language={MasterLanguage.en} locale="en-US" />
                 </View>
-            </View>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.theme} onPress={handleThemeChange}>
+                <MaterialCommunityIcons
+                    style={styles.icon}
+                    name="theme-light-dark"
+                    size={20}
+                    color={iconColor}
+                />
+                <Title>
+                    <FormattedMessage id="light-theme" defaultMessage="Цветовая схема" />
+                </Title>
+                <View style={styles.themeName}>
+                    {theme === Theme.Light ? (
+                        <>
+                            <MaterialCommunityIcons
+                                style={styles.icon}
+                                name="white-balance-sunny"
+                                size={20}
+                                color={iconColor}
+                            />
+                            <Text>
+                                <FormattedMessage id="light-theme.light" defaultMessage="Светлая" />
+                            </Text>
+                        </>
+                    ) : theme === Theme.Dark ? (
+                        <>
+                            <MaterialCommunityIcons
+                                style={styles.icon}
+                                name="weather-night"
+                                size={20}
+                                color={iconColor}
+                            />
+                            <Text>
+                                <FormattedMessage id="light-theme.dark" defaultMessage="Темная" />
+                            </Text>
+                        </>
+                    ) : (
+                        <>
+                            <MaterialCommunityIcons
+                                style={styles.icon}
+                                name="theme-light-dark"
+                                size={20}
+                                color={iconColor}
+                            />
+                            <Text>
+                                <FormattedMessage
+                                    id="light-theme.system"
+                                    defaultMessage="Системная"
+                                />
+                            </Text>
+                        </>
+                    )}
+                </View>
+            </TouchableOpacity>
             <Paragpaph
                 icon="phone-outline"
                 title={subheadersLocale.contacts}
@@ -63,13 +130,26 @@ const styles = StyleSheet.create({
         marginRight: 8,
     },
     language: {
-        marginVertical: 8,
+        marginTop: 8,
         marginHorizontal: 16,
         alignItems: 'center',
         flexDirection: 'row',
         // backgroundColor: 'red',
     },
     flags: {
+        marginLeft: 'auto',
+        alignItems: 'center',
+        flexDirection: 'row',
+    },
+    theme: {
+        marginTop: 8,
+        marginBottom: 4,
+        marginHorizontal: 16,
+        alignItems: 'center',
+        flexDirection: 'row',
+    },
+    themeName: {
+        marginRight: 8,
         marginLeft: 'auto',
         alignItems: 'center',
         flexDirection: 'row',

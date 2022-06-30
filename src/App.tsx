@@ -1,11 +1,11 @@
 import { useStore } from 'effector-react'
-// import { locale } from 'expo-localization'
 import React, { useCallback, useEffect } from 'react'
 import { IntlProvider } from 'react-intl'
 import { enableLatestRenderer } from 'react-native-maps'
-import { Provider as PaperProvider } from 'react-native-paper'
+import { DarkTheme, DefaultTheme, Provider as PaperProvider } from 'react-native-paper'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
+import { useTheme } from './components/Themed'
 import useCachedResources from './hooks/useCachedResources'
 import './locales/app'
 import Navigation from './navigation'
@@ -21,6 +21,8 @@ enableLatestRenderer()
 export function App() {
     const isLoadingComplete = useCachedResources()
     const isInitialDataLoaded = useStore($isInitialDataLoaded)
+    const themeStyle = useTheme()
+    const theme = themeStyle === 'light' ? DefaultTheme : DarkTheme
     const language = useStore($language)
     const messages = useStore($messages)
 
@@ -43,7 +45,7 @@ export function App() {
                 defaultLocale={defaultLanguage}
                 onError={handleIntlError}
             >
-                <PaperProvider>
+                <PaperProvider theme={theme}>
                     <SafeAreaProvider>
                         <Navigation />
                     </SafeAreaProvider>

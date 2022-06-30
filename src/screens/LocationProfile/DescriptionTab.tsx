@@ -2,7 +2,7 @@ import { MaterialTopTabScreenProps } from '@react-navigation/material-top-tabs/s
 import { useNavigation } from '@react-navigation/native'
 import React, { FC, useCallback } from 'react'
 import { ScrollView, StyleSheet, View } from 'react-native'
-import { Subheading } from 'react-native-paper'
+import { Subheading, useTheme } from 'react-native-paper'
 
 import { Gallery } from '../../components/Gallery'
 import { LocationWorkStatus } from '../../components/LocationWorkStatus'
@@ -18,6 +18,7 @@ export interface Props
 
 export const DescriptionTab: FC<Props> = function Description({ route }) {
     const { location } = route.params
+    const { colors } = useTheme()
     const navigation = useNavigation()
     const handleAddressPress = useCallback(() => {
         navigation.navigate('Map', {
@@ -34,7 +35,10 @@ export const DescriptionTab: FC<Props> = function Description({ route }) {
                 <Subheading>{location.description}</Subheading>
             </Paragpaph>
             <Paragpaph icon="map-outline" title={subheadersLocale.address} collapsable>
-                <Subheading style={styles.address} onPress={handleAddressPress}>
+                <Subheading
+                    style={[styles.address, { color: colors.accent }]}
+                    onPress={handleAddressPress}
+                >
                     {location.address}
                 </Subheading>
             </Paragpaph>
@@ -55,5 +59,5 @@ export const DescriptionTab: FC<Props> = function Description({ route }) {
 
 const styles = StyleSheet.create({
     bottomOffset: { height: 20 },
-    address: { color: 'blue', fontWeight: 'bold' },
+    address: { fontWeight: 'bold' },
 })

@@ -1,6 +1,6 @@
 import React, { FC, memo, useCallback } from 'react'
 import { Linking, StyleSheet } from 'react-native'
-import { Subheading } from 'react-native-paper'
+import { Subheading, useTheme } from 'react-native-paper'
 
 export interface Props {
     readonly phone: string
@@ -8,13 +8,14 @@ export interface Props {
 }
 
 export const PhoneRecord: FC<Props> = memo(function PhoneRecord({ phone, disabled }) {
+    const { colors } = useTheme()
     const handleTelPress = useCallback(() => {
         Linking.openURL(`tel:${phone}`)
     }, [phone])
 
     return (
         <Subheading
-            style={[styles.base, disabled ? undefined : styles.enabled]}
+            style={[styles.base, disabled ? undefined : { color: colors.accent }]}
             onPress={disabled ? undefined : handleTelPress}
         >
             {phone}
@@ -25,8 +26,5 @@ export const PhoneRecord: FC<Props> = memo(function PhoneRecord({ phone, disable
 const styles = StyleSheet.create({
     base: {
         fontWeight: 'bold',
-    },
-    enabled: {
-        color: 'blue',
     },
 })

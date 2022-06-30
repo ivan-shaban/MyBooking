@@ -1,7 +1,7 @@
 import React from 'react'
 import { FormattedMessage, useIntl } from 'react-intl'
-import { StyleSheet, TouchableOpacity, View } from 'react-native'
-import { Subheading, Title } from 'react-native-paper'
+import { StyleSheet, View } from 'react-native'
+import { Button, Subheading, Title } from 'react-native-paper'
 
 import { Avatar } from '../components/Avatar'
 import { mastersLocale } from '../locales/masters'
@@ -21,11 +21,9 @@ export default function MasterPhoto({
             <Subheading>
                 {master.type.map((type) => intl.formatMessage(mastersLocale[type])).join(', ')}
             </Subheading>
-            <TouchableOpacity style={styles.backButton} onPress={navigation.goBack}>
-                <Subheading>
-                    <FormattedMessage id="button.back" defaultMessage="Назад" />
-                </Subheading>
-            </TouchableOpacity>
+            <Button style={styles.backButton} onPress={navigation.goBack}>
+                <FormattedMessage id="button.back" defaultMessage="Назад" />
+            </Button>
         </View>
     )
 }

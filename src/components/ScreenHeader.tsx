@@ -5,7 +5,6 @@ import { FC, useMemo } from 'react'
 import { StatusBar } from 'react-native'
 
 import { Tab } from '../constants/Tab'
-import useColorScheme from '../hooks/useColorScheme'
 import { $headerColor, $subrouterName } from '../store/header'
 import { FavouriteHeader } from './Header/FavouriteHeader'
 import { LocationProfileHeader } from './Header/LocationProfileHeader'
@@ -13,10 +12,11 @@ import { LocationsHeader } from './Header/LocationsHeader'
 import { MasterProfileHeader } from './Header/MasterProfileHeader'
 import { MastersHeader } from './Header/MastersHeader'
 import { ProfileHeader } from './Header/ProfileHeader'
+import { useLightTheme } from './Themed'
 
 export const ScreenHeader: FC<NativeStackHeaderProps> = (props) => {
     const { route } = props
-    const theme = useColorScheme()
+    const isLightTheme = useLightTheme()
     const headerColor = useStore($headerColor)
     const subroute = useStore($subrouterName)
     const header = useMemo(() => {
@@ -49,8 +49,9 @@ export const ScreenHeader: FC<NativeStackHeaderProps> = (props) => {
                 // @ts-ignore
                 return <LocationProfileHeader {...props} />
             }
-            case 'MasterPhotoModal': {
-                return null
+            case 'ChatWithMaster':
+            case 'ChatWithLocation': {
+                return true
             }
             default: {
                 console.log(`>> no header for this view: ${route.name}`)
@@ -63,10 +64,10 @@ export const ScreenHeader: FC<NativeStackHeaderProps> = (props) => {
         <>
             <StatusBar
                 // animated
+                showHideTransition="slide"
                 backgroundColor={headerColor}
-                barStyle={theme === 'dark' ? 'dark-content' : 'light-content'}
-                // showHideTransition={statusBarTransition}
-                hidden={!header}
+                barStyle={isLightTheme ? 'light-content' : 'dark-content'}
+                hidden={header === null}
             />
             {header}
         </>

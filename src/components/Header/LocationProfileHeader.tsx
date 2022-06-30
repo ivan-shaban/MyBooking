@@ -37,6 +37,12 @@ export const LocationProfileHeader = ({
         isFavourite ? removeFavouriteLocationFx(location.id) : addFavouriteLocationFx(location.id)
     }, [location, isFavourite])
 
+    const handleChatPress = useCallback(() => {
+        navigation.navigate('ChatWithLocation', {
+            id: location.id.toString(),
+        })
+    }, [navigation, location])
+
     const handleSharePress = useCallback(() => {
         share(
             `Location profile: ${location.name}`,
@@ -68,7 +74,7 @@ export const LocationProfileHeader = ({
                 disabled={isFavouriteLocationRequestPending}
                 onPress={handleFavouritePress}
             />
-            <HeaderAction icon="forum" onPress={() => {}} />
+            <HeaderAction icon="forum" onPress={handleChatPress} />
             <HeaderAction icon="share-variant" onPress={handleSharePress} />
             <HeaderAction icon={MORE_ICON} onPress={() => {}} />
         </Appbar.Header>

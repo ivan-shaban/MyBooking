@@ -13,12 +13,12 @@ import { Master } from './store/masters'
 declare global {
     namespace ReactNativePaper {
         interface ThemeColors {
-            transparentBackground: string
+            readonly transparentBackground: string
         }
 
         interface Theme {
             // example for custom prop
-            // myOwnProperty: boolean
+            // readonly myOwnProperty: boolean
         }
     }
 
@@ -39,7 +39,9 @@ declare global {
 export type RootStackParamList = {
     Root: NavigatorScreenParams<RootTabParamList>
     MasterProfile: { id: string } & NavigatorScreenParams<MasterProfileTabParamList>
+    ChatWithMaster: { id: string }
     LocationProfile: { id: string } & NavigatorScreenParams<LocationProfileTabParamList>
+    ChatWithLocation: { id: string }
     MasterPhotoModal: { master: Master }
     Map?: { id?: string }
 }

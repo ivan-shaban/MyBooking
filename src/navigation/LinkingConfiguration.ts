@@ -30,6 +30,8 @@ const linking: LinkingOptions<RootStackParamList> = {
             },
             Map: 'map/:id?',
             MasterPhotoModal: 'masters/:id/photo',
+            ChatWithMaster: 'masters/:id/chat',
+            ChatWithLocation: 'locations/:id/chat',
             MasterProfile: {
                 path: 'masters/:id',
                 // initialRouteName: Tab.Locations,

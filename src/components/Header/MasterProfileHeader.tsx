@@ -43,6 +43,12 @@ export const MasterProfileHeader = ({
         })
     }, [master, navigation])
 
+    const handleChatPress = useCallback(() => {
+        navigation.navigate('ChatWithMaster', {
+            id: master.id.toString(),
+        })
+    }, [navigation, master])
+
     const handleSharePress = useCallback(() => {
         share(`Master profile: ${master.name}`, 'ok it is share message', `masters/${master.id}`)
     }, [master])
@@ -73,7 +79,7 @@ export const MasterProfileHeader = ({
                 disabled={isFavouriteMasterRequestPending}
                 onPress={handleFavouritePress}
             />
-            <HeaderAction icon="forum" onPress={() => {}} />
+            <HeaderAction icon="forum" onPress={handleChatPress} />
             <HeaderAction icon="share-variant" onPress={handleSharePress} />
             <HeaderAction icon={MORE_ICON} onPress={() => {}} />
         </Appbar.Header>

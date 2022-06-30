@@ -7,6 +7,8 @@ import { enableLatestRenderer } from 'react-native-maps'
 import { ActivityIndicator, Provider as PaperProvider } from 'react-native-paper'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
+import { ChatWithLocation } from './components/Chat/ChatWithLocation'
+import { ChatWithMaster } from './components/Chat/ChatWithMaster'
 import { ScreenHeader } from './components/ScreenHeader'
 import { CombinedDarkTheme, CombinedDefaultTheme, useLightTheme } from './components/Themed'
 import useCachedResources from './hooks/useCachedResources'
@@ -76,8 +78,25 @@ export function App() {
                             <Stack.Screen name="MasterProfile" component={MasterProfile} />
                             <Stack.Screen name="LocationProfile" component={LocationProfile} />
                             <Stack.Screen name="Map" component={MapScreen} />
-                            <Stack.Group screenOptions={{ presentation: 'modal' }}>
+                            <Stack.Group
+                                screenOptions={{
+                                    presentation: 'modal',
+                                    animation: 'slide_from_bottom',
+                                }}
+                            >
                                 <Stack.Screen name="MasterPhotoModal" component={MasterPhoto} />
+                            </Stack.Group>
+                            <Stack.Group
+                                screenOptions={{
+                                    presentation: 'modal',
+                                    animation: 'slide_from_right',
+                                }}
+                            >
+                                <Stack.Screen name="ChatWithMaster" component={ChatWithMaster} />
+                                <Stack.Screen
+                                    name="ChatWithLocation"
+                                    component={ChatWithLocation}
+                                />
                             </Stack.Group>
                         </Stack.Navigator>
                     </NavigationContainer>

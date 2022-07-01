@@ -1,10 +1,10 @@
-import { ColorSchemeName } from 'react-native'
 import { LatLng } from 'react-native-maps'
 
 export const batumiCoordinates: LatLng = {
     latitude: 41.63717442321848,
     longitude: 41.61882787107507,
 }
+
 export const lightTheme = [
     {
         featureType: 'poi.business',
@@ -479,7 +479,3 @@ export const darkTheme = [
         ],
     },
 ]
-
-export const getStyleByTheme = (theme: ColorSchemeName) => {
-    return theme === 'light' ? lightTheme : darkTheme
-}

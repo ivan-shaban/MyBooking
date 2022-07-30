@@ -14,11 +14,11 @@ export const system = defineMessages({
 export const titleLocale = defineMessages({
     sorting: {
         id: 'title.sorting',
-        defaultMessage: 'Сортировка',
+        defaultMessage: 'Сортировка по',
     },
     filters: {
         id: 'title.filtersList',
-        defaultMessage: 'Список фильтров',
+        defaultMessage: 'Фильтрация по',
     },
 })
 

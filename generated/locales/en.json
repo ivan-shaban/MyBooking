@@ -24,6 +24,10 @@
   "gender.male": "Male",
   "gender.master": "Master gender",
   "language": "Language",
+  "light-theme": "Color schema",
+  "light-theme.dark": "Dark",
+  "light-theme.light": "Light",
+  "light-theme.system": "System",
   "location.closed": "Closed",
   "location.closesIn": "• Will close at {time}",
   "location.opened": "Open",
@@ -76,6 +80,6 @@
   "subheader.services": "Services",
   "subheader.speciality": "Speciality",
   "subheader.women": "Women",
-  "title.filtersList": "Filters",
-  "title.sorting": "Sorting"
+  "title.filtersList": "Filter by",
+  "title.sorting": "Sort by"
 }

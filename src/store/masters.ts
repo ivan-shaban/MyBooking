@@ -1,4 +1,4 @@
-import { ClientType, Gender, allGenders } from '../constants/genders'
+import { ClientType, Gender, clientsTypes } from '../constants/genders'
 import { MasterLanguage, MasterType, masterLanguages, masterTypes } from '../constants/masters'
 import { Service, serviceValuesList } from '../constants/services'
 import { delay } from '../utils/time'
@@ -31,7 +31,7 @@ export const requestAllMastersDataFx = createEffect({
 
         return faker.datatype.array(17).map((_, index): Master => {
             const gender = Math.random() > 0.6 ? Gender.Male : Gender.Female
-            const shuffledGenders = shuffle(allGenders)
+            const shuffledGenders = shuffle(clientsTypes)
             const shuffledServices = shuffle(serviceValuesList)
             const shuffledLanguages = shuffle(masterLanguages)
 
@@ -101,15 +101,9 @@ export const $managedMasters = combine(
             if (filters.mastersGender !== $mastersFilters.defaultState.mastersGender) {
                 masters = masters.filter(({ gender }) => filters.mastersGender.includes(gender))
             }
-            if (filters.clientsGender !== $mastersFilters.defaultState.clientsGender) {
+            if (filters.clientsTypes !== $mastersFilters.defaultState.clientsTypes) {
                 masters = masters.filter(({ worksWith }) =>
-                    filters.clientsGender.some((gender) =>
-                        gender === Gender.Male
-                            ? worksWith.includes(ClientType.Men) ||
-                              worksWith.includes(ClientType.Boys)
-                            : worksWith.includes(ClientType.Women) ||
-                              worksWith.includes(ClientType.Girls),
-                    ),
+                    filters.clientsTypes.some((client) => worksWith.includes(client)),
                 )
             }
 

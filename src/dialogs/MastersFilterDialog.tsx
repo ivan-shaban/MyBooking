@@ -8,7 +8,7 @@ import { FilterCheckbox } from '../components/FilterCheckbox'
 import { FilterParagraph } from '../components/FilterParagraph'
 import { Flag } from '../components/Flag'
 import { MaterialIcon } from '../components/MaterialIcon'
-import { Gender } from '../constants/genders'
+import { ClientType, Gender, clientsTypes as defaultClientTypes } from '../constants/genders'
 import { MasterLanguage, MasterType, masterLanguages, masterTypes } from '../constants/masters'
 import { Service, serviceValuesList } from '../constants/services'
 import { titleLocale } from '../locales/app'
@@ -36,7 +36,7 @@ export interface Props {
 
 export const MastersFilterDialog: FC<Props> = memo(function MastersFilterDialog(props) {
     const filtersData = useStore($mastersFilters)
-    const [{ services, mastersGender, clientsGender, languages, types, rating }, setState] =
+    const [{ services, mastersGender, clientsTypes, languages, types, rating }, setState] =
         useState(filtersData)
 
     const handleMasterGenderPress = useCallback((gender: Gender) => {
@@ -48,12 +48,12 @@ export const MastersFilterDialog: FC<Props> = memo(function MastersFilterDialog(
         }))
     }, [])
 
-    const handleClientGenderPress = useCallback((gender: Gender) => {
+    const handleClientTypePress = useCallback((client: ClientType) => {
         setState((prev) => ({
             ...prev,
-            clientsGender: prev.clientsGender.includes(gender)
-                ? prev.clientsGender.filter((s) => s !== gender)
-                : [...prev.clientsGender, gender],
+            clientsTypes: prev.clientsTypes.includes(client)
+                ? prev.clientsTypes.filter((s) => s !== client)
+                : [...prev.clientsTypes, client],
         }))
     }, [])
 
@@ -100,10 +100,17 @@ export const MastersFilterDialog: FC<Props> = memo(function MastersFilterDialog(
     }, [props])
 
     const handleApply = useCallback(() => {
-        setMastersFilters({ services, mastersGender, clientsGender, languages, types, rating })
+        setMastersFilters({
+            services,
+            mastersGender,
+            clientsTypes,
+            languages,
+            types,
+            rating,
+        })
 
         props.onDismiss?.()
-    }, [props, services, mastersGender, clientsGender, languages, types, rating])
+    }, [props, services, mastersGender, clientsTypes, languages, types, rating])
 
     useEffect(() => {
         if (props.visible) {
@@ -133,16 +140,16 @@ export const MastersFilterDialog: FC<Props> = memo(function MastersFilterDialog(
                         ))}
                     </FilterParagraph>
                     <FilterParagraph icon="human-male-female" title={mastersGenderLocale.client}>
-                        {[Gender.Male, Gender.Female].map((gender) => (
+                        {defaultClientTypes.map((client) => (
                             <FilterCheckbox
-                                title={mastersGenderLocale[gender].id}
-                                data={gender}
-                                checked={clientsGender.includes(gender)}
+                                title={subheadersLocale[client].id}
+                                data={client}
+                                checked={clientsTypes.includes(client)}
                                 disabled={
-                                    clientsGender.includes(gender) && clientsGender.length === 1
+                                    clientsTypes.includes(client) && clientsTypes.length === 1
                                 }
-                                key={gender}
-                                onPress={handleClientGenderPress}
+                                key={client}
+                                onPress={handleClientTypePress}
                             />
                         ))}
                     </FilterParagraph>

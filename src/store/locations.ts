@@ -1,6 +1,6 @@
 import { LatLng } from 'react-native-maps'
 
-import { ClientType, allGenders } from '../constants/genders'
+import { ClientType, clientsTypes } from '../constants/genders'
 import { Service } from '../constants/services'
 import { isLocationOpen } from '../utils/locations'
 import { delay } from '../utils/time'
@@ -68,7 +68,7 @@ export const requestAllLocationsDataFx = createEffect({
         await delay(500)
 
         return faker.datatype.array(fakeCoordinatesInBatumi.length).map((_, index): Location => {
-            const shuffledGenders = shuffle(allGenders)
+            const shuffledGenders = shuffle(clientsTypes)
 
             return {
                 ...fakeCoordinatesInBatumi[index],

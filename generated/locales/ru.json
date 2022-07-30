@@ -24,6 +24,10 @@
   "gender.male": "Мужчина",
   "gender.master": "Пол специалиста",
   "language": "Язык",
+  "light-theme": "Цветовая схема",
+  "light-theme.dark": "Темная",
+  "light-theme.light": "Светлая",
+  "light-theme.system": "Системная",
   "location.closed": "Закрыто",
   "location.closesIn": "• Закроется в {time}",
   "location.opened": "Открыто",
@@ -76,6 +80,6 @@
   "subheader.services": "Услуги",
   "subheader.speciality": "Специальность",
   "subheader.women": "Женщины",
-  "title.filtersList": "Список фильтров",
-  "title.sorting": "Сортировка"
+  "title.filtersList": "Фильтрация по",
+  "title.sorting": "Сортировка по"
 }

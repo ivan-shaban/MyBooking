@@ -10,9 +10,9 @@ export enum ClientType {
     Girls = 'girls',
 }
 
-export const allGenders = [
+export const clientsTypes: ClientType[] = [
     ClientType.Men,
     ClientType.Women,
     ClientType.Boys,
     ClientType.Girls,
-] as const
+]

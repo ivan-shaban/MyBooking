@@ -1,4 +1,4 @@
-import { Gender } from '../constants/genders'
+import { ClientType, Gender, clientsTypes } from '../constants/genders'
 import { MasterLanguage, MasterType } from '../constants/masters'
 import { Service } from '../constants/services'
 import { combine, createEvent, createStore } from 'effector'
@@ -10,7 +10,7 @@ export enum WorkType {
 
 export interface MastersFilters {
     readonly mastersGender: Gender[]
-    readonly clientsGender: Gender[]
+    readonly clientsTypes: ClientType[]
     readonly languages: MasterLanguage[]
     readonly types: MasterType[]
     readonly services: Service[]
@@ -22,7 +22,7 @@ export const setMastersFilters = createEvent<MastersFilters>('set masters filter
 export const $mastersFilters = createStore<MastersFilters>({
     services: [],
     mastersGender: [Gender.Male, Gender.Female],
-    clientsGender: [Gender.Male, Gender.Female],
+    clientsTypes,
     languages: [],
     types: [],
     rating: [],

@@ -149,6 +149,30 @@
       "value": "Язык"
     }
   ],
+  "light-theme": [
+    {
+      "type": 0,
+      "value": "Цветовая схема"
+    }
+  ],
+  "light-theme.dark": [
+    {
+      "type": 0,
+      "value": "Темная"
+    }
+  ],
+  "light-theme.light": [
+    {
+      "type": 0,
+      "value": "Светлая"
+    }
+  ],
+  "light-theme.system": [
+    {
+      "type": 0,
+      "value": "Системная"
+    }
+  ],
   "location.closed": [
     {
       "type": 0,
@@ -488,13 +512,13 @@
   "title.filtersList": [
     {
       "type": 0,
-      "value": "Список фильтров"
+      "value": "Фильтрация по"
     }
   ],
   "title.sorting": [
     {
       "type": 0,
-      "value": "Сортировка"
+      "value": "Сортировка по"
     }
   ]
 }

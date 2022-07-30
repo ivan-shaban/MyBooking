@@ -149,6 +149,30 @@
       "value": "Language"
     }
   ],
+  "light-theme": [
+    {
+      "type": 0,
+      "value": "Color schema"
+    }
+  ],
+  "light-theme.dark": [
+    {
+      "type": 0,
+      "value": "Dark"
+    }
+  ],
+  "light-theme.light": [
+    {
+      "type": 0,
+      "value": "Light"
+    }
+  ],
+  "light-theme.system": [
+    {
+      "type": 0,
+      "value": "System"
+    }
+  ],
   "location.closed": [
     {
       "type": 0,
@@ -488,13 +512,13 @@
   "title.filtersList": [
     {
       "type": 0,
-      "value": "Filters"
+      "value": "Filter by"
     }
   ],
   "title.sorting": [
     {
       "type": 0,
-      "value": "Sorting"
+      "value": "Sort by"
     }
   ]
 }
